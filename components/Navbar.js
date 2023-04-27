@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 // import { ReactComponent as Brand } from '../../assets/icons/logo.svg'
-import './Navbar.css'
+import './navbar.css'
 
 const Navbar = () => {
   return (
@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="nav-elements">
             <ul>
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/about">About</NavLink>
               </li>
               <li>
                 <NavLink to="/catfacts">Cat Facts</NavLink>
