@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "nodemon src/server/main.ts -w src/server",
+    "dev": "python3 src/server/backend/main.py -w src/servers & vite --port 8080",
     "start": " cross-env NODE_ENV=development &  node ./bin/server",
     "build": "vite build",
     "prepare": "husky install"
@@ -14,7 +14,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3",
+    "typescript": "^4.9.5",
     "vite-express": "*"
   },
   "devDependencies": {
