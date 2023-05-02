@@ -10,7 +10,7 @@ body {
 .container {
   /* max-width: 2000px; */
   margin: 0 auto;
-  padding: 0 ;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,6 +22,11 @@ body {
   padding-right: 30px;
   padding-left: 30px;
   color: white;
+  text-decoration: none;
+}
+
+h3 {
+  text-decoration: none;
 }
 
 .loginreg {
@@ -45,28 +50,27 @@ body {
 .nav-elements li {
   display: inline-block;
   padding-right: 30px;
-  
 }
 
 .nav-elements a {
   text-decoration: none;
-  color:#fcfcfc;
+  color: #fcfcfc;
   width: 100px;
   display: block;
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 15px;
-  padding-bottom:15px;
+  padding-bottom: 15px;
   font-size: 17px;
 }
 
 .nav-elements a:hover {
   background-color: rgb(255, 255, 255);
-  color:#414141;
+  color: #414141;
   transition: 0.4s;
 }
 
 .nav-elements a.active {
   background-color: black;
-  color:#ffd76a;
+  color: #ffd76a;
 }

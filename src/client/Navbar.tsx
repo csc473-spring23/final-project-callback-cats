@@ -13,9 +13,6 @@ const Navbar = () => {
         <div className='nav-elements'>
           <ul>
             <li>
-              <NavLink to='/about'>About</NavLink>
-            </li>
-            <li>
               <NavLink to='/catfacts'>Cat Facts</NavLink>
             </li>
             <li>
@@ -28,7 +25,7 @@ const Navbar = () => {
               <NavLink to='/trade'>Trade</NavLink>
             </li>
             <li className='loginreg'>
-              <NavLink to='/loginreg'>Login/Register</NavLink>
+              <NavLink to='/login'>Login/Register</NavLink>
             </li>
           </ul>
         </div>

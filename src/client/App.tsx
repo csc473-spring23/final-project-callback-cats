@@ -1,8 +1,8 @@
 import Home from './Home';
-import Navbar from './Navbar';
-import About from './About';
 import Tradepage from './Tradepage';
-import Buysellpage from './Buysellpage';
+import Buypage from './Buypage';
+import Sellpage from './Sellpage';
+import Catfactspage from './Catfactspage';
 import Register from './Register';
 import Login from './Login';
 import Errorpage from './Errorpage';
@@ -22,9 +22,10 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/about' element={<About />}></Route>
-        <Route path='/buysell' element={<Buysellpage />}></Route>
+        <Route path='/buy' element={<Buypage />}></Route>
+        <Route path='/sell' element={<Sellpage />}></Route>
         <Route path='/trade' element={<Tradepage />}></Route>
+        <Route path='/catfacts' element={<Catfactspage />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='*' element={<Errorpage />}></Route>
