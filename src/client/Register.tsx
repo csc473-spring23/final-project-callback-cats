@@ -56,8 +56,12 @@ function Register(props: RegisterProps) {
           <h1>Sign In</h1>
         </div>
         <section>
-          <div className='imgLogin'>
-            <img src='https://img.freepik.com/free-vector/cute-cat-playing-hand-phone-cartoon-vector-icon-illustration-animal-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-4231.jpg?w=2000' />
+          <div className='imagecontainer'>
+            <img
+              src='https://img.freepik.com/free-vector/cute-cat-playing-hand-phone-cartoon-vector-icon-illustration-animal-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-4231.jpg?w=2000'
+              alt='registerCat'
+              className='loginCat'
+            />
           </div>
           <div className='formLogin'>
             <form>

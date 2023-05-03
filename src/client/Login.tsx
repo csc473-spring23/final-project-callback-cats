@@ -23,8 +23,12 @@ function Login() {
           <h1>Login</h1>
         </div>
         <section>
-          <div className='imgLogin'>
-            <img src='https://s3-alpha.figma.com/hub/file/1844050371/ebbfb0be-4adb-45be-baa1-354c4f691440-cover.png' />
+          <div className='imagecontainer'>
+            <img
+              src='https://s3-alpha.figma.com/hub/file/1844050371/ebbfb0be-4adb-45be-baa1-354c4f691440-cover.png'
+              alt='loginCat'
+              className='loginCat'
+            />
           </div>
           <div className='formLogin'>
             <form>
