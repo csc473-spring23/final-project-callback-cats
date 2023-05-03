@@ -30,6 +30,7 @@ function Register(props: RegisterProps) {
     console.log(name, username, email, password);
     fetch('http://127.0.0.1:5000/sign_up', {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },

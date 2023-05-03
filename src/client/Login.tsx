@@ -15,6 +15,23 @@ function Login() {
     navigate('/buy');
   };
 
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/login', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    }).then((res) =>
+      res.json().then((data) => {
+        console.log(data);
+      })
+    );
+  }, []);
+
   return (
     <>
       <Navbar />
