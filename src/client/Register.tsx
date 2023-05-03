@@ -83,7 +83,7 @@ function Register(props: RegisterProps) {
                 <input
                   type='username'
                   placeholder='Create a new username'
-                  className='email'
+                  className='password'
                   id='username'
                   value={username}
                   onChange={(e) => {

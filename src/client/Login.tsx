@@ -40,6 +40,9 @@ function Login() {
                   className='email'
                   id='email'
                   value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 ></input>
               </div>
               <div>
@@ -50,6 +53,9 @@ function Login() {
                   className='password'
                   id='password'
                   value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 ></input>
               </div>
               <div>
