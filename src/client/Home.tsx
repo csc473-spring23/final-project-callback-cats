@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
-import './about.css';
+import './Home.css';
 import aboutbanner from './aboutbanner.jpg';
 import catsell from './catsell.png';
 import catbuy from './catbuy.png';
