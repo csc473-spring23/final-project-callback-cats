@@ -8,6 +8,8 @@ interface RegisterProps {
   username: string;
   email: string;
   password: string;
+  passwordError: string;
+  emailError: string;
   onSubmit: (data: RegisterProps) => void;
 }
 
@@ -16,10 +18,56 @@ function Register(props: RegisterProps) {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState('');
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleEmailChange = (event: any) => {
+    const value = event.target.value;
+    setEmail(value);
+
+    // Check if the email matches the regex pattern
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = regex.test(value);
+
+    // Update the error message
+    setEmailError(
+      isValid ? '' : 'Email must be in the format example@example.com.'
+    );
+  };
+
+  const handlePasswordChange = (event: any) => {
+    const value = event.target.value;
+    setPassword(value);
+
+    // Check if the password matches the regex pattern
+    const regex = /^(?=.*\d)(?=.*[A-Z]).{8,}$/;
+    const isValid = regex.test(value);
+
+    // Update the error message
+    setPasswordError(
+      isValid
+        ? ''
+        : 'Password must contain at least 8 characters, one number, and one uppercase letter.'
+    );
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    // Submit the form if the email is valid
+    if (emailError === '') {
+      // Do something with the email
+      console.log('Email:', email);
+    }
+
+    // Submit the form if the password is valid
+    if (passwordError === '') {
+      // Do something with the password
+      console.log('Password:', password);
+    }
+
     const data = {
       name: name,
       username: username,
@@ -28,26 +76,34 @@ function Register(props: RegisterProps) {
     };
     //props.onSubmit(data);
     console.log(name, username, email, password);
-    fetch('http://127.0.0.1:5000/sign_up', {
+    return fetch('http://127.0.0.1:5000/sign_up', {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        data,
-      }),
+      body: JSON.stringify(data),
     })
-      .then((response) => response.json())
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+      })
       .then((data) => {
         // do something with the server response
         console.log(data);
+        if (data.code === 400) {
+          alert('user already exits');
+        } else {
+          navigate('/login');
+        }
       })
       .catch((error) => {
-        console.error(error);
+        console.log('error');
       });
-    navigate('/login');
   };
+
+  const isFormValid =
+    email !== '' && password !== '' && username !== '' && name !== '';
 
   return (
     <>
@@ -67,7 +123,7 @@ function Register(props: RegisterProps) {
           <div className='formLogin'>
             <form>
               <div>
-                Name:
+                <label htmlFor='name-input'>Name:</label>
                 <input
                   type='name'
                   placeholder='Enter Your Name'
@@ -80,7 +136,7 @@ function Register(props: RegisterProps) {
                 ></input>
               </div>
               <div>
-                Username:
+                <label htmlFor='username-input'>Username:</label>
                 <input
                   type='username'
                   placeholder='Create a new username'
@@ -92,42 +148,44 @@ function Register(props: RegisterProps) {
                   }}
                 ></input>
               </div>
-              <div>
-                Email:
+              <div className='emailDiv'>
+                <label htmlFor='email-input'>Email:</label>
                 <input
                   type='email'
                   placeholder='Enter A New Email'
                   className='email'
                   id='email'
                   value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
+                  onChange={handleEmailChange}
+                  pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
+                  required
                 ></input>
+                {emailError && <p>{emailError}</p>}{' '}
               </div>
-              <div>
-                Password:
+              <div className='passwordDiv'>
+                <label htmlFor='password-input'>Password:</label>
                 <input
                   type='password'
                   placeholder='Enter A New Password'
                   className='password'
                   id='password'
                   value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
+                  onChange={handlePasswordChange}
+                  pattern='^(?=.*\d)(?=.*[A-Z]).{8,}$'
+                  required
                 ></input>
-              </div>
-              <div>
-                <input type='checkbox' />
-                Remember Me
+                {passwordError && <p>{passwordError}</p>}
               </div>
               <div>
                 <a href='/login'>Already have an account?</a>
               </div>
             </form>
 
-            <button className='button-20' onClick={handleSubmit}>
+            <button
+              className='button-20'
+              onClick={handleSubmit}
+              disabled={!isFormValid}
+            >
               Register
             </button>
           </div>

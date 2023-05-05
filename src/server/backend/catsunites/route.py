@@ -20,13 +20,20 @@ def home():
 @app.route("/sign_up", methods=["POST"])
 def sign_up():
     if request.method == "POST":
-        name = request.args.get("name")
-        username = request.args.get("username")
-        email = request.args.get("email").lower()
-        password = request.args.get("password")
+        data = request.json
+        print(data['name'])
+        ##name = request.args.get("name")
+        name = data['name']
+        #username = request.args.get("username")
+        username = data['username']
+        ##email = request.args.get("email").lower()
+        email = data['email'].lower()
+        ##password = request.args.get("password")
+        password = data['password']
         hash_password = bcrypt.generate_password_hash(
             password=password
         ).decode('utf-8')
+        
 
         try:
             new_user = User(
@@ -56,8 +63,11 @@ def sign_up():
 
 @app.route("/login", methods=["POST"])
 def login():
-    email = request.args.get("email")
-    password = request.args.get("password")
+    data = request.json
+    ##email = request.args.get("email")
+    email = data['email']
+    ##password = request.args.get("password")
+    password = data['password']
 
     try:
         user = User.query.filter_by(email=email).first()

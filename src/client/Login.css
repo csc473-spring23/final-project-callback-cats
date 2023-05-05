@@ -34,6 +34,18 @@
   margin-left: 50px;
 }
 
+.emailDiv p {
+  color: red;
+  font-size: small;
+  margin-left: -280px;
+}
+
+.passwordDiv p {
+  color: red;
+  font-size: small;
+  margin-left: -80px;
+}
+
 .password {
   width: 50%;
   margin-left: 85px;
