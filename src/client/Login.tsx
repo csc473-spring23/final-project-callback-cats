@@ -89,7 +89,7 @@ function Login(props: LoginProps) {
         if (data.code === 400) {
           alert('password or email not found');
         } else {
-          navigate('/buy');
+          navigate('/sell', { state: { email, password } });
         }
       })
       .catch((error) => {

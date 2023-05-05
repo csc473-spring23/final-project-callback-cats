@@ -56,15 +56,11 @@ function Register(props: RegisterProps) {
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
-    // Submit the form if the email is valid
     if (emailError === '') {
-      // Do something with the email
       console.log('Email:', email);
     }
 
-    // Submit the form if the password is valid
     if (passwordError === '') {
-      // Do something with the password
       console.log('Password:', password);
     }
 
@@ -89,7 +85,6 @@ function Register(props: RegisterProps) {
         }
       })
       .then((data) => {
-        // do something with the server response
         console.log(data);
         if (data.code === 400) {
           alert('user already exits');

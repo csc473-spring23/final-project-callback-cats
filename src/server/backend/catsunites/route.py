@@ -128,12 +128,12 @@ def upload_cat():
         ##price = request.args.get("price")
         price = data['price']
         ##is_donate = request.args.get("is_donate")
-        is_donate = data['is_donate']
+        is_donate = data['is_donate'].lower()
         ##breed = request.args.get("breed")
         breed = data['breed']
         ##gender = request.args.get("gender")
         gender = data['gender']
-        if is_donate == "False" or "0":
+        if is_donate == "false" or "0":
             is_donate = False
         else:
             is_donate = True
@@ -186,7 +186,8 @@ def sendMessage():
         data = request.json
         cat = Cat.query.filter_by(id=data['cat_id']).first()
         message = Message(
-            content=request.args.get("content"),
+            ##content=request.args.get("content"),
+            content = data['content'],
             timestamp=datetime.datetime.now(),
             sender=current_user,
             recipient=cat.seller,
