@@ -1,6 +1,7 @@
 .sellTitle {
   text-align: center;
   font-size: 36px;
+  margin-top: -50px;
 }
 
 .sellTitle img {
@@ -10,7 +11,7 @@
 }
 
 .sellBody {
-  height: 70vh;
+  height: 650px;
   background-color: white;
   width: 120vh;
   margin: auto;
@@ -28,10 +29,11 @@
 .midBody {
   display: flex;
   flex-direction: row;
+  gap: 1220px;
 }
 
 .catDescrip {
-  width: 400px;
+  width: 300px;
   height: 100px;
   overflow: hidden;
   overflow-y: scroll;
@@ -87,7 +89,8 @@ form {
 }
 
 .catImage {
-  margin-left: 45%;
+  position: absolute;
+  margin-left: 30%;
   display: flex;
   flex-direction: column;
   gap: 20px;

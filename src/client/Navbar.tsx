@@ -16,13 +16,10 @@ const Navbar = () => {
               <NavLink to='/catfacts'>Cat Facts</NavLink>
             </li>
             <li>
-              <NavLink to='/buy'>Buy</NavLink>
+              <NavLink to='/adopt'>Adopt</NavLink>
             </li>
             <li>
-              <NavLink to='/sell'>Sell</NavLink>
-            </li>
-            <li>
-              <NavLink to='/trade'>Trade</NavLink>
+              <NavLink to='/donate'>Donate</NavLink>
             </li>
             <li className='loginreg'>
               <NavLink to='/login'>Login/Register</NavLink>

@@ -1,15 +1,16 @@
 import { type } from 'os';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 import Errorpage from './Errorpage';
-import './Sellpage.css';
+import './Donatepage.css';
 
 interface UserProps {
   newEmail: string;
   newPassword: string;
 }
 
-function Sellpage({ newEmail, newPassword }: UserProps) {
+function Donatepage() {
   const [name, setName] = useState('');
   const [age, setAge] = useState(0);
   const [img_url, setImg_url] = useState('');
@@ -18,13 +19,15 @@ function Sellpage({ newEmail, newPassword }: UserProps) {
   const [is_donate, setIs_donate] = useState('');
   const [breed, setBreed] = useState('');
   const [gender, setGender] = useState('');
+  const [newEmail, setNewEmail] = useState('');
+  const [newPassword, setNewPassword] = useState('');
 
   const { state } = useLocation();
 
   if (state) {
     const { email, password } = state;
-    newEmail = email;
-    newPassword = password;
+    newEmail: email;
+    newPassword: password;
   }
 
   const nav = useNavigate();
@@ -34,26 +37,16 @@ function Sellpage({ newEmail, newPassword }: UserProps) {
 
     const data = {
       name: name,
-      age: age,
       img_url: img_url,
+      age: age,
       description: description,
       price: price,
       is_donate: is_donate,
       breed: breed,
       gender: gender,
-      current_user: newEmail,
     };
 
-    console.log(
-      name,
-      age,
-      description,
-      breed,
-      price,
-      is_donate,
-      gender,
-      newEmail
-    );
+    console.log(name, age, description, breed, price, is_donate, gender);
     return fetch('http://127.0.0.1:5000/upload_cat', {
       method: 'POST',
       headers: {
@@ -61,12 +54,19 @@ function Sellpage({ newEmail, newPassword }: UserProps) {
       },
       body: JSON.stringify(data),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+      })
       .then((data) => {
         if (data.status === 200) {
           alert('Your cat info is uploaded');
-          nav('/buy', { state: { newEmail, newPassword } });
+          nav('/adopt', { state: { newEmail, newPassword } });
         }
+      })
+      .catch((error) => {
+        console.log('error');
       });
   };
 
@@ -76,9 +76,10 @@ function Sellpage({ newEmail, newPassword }: UserProps) {
     </>
   ) : (
     <>
+      <Navbar />
       <div className='sellTitle'>
         <h1>
-          Sell Your{' '}
+          Donate Your{' '}
           <img
             src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT32OiDDnK2CFHGPu1L3G00Y_ErAXeSwBbajQ&usqp=CAU'
             alt='cat'
@@ -218,4 +219,4 @@ function Sellpage({ newEmail, newPassword }: UserProps) {
   );
 }
 
-export default Sellpage;
+export default Donatepage;

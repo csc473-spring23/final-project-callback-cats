@@ -128,7 +128,7 @@ def upload_cat():
         ##price = request.args.get("price")
         price = data['price']
         ##is_donate = request.args.get("is_donate")
-        is_donate = data['is_donate'].lower()
+        is_donate = data['is_donate'].lowe()
         ##breed = request.args.get("breed")
         breed = data['breed']
         ##gender = request.args.get("gender")

@@ -13,7 +13,7 @@ interface LoginProps {
   onSubmit: (data: LoginProps) => void;
 }
 
-function Login(props: LoginProps) {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -89,7 +89,7 @@ function Login(props: LoginProps) {
         if (data.code === 400) {
           alert('password or email not found');
         } else {
-          navigate('/sell', { state: { email, password } });
+          navigate('/donate', { state: { email, password } });
         }
       })
       .catch((error) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Buypage() {
+function Adoptpage() {
   return <div>Buypage</div>;
 }
 
-export default Buypage;
+export default Adoptpage;
