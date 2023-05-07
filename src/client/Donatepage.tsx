@@ -32,6 +32,17 @@ function Donatepage() {
 
   const nav = useNavigate();
 
+  const logout = (e: any) => {
+    e.preventDefault();
+
+    return fetch('http://127.0.0.1:5000/logout')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        nav('/login');
+      });
+  };
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -132,35 +143,6 @@ function Donatepage() {
                 }}
               ></input>
             </div>
-
-            <div className='bodyContent'>
-              <label htmlFor='price'> Price: </label>
-              <input
-                type='number'
-                value={price}
-                id='price'
-                placeholder='Enter a price'
-                className='catPrice'
-                onChange={(e) => {
-                  setPrice(e.target.valueAsNumber);
-                }}
-              ></input>
-            </div>
-
-            <div className='bodyContent'>
-              <label htmlFor='is_donate'> Are you going to donate it? : </label>
-              <input
-                type='text'
-                value={is_donate}
-                id='is_donate'
-                placeholder='true or false'
-                className='catDonate'
-                onChange={(e) => {
-                  setIs_donate(e.target.value);
-                }}
-              ></input>
-            </div>
-
             <div className='bodyContent'>
               <label htmlFor='breed'> Breed: </label>
               <input
@@ -215,6 +197,9 @@ function Donatepage() {
           </button>
         </div>
       </div>
+      <button type='button' className='logout' onClick={logout}>
+        Log out
+      </button>
     </>
   );
 }

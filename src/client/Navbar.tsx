@@ -12,8 +12,8 @@ const Navbar = () => {
         </div>
         <div className='nav-elements'>
           <ul>
-          <li>
-              <NavLink to='/home'>Home</NavLink>
+            <li>
+              <NavLink to='/'>Home</NavLink>
             </li>
             <li>
               <NavLink to='/catfacts'>Cat Facts</NavLink>

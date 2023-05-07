@@ -11,7 +11,7 @@
 }
 
 .sellBody {
-  height: 650px;
+  height: 550px;
   background-color: white;
   width: 120vh;
   margin: auto;
@@ -109,11 +109,15 @@ form {
 }
 
 .caticons {
-  width: 440px;
+  width: 330px;
 }
 
 .sellBtn {
   align-items: center;
   text-align: center;
   margin-left: -300px;
+}
+
+.logout {
+  color: black;
 }

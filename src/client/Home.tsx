@@ -32,28 +32,26 @@ const Home = () => {
         <img src={catbuy} alt='catbuy' className='catbuy' />
       </div>
       <div className='buycontainer'>
-        <h1>Buying:</h1>
+        <h1>Adopt:</h1>
         <p>
           You will be able to explore different options of cats that are for
-          sale from other users. You can read the cat's description based on the
-          seller's listing which can include the cat's breed, age, and
-          personality! You can submit an application to buy the cat for sale.
-          You can keep track of your own applications on your account profile to
-          view the statuses of your applications.
+          adoption from other users. You can read the cat's description based on
+          the user's listing which can include the cat's breed, age, and
+          personality! You can submit an application to donate the cat. You can
+          keep track of your own applications on your account profile to view
+          the statuses of your applications.
         </p>
       </div>
       <div className='imagecontainer'>
         <img src={catsell} alt='catsell' className='catbuy' />
       </div>
       <div className='buycontainer'>
-        <h1>Selling/Trading:</h1>
+        <h1>Donate:</h1>
         <p>
-          You will be able to list your own cat for sale with an image of your
-          cat and how much you are selling for. You can include a description of
-          your fur buddy to make sure your cat goes to the perfect owner. You
-          can keep track of buyers' submitted applications on your account
-          profile. You can request and accept trades that can also be tracked on
-          your account profile.
+          You will be able to list your own cat for donation with an image of
+          your cat. You can include a description of your fur buddy to make sure
+          your cat goes to the perfect owner. You can keep track of new owners'
+          submitted applications on your account profile.
         </p>
       </div>
 
