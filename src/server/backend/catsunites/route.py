@@ -125,28 +125,29 @@ def upload_cat():
         age = data['age']
         ##description = request.args.get("description")
         description = data['description']
-        ##price = request.args.get("price")
-        price = data['price']
         ##is_donate = request.args.get("is_donate")
-        is_donate = data['is_donate'].lowe()
+        is_available = data['is_donate'].lower()
         ##breed = request.args.get("breed")
         breed = data['breed']
         ##gender = request.args.get("gender")
         gender = data['gender']
-        if is_donate == "false" or "0":
-            is_donate = False
+        if is_available == "false" or "0":
+            is_available = False
         else:
-            is_donate = True
+            is_available = True
+
+        print(current_user);    
         new_cat = Cat(
           name=name,
           img_url=img_url,
           age=age,
           breed=breed,
           gender=gender,
-          description=description, price=price,
-          is_donate=is_donate,
-          seller=current_user
+          description=description,
+          is_available=is_available,
+          ##seller=current_user
         )
+        print(new_cat)
 
         db.session.add(new_cat)
         db.session.commit()

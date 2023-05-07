@@ -13,7 +13,7 @@
 .sellBody {
   height: 550px;
   background-color: white;
-  width: 120vh;
+  width: 220vh;
   margin: auto;
   border-radius: 3rem;
   padding-left: 60px;
@@ -110,6 +110,7 @@ form {
 
 .caticons {
   width: 330px;
+  margin-left: 60px;
 }
 
 .sellBtn {
