@@ -6,20 +6,18 @@ import './Login.css';
 import Navbar from './Navbar';
 
 interface LoginProps {
-  email: string;
-  password: string;
-  passwordError: string;
-  emailError: string;
+  newEmail: string;
+  newPassword: string;
+  user_id: number
   onSubmit: (data: LoginProps) => void;
 }
 
-function Login() {
+function Login({newEmail, newPassword, user_id}: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
-  const [newEmail, setNewEmail] = useState('')
-  const [user_id, setUser_id] = useState(0)
+
 
   const navigate = useNavigate();
 
@@ -91,9 +89,8 @@ function Login() {
         if (data.code === 400) {
           alert('password or email not found');
         } else {
-          setNewEmail(data.email)
-          setUser_id(data.user_id)
-          navigate('/donate', { state: { newEmail, password, user_id } });
+          user_id = data.user_id;
+          navigate('/donate', { state: { email, password, user_id } });
         }
       })
       .catch((error) => {
