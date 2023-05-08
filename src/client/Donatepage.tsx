@@ -21,13 +21,15 @@ function Donatepage() {
   const [gender, setGender] = useState('');
   const [newEmail, setNewEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [user_id, setUser_id] = useState(0)
 
   const { state } = useLocation();
 
   if (state) {
-    const { email, password } = state;
-    newEmail: email;
-    newPassword: password;
+    const { email, password, user_id } = state;
+    setNewEmail(email);
+    setNewPassword(password);
+    setUser_id(user_id);
   }
 
   const nav = useNavigate();
@@ -55,7 +57,8 @@ function Donatepage() {
       is_donate: is_donate,
       breed: breed,
       gender: gender,
-    };
+      seller_id: user_id,
+    }
 
     console.log(name, age, description, breed, price, is_donate, gender);
     return fetch('http://127.0.0.1:5000/upload_cat', {
@@ -97,6 +100,7 @@ function Donatepage() {
           />{' '}
           Here!
         </h1>
+        <div>{newEmail}</div>
       </div>
       <div className='sellBody'>
         <div className='sellBodyTitle'>Enter Your Cat Info</div>

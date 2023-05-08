@@ -18,6 +18,8 @@ function Login() {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [newEmail, setNewEmail] = useState('')
+  const [user_id, setUser_id] = useState(0)
 
   const navigate = useNavigate();
 
@@ -89,7 +91,9 @@ function Login() {
         if (data.code === 400) {
           alert('password or email not found');
         } else {
-          navigate('/donate', { state: { email, password } });
+          setNewEmail(data.email)
+          setUser_id(data.user_id)
+          navigate('/donate', { state: { newEmail, password, user_id } });
         }
       })
       .catch((error) => {
