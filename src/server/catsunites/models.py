@@ -20,8 +20,7 @@ class Cat(db.Model):
     breed = db.Column(db.String(50), nullable=False)
     gender = db.Column(db.String(10), nullable=False)
     description = db.Column(db.String, nullable=False)
-    ##price = db.Column(db.Integer, nullable=False)
-    is_available = db.Column(db.Boolean, nullable=False, default=False)
+    is_available = db.Column(db.Boolean, nullable=False, default=True)
     seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     seller = db.relationship('User', backref='cats')
 

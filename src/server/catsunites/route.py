@@ -21,19 +21,13 @@ def home():
 def sign_up():
     if request.method == "POST":
         data = request.json
-        print(data['name'])
-        ##name = request.args.get("name")
-        name = data['name']
-        #username = request.args.get("username")
-        username = data['username']
-        ##email = request.args.get("email").lower()
-        email = data['email'].lower()
-        ##password = request.args.get("password")
-        password = data['password']
+        name = data["name"] 
+        username =  data["username"] 
+        email = data["email"].lower()
+        password = data["password"]
         hash_password = bcrypt.generate_password_hash(
             password=password
         ).decode('utf-8')
-        
 
         try:
             new_user = User(
@@ -63,23 +57,21 @@ def sign_up():
 
 @app.route("/login", methods=["POST"])
 def login():
-    data = request.json
-    ##email = request.args.get("email")
-    email = data['email']
-    ##password = request.args.get("password")
-    password = data['password']
+    email = request.json["email"]
+    password = request.json["password"]
 
     try:
         user = User.query.filter_by(email=email).first()
         if user:
             if bcrypt.check_password_hash(password=password, pw_hash=user.password):
                 login_user(user)
-
                 return jsonify(
                     {
                         "status": "ok",
                         "code": 200,
-                        "message": "Logged In"
+                        "message": "Logged In",
+                        "user_id": current_user.id,
+                        "email": current_user.email
                     }
                 )
             else:
@@ -115,28 +107,15 @@ def logout():
 
 @app.route("/upload_cat", methods=["POST"])
 def upload_cat():
+    
     if request.method == "POST":
-        data = request.json
-        ##name = request.args.get("name")
-        name = data['name']
-        ##img_url = request.args.get("img_url")
-        img_url = data['img_url']
-        ##age = request.args.get("age")
-        age = data['age']
-        ##description = request.args.get("description")
-        description = data['description']
-        ##is_donate = request.args.get("is_donate")
-        is_available = data['is_donate'].lower()
-        ##breed = request.args.get("breed")
-        breed = data['breed']
-        ##gender = request.args.get("gender")
-        gender = data['gender']
-        if is_available == "false" or "0":
-            is_available = False
-        else:
-            is_available = True
-
-        print(current_user);    
+        name = request.json["name"]
+        img_url = request.json["img_url"]
+        age = request.json["age"]
+        description = request.json['description']
+        breed = request.json['breed']
+        gender = request.json['gender']
+        seller_id = request.json["seller_id"]
         new_cat = Cat(
           name=name,
           img_url=img_url,
@@ -144,10 +123,8 @@ def upload_cat():
           breed=breed,
           gender=gender,
           description=description,
-          is_available=is_available,
-          ##seller=current_user
+          seller_id=seller_id
         )
-        print(new_cat)
 
         db.session.add(new_cat)
         db.session.commit()
@@ -162,9 +139,7 @@ def upload_cat():
 @app.route("/delete_cat_info", methods=["POST"])
 def deleteCatInfo():
     if request.method == "POST":
-        data = request.json
-        ##cat_id = request.args.get("cat_id")
-        cat_id = data['cat_id']
+        cat_id = request.args.get("cat_id")
         cat = Cat.query.filter_by(id=cat_id).first()
         cat_message = Cat.query.filter_by(cat_id=cat.id)
 
@@ -184,11 +159,9 @@ def deleteCatInfo():
 @app.route("/send_message", methods=["POST"])
 def sendMessage():
     if request.method == "POST":
-        data = request.json
-        cat = Cat.query.filter_by(id=data['cat_id']).first()
+        cat = Cat.query.filter_by(id=request.args.get("cat_id")).first()
         message = Message(
-            ##content=request.args.get("content"),
-            content = data['content'],
+            content=request.args.get("content"),
             timestamp=datetime.datetime.now(),
             sender=current_user,
             recipient=cat.seller,
@@ -244,11 +217,8 @@ def getAllCat():
 @app.route("/view_message", methods=["GET"])
 def viewMessage():
     if request.method == "GET":
-        data = request.json
-        ##cat_id = request.args.get("cat_id")
-        cat_id = data['cat_id']
-        ##sender_id = request.args.get("sender_id")
-        sender_id = data['sender_id']
+        cat_id = request.args.get("cat_id")
+        sender_id = request.args.get("sender_id")
         print(cat_id, sender_id, current_user.id)
         current_user_id = current_user.id
         messages = Message.query.filter_by(

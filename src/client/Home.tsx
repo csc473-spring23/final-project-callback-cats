@@ -10,7 +10,7 @@ const Home = () => {
     <div>
       <Navbar />
       <div className='aboutcontainer'>
-        <h1>Welcome Back to Callback Cats!</h1>
+        <h1 className='big-heading'>Welcome Back to Callback Cats!</h1>
         <img src={aboutbanner} alt='aboutbanner' className='aboutbanner' />
         <div className='abouttext'>
           <p>

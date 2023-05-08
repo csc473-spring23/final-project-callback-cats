@@ -10,9 +10,14 @@ body {
   height: 70vh;
   margin-bottom: 30px;
 }
+.big-heading{
+  margin-top: 15vh;
+  font-size: 2.5rem;
+}
 
 .aboutbanner {
   border-radius: 20px;
+  width: 80%;
   box-shadow: 0px 0px 10px rgba(192, 192, 192, 0.5);
 }
 
@@ -97,4 +102,12 @@ p {
   display: inline-block;
   padding-right: 100px;
   color: #fcfcfc;
+}
+
+
+@media (max-width: 800px) {
+  .big-heading{
+    text-align: center;
+    font-size: 1.5rem;
+  }
 }
