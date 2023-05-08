@@ -1,5 +1,5 @@
 import { type } from 'os';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Errorpage from './Errorpage';
@@ -19,18 +19,9 @@ function Donatepage() {
   const [is_donate, setIs_donate] = useState('');
   const [breed, setBreed] = useState('');
   const [gender, setGender] = useState('');
-  const [newEmail, setNewEmail] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [user_id, setUser_id] = useState(0)
 
   const { state } = useLocation();
-
-  if (state) {
-    const { email, password, user_id } = state;
-    setNewEmail(email);
-    setNewPassword(password);
-    setUser_id(user_id);
-  }
+  const { email, password, user_id } = state;
 
   const nav = useNavigate();
 
@@ -76,7 +67,7 @@ function Donatepage() {
       .then((data) => {
         if (data.status === 200) {
           alert('Your cat info is uploaded');
-          nav('/adopt', { state: { newEmail, newPassword } });
+          nav('/adopt', { state: { email, password } });
         }
       })
       .catch((error) => {
@@ -100,7 +91,7 @@ function Donatepage() {
           />{' '}
           Here!
         </h1>
-        <div>{newEmail}</div>
+        <div>{email}</div>
       </div>
       <div className='sellBody'>
         <div className='sellBodyTitle'>Enter Your Cat Info</div>
