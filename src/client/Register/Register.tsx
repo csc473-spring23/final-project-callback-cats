@@ -1,17 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
-
-interface RegisterProps {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-  passwordError: string;
-  emailError: string;
-  onSubmit: (data: RegisterProps) => void;
-}
+import Navbar from '../Navbar/Navbar';
+import '../Login/Login.css';
 
 function Register() {
   const [email, setEmail] = useState('');

@@ -1,21 +1,15 @@
-import Home from './Home';
+import Home from './Homepage/Home';
 
-import Adoptpage from './Adoptpage';
-import Donatepage from './Donatepage';
-import Catfactspage from './Catfactspage';
-import Register from './Register';
-import Login from './Login';
-import Errorpage from './Errorpage';
+import Adoptpage from './Adopt_page/Adoptpage';
+import Donatepage from './Donate_page/Donatepage';
+import Catfactspage from './Catfacts_page/Catfactspage';
+import Register from './Register/Register';
+import Login from './Login/Login';
+import Errorpage from './Error_page/Errorpage';
 
-import React, { useState } from 'react';
 
 import { Routes, Route, RouteProps } from 'react-router-dom';
 
-interface AppProps {
-  path: string;
-  element: React.ReactElement;
-  exact?: boolean;
-}
 
 function App() {
   return (

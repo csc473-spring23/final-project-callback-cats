@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from '../Navbar/Navbar';
 import './Home.css';
 import aboutbanner from './aboutbanner.jpg';
 import catsell from './catsell.png';

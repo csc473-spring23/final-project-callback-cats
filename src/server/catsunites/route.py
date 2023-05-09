@@ -139,7 +139,7 @@ def upload_cat():
 @app.route("/delete_cat_info", methods=["POST"])
 def deleteCatInfo():
     if request.method == "POST":
-        cat_id = request.args.get("cat_id")
+        cat_id = request.json["cat_id"]
         cat = Cat.query.filter_by(id=cat_id).first()
         cat_message = Cat.query.filter_by(cat_id=cat.id)
 
@@ -159,9 +159,9 @@ def deleteCatInfo():
 @app.route("/send_message", methods=["POST"])
 def sendMessage():
     if request.method == "POST":
-        cat = Cat.query.filter_by(id=request.args.get("cat_id")).first()
+        cat = Cat.query.filter_by(id=request.json["cat_id"]).first()
         message = Message(
-            content=request.args.get("content"),
+            content=request.json["content"],
             timestamp=datetime.datetime.now(),
             sender=current_user,
             recipient=cat.seller,
@@ -216,8 +216,8 @@ def getAllCat():
 @app.route("/view_message", methods=["GET"])
 def viewMessage():
     if request.method == "GET":
-        cat_id = request.args.get("cat_id")
-        sender_id = request.args.get("sender_id")
+        cat_id = request.json["cat_id"]
+        sender_id = request.json["sender_id"]
         print(cat_id, sender_id, current_user.id)
         current_user_id = current_user.id
         messages = Message.query.filter_by(

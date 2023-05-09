@@ -3,20 +3,15 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import './Login.css';
-import Navbar from './Navbar';
+import Navbar from '../Navbar/Navbar';
 
-interface LoginProps {
-  newEmail: string;
-  newPassword: string;
-  user_id: number
-  onSubmit: (data: LoginProps) => void;
-}
 
-function Login({newEmail, newPassword, user_id}: LoginProps) {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
+  let user_id: number;
 
 
   const navigate = useNavigate();
@@ -95,6 +90,7 @@ function Login({newEmail, newPassword, user_id}: LoginProps) {
       })
       .catch((error) => {
         console.log('error');
+        alert('This email does not exist');
       });
   };
 

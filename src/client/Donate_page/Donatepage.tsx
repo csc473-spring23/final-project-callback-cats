@@ -1,27 +1,34 @@
 import { type } from 'os';
 import React, { useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
-import Errorpage from './Errorpage';
+import Navbar from '../Navbar/Navbar';
+import Errorpage from '../Error_page/Errorpage';
 import './Donatepage.css';
 
-interface UserProps {
-  newEmail: string;
-  newPassword: string;
-}
 
 function Donatepage() {
   const [name, setName] = useState('');
   const [age, setAge] = useState(0);
   const [img_url, setImg_url] = useState('');
   const [description, setDescription] = useState('');
-  const [price, setPrice] = useState(0);
-  const [is_donate, setIs_donate] = useState('');
   const [breed, setBreed] = useState('');
   const [gender, setGender] = useState('');
 
+  let email: string;
+  let password: string;
+  let user_id: number;
+
+  
   const { state } = useLocation();
-  const { email, password, user_id } = state;
+  //const { email, password, user_id } = state;
+  
+  if (state){
+    //const { email, password, user_id } = state;
+    email = state.email;
+    password = state.password;
+    user_id = state.user_id;
+  }
+  
 
   const nav = useNavigate();
 
@@ -44,14 +51,12 @@ function Donatepage() {
       img_url: img_url,
       age: age,
       description: description,
-      price: price,
-      is_donate: is_donate,
       breed: breed,
       gender: gender,
       seller_id: user_id,
     }
 
-    console.log(name, age, description, breed, price, is_donate, gender);
+    console.log(name, age, description, breed, gender);
     return fetch('http://127.0.0.1:5000/upload_cat', {
       method: 'POST',
       headers: {
@@ -91,7 +96,7 @@ function Donatepage() {
           />{' '}
           Here!
         </h1>
-        <div>{email}</div>
+        <div>{state.email}</div>
       </div>
       <div className='sellBody'>
         <div className='sellBodyTitle'>Enter Your Cat Info</div>
