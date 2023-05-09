@@ -1,9 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 // import { ReactComponent as Brand } from '../../assets/icons/logo.svg'
-import './navbar.css';
+import './Navbar.css';
 
-const Navbar = () => {
+interface Props {email: string,
+                password: string}
+
+
+
+const Navbar = (props: Props) => {
+  const valid = props.email != null && props.password != null;
   return (
     <nav className='navbar'>
       <div className='container'>
@@ -11,6 +17,7 @@ const Navbar = () => {
           <h3>Callback Cats</h3>
         </div>
         <div className='nav-elements'>
+          {valid}? {/*if email and pass not null, display these pages after login */}
           <ul>
             <li>
               <NavLink to='/'>Home</NavLink>
@@ -23,6 +30,18 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to='/donate'>Donate</NavLink>
+            </li>
+          </ul>
+          :
+          <ul>
+            <li>
+              <NavLink to='/'>Home</NavLink>
+            </li>
+            <li>
+              <NavLink to='/catfacts'>Cat Facts</NavLink>
+            </li>
+            <li>
+              <NavLink to='/adopt'>Adopt</NavLink>
             </li>
             <li className='loginreg'>
               <NavLink to='/login'>Login/Register</NavLink>
