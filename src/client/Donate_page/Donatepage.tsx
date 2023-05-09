@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Errorpage from '../Error_page/Errorpage';
 import './Donatepage.css';
+import Login from '../Login/Login';
 
 
 function Donatepage() {
@@ -82,7 +83,8 @@ function Donatepage() {
 
   return state === null ? (
     <>
-      <Errorpage />
+      {alert("This page can not be accessed without sign in")}
+      <Login /> 
     </>
   ) : (
     <>
