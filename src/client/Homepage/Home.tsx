@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
+import Sidebar from '../Navbar/Sidebar';
 import './Home.css';
 import aboutbanner from './aboutbanner.jpg';
 import catsell from './catsell.png';
@@ -8,7 +9,7 @@ import catbuy from './catbuy.png';
 const Home = () => {
   return (
     <div>
-      <Navbar />
+      <Sidebar />
       <div className='aboutcontainer'>
         <h1 className='big-heading'>Welcome Back to Callback Cats!</h1>
         <img src={aboutbanner} alt='aboutbanner' className='aboutbanner' />

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
+import Sidebar from '../Navbar/Sidebar';
 import './Catfactspage.css';
 
 type Breed = {
@@ -43,7 +44,7 @@ function Catfactspage() {
 
   return (
     <div>
-      <Navbar />
+      <Sidebar />
       <div className="header">
         <h1>Cat Facts</h1>
         <h2>Read below about the different cat breeds and learn about which furry friend is right for you!</h2>
