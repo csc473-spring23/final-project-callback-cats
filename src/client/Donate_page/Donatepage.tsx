@@ -88,7 +88,7 @@ function Donatepage() {
     </>
   ) : (
     <>
-      <Navbar />
+      <Navbar email={state.email} password={state.password}/>
       <div className='sellTitle'>
         <h1>
           Donate Your{' '}

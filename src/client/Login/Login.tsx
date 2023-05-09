@@ -98,7 +98,7 @@ function Login() {
 
   return (
     <>
-      <Navbar />
+      <Navbar email={email} password={password}/>
       <div className='loginContainer'>
         <div className='loginTitle'>
           <h1>Login</h1>

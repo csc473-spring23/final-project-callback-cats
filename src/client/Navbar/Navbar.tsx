@@ -10,14 +10,14 @@ interface Props {email: string,
 
 const Navbar = (props: Props) => {
   const valid = props.email != null && props.password != null;
-  return (
+  return valid? (
     <nav className='navbar'>
       <div className='container'>
         <div className='logo'>
           <h3>Callback Cats</h3>
         </div>
         <div className='nav-elements'>
-          {valid}? {/*if email and pass not null, display these pages after login */}
+          
           <ul>
             <li>
               <NavLink to='/'>Home</NavLink>
@@ -32,7 +32,16 @@ const Navbar = (props: Props) => {
               <NavLink to='/donate'>Donate</NavLink>
             </li>
           </ul>
-          :
+          </div>
+      </div>
+    </nav>
+  ) : ( 
+    <nav className='navbar'>
+      <div className='container'>
+        <div className='logo'>
+          <h3>Callback Cats</h3>
+        </div>
+        <div className='nav-elements'>
           <ul>
             <li>
               <NavLink to='/'>Home</NavLink>
