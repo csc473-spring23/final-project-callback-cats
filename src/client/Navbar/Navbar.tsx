@@ -22,7 +22,7 @@ function Navbar() {
           </span>
           <div
             id="menu-items"
-            className="md:static absolute  bg-white opacity-90 rounded-lg p-2 md:min-h-fit min-h-[60vh] left-0 top-[-580%] duration-300 ease-in-out md:w-auto w-full items-center px-5 "
+            className="md:static absolute  md:bg-transparent bg-white   opacity-90 rounded-lg p-2 md:min-h-fit min-h-[60vh] left-0 top-[-580%] duration-300 ease-in-out md:w-auto w-full items-center px-5 "
           >
             <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-6">
               <Link onClick={handleLinkClick} to={"/"}>

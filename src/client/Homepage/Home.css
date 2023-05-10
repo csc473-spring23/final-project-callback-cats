@@ -10,6 +10,12 @@ body {
   font-family: "Merriweather";
 }
 
+.medium-heading{
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: "Quicksand";
+}
+
 .about-container {
   /* margin: 0 5%; */
   text-align: center;
@@ -39,6 +45,9 @@ body {
 .bottom-title {
   display: none;
 }
+.donate-cat-img{
+  transform: rotateY(180deg);
+}
 
 @media (max-width: 800px) {
   .mini-container {
@@ -57,4 +66,13 @@ body {
     position: relative;
     bottom: 200px;
   }
+ 
+}
+
+
+@media (max-width: 1030px) {
+  .donate-cat-img{
+    display: none;
+    
+    }
 }

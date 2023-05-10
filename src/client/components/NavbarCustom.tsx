@@ -18,9 +18,9 @@ function NavbarCustom(){
 <nav className="flex justify-between items-center w-[92%] mx-auto ">
            <span className="text-2xl  cursor-pointer nav-brand shadow-md rounded-lg p-2  hover:bg-black text-teal-600 hover:text-white">
                 
-               <span className="text-red-500">callback</span><span className="">Cats</span>
+               <span className="text-red-500">Cat</span><span className="">Unites</span>
             </span>
-                <div id="menu-items" className="md:static absolute  bg-white opacity-90  md:min-h-fit min-h-[60vh] left-0 top-[-580%] duration-300 ease-in-out md:w-auto w-full items-center px-5 ">
+                <div id="menu-items" className="md:static absolute  opacity-90 bg-white md:min-h-fit min-h-[60vh] left-0 top-[-580%] duration-300 ease-in-out md:w-auto w-full items-center px-5 ">
                     <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-6">
                        
                         <Link  to={"/"} > <span className="md:hover:text-red-400 hover:text-white nav-item">Home</span> </Link>

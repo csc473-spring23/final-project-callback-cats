@@ -5,9 +5,11 @@ import "./Home.css";
 import aboutbanner from "./aboutbanner.jpg";
 import catsell from "./catsell.png";
 import catbuy from "./catbuy.png";
-import catcover from "../../../public/animated-cat.png";
+import petAdopt from "../../../public/pet-adoption.svg";
+import animatedCAt from "../../../public/animated-cat.png"
 import Navbar from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/footer";
 const Home = () => {
   const nav = useNavigate();
 
@@ -54,7 +56,7 @@ const Home = () => {
         Welcome Back to Callback Cats!
       </h1>
       <div className=" middle-container h-[400px] w-full ">
-        <div className="about-text font-[Montserrat] text-xl p-5 w-[50%] mx-auto mt-[100px]">
+        <div className="about-text font-[Montserrat] text-xl p-5 lg:w-[50%] w-[90%] mx-auto mt-[100px]">
           <h1 className="big-heading text-red-400  mb-[50px]">About Us</h1>
           <p className="my-5">
             We are Callback Cats, a cat-themed e-commerce platform. Our mission
@@ -71,14 +73,16 @@ const Home = () => {
           </p>
         </div>
 
-        {/* displaying buying container */}
-        <div className="grid lg:grid-cols-2 buy-cat-container  ">
+        {/* displaying adopt container */}
+        <div className="mt-[100px] grid lg:grid-cols-2 buy-cat-container  ">
+          
           <div className=" grid lg:grid-cols-2 pl-[100px]">
             <div></div>
-            <img className="w-[50%]" src={catcover} alt="" />
+            <img className="lg:w-[100%] w-[60%]" src={petAdopt} alt="" />
           </div>
-          <div className="rounded-md bg-red-400">
-            <p className="p-10 md:text-xl text-white ">
+          <div className="lg:rounded-md bg-white">
+            <p className="p-10 md:text-xl text-black lg:my-0 my-10 font-[Montserrat]">
+              <h1 className="medium-heading text-[#394867] mb-5">Adopt Cat</h1>
               You will be able to explore different options of cats that are for
               adoption from other users. You can read the cat's description
               based on the user's listing which can include the cat's breed,
@@ -88,8 +92,31 @@ const Home = () => {
             </p>
           </div>
         </div>
-        {/*  */}
-      </div>
+        {/* end adopt container */}
+
+        {/* buying container  */}
+        <div className=" h-[400px] w-full bg-red-400">
+          <div className="grid lg:grid-cols-2">
+              <div className=" ">
+                <p className="p-10 md:text-xl text-white lg:my-0 my-10 font-[Montserrat]">
+                  <h1 className="medium-heading text-white mb-5">Donate Cat</h1>
+                  You will be able to explore different options of cats that are for
+                  adoption from other users. You can read the cat's description
+                  based on the user's listing which can include the cat's breed,
+                  age, and personality! You can submit an application to donate the
+                  cat. You can keep track of your own applications on your account
+                  profile to view the statuses of your applications.
+                </p>
+              </div>
+              <img className=" lg:w-[48%]  donate-cat-img " src={animatedCAt} alt="" />
+              
+            </div>
+
+        </div>
+        {/* end buying container */}
+
+        <Footer/>
+        </div>
     </div>
   );
 };
