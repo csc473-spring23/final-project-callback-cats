@@ -107,7 +107,7 @@ function UserInfo() {
         <div className="  mt-10 small-heading">Welcome, {state.name}</div>
         <div className="  small-heading">Email: {state.email}</div>
       </div>
-      <h6 className="mt-20 mb-5 mx-[5%] small-title">My Cats</h6>
+      <h6 className="mt-20  mx-[5%] small-title">My Cats</h6>
       <div className="upload-btn-container mx-[5%] ">
         <button
           onClick={handleSubmit}
