@@ -8,7 +8,7 @@ export default function CatInfoCard(props: any) {
           <i className="fa-solid fa-xmark text-gray-300 hover:text-red-500 cursor-pointer text-[30px] mb-3"></i>
         </div>
         <img
-          className="rounded-sm"
+          className="rounded-sm "
           src={props.cat.img_url}
           alt={props.cat.img_url}
         />
