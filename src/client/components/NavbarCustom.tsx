@@ -23,10 +23,10 @@ function NavbarCustom(){
                 <div id="menu-items" className="md:static absolute  bg-white opacity-90  md:min-h-fit min-h-[60vh] left-0 top-[-580%] duration-300 ease-in-out md:w-auto w-full items-center px-5 ">
                     <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-6">
                        
-                        <Link onClick={handleLinkClick} to={"/"} > <span className="md:hover:text-red-400 hover:text-white nav-item">Home</span> </Link>
-                        <Link onClick={handleLinkClick} to={"/adopt"} > <span className="md:hover:text-red-400 hover:text-white nav-item">Adopt</span> </Link>
-                        <Link onClick={handleLinkClick} to={"/catsfacts"} > <span className="md:hover:text-red-400 hover:text-white nav-item">Facts</span> </Link>
-                        <Link onClick={handleLinkClick} to={"/register"} > <span className="md:hover:text-red-400 hover:text-white nav-item">Register</span> </Link>
+                        <Link  to={"/"} > <span className="md:hover:text-red-400 hover:text-white nav-item">Home</span> </Link>
+                        <Link  to={"/adopt"} > <span className="md:hover:text-red-400 hover:text-white nav-item">Adopt</span> </Link>
+                        <Link  to={"/catsfacts"} > <span className="md:hover:text-red-400 hover:text-white nav-item">Facts</span> </Link>
+                        <Link  to={"/register"} > <span className="md:hover:text-red-400 hover:text-white nav-item">Register</span> </Link>
 
                     </ul>
                 </div>
