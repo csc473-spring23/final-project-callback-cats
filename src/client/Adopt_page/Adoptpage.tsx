@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import "./Adoptpage.css";
-
+import Navbar from "../Navbar/Navbar";
 type Cats = {
   age: number;
   breed: string;
@@ -59,6 +59,7 @@ function Adoptpage() {
 
   return (
     <>
+      <Navbar email="" password="" />
       <div className="adoptTitle">
         <h1>Choose Your Favourite Cat</h1>
       </div>
