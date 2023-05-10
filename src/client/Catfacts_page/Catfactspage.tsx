@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "./Catfactspage.css";
-import Navbar from "../Components/Navbar";
+import React, { useEffect, useState } from 'react';
+import './Catfactspage.css';
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/footer';
 type Breed = {
   id: string;
   name: string;
@@ -15,12 +16,12 @@ type Breed = {
 function Catfactspage() {
   const [breeds, getBreeds] = useState<Breed[]>([]);
   const apiKey =
-    "live_vqlyJCE6h1vvBnP98Vu9Ympn46eZRxJgKIPNYYDn10kGLOlaJbkalShJRUIQgnDV";
+    'live_vqlyJCE6h1vvBnP98Vu9Ympn46eZRxJgKIPNYYDn10kGLOlaJbkalShJRUIQgnDV';
 
   useEffect(() => {
-    fetch("https://api.thecatapi.com/v1/breeds", {
+    fetch('https://api.thecatapi.com/v1/breeds', {
       headers: {
-        "x-api-key": apiKey,
+        'x-api-key': apiKey,
       },
     })
       .then((response) => response.json())
@@ -43,7 +44,7 @@ function Catfactspage() {
   return (
     <div>
       <Navbar />
-      <div className="catheader">
+      <div className='catheader'>
         <h1>Cat Facts</h1>
         <h2>
           Read below about the different cat breeds and learn about which furry
@@ -51,11 +52,11 @@ function Catfactspage() {
         </h2>
       </div>
 
-      <div className="cat-breeds-container">
+      <div className='cat-breeds-container'>
         {breeds.map((breed) => (
-          <div key={breed.id} className="breed-container">
+          <div key={breed.id} className='breed-container'>
             <img src={breed.image} alt={breed.name} />
-            <div className="breed-info">
+            <div className='breed-info'>
               <h2>{breed.name}</h2>
               <p>
                 <strong>Origin:</strong> {breed.origin}
@@ -76,6 +77,7 @@ function Catfactspage() {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }

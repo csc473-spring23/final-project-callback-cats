@@ -28,8 +28,8 @@ function LoginNavbar() {
     <>
       <nav className='flex justify-between items-center w-[92%] mx-auto '>
         <span className='text-2xl  cursor-pointer nav-brand shadow-md rounded-lg p-2  hover:bg-black text-teal-600 hover:text-white'>
-          <span className='text-red-500'>Cat</span>
-          <span className=''>Unites</span>
+          <span className='text-red-500'>Callback</span>
+          <span className=''>Cats</span>
         </span>
         <div
           id='menu-items'
