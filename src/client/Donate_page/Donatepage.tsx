@@ -1,7 +1,7 @@
 import { type } from "os";
 import React, { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
+import LoginNavbar from "../Components/LoginNavBar";
 import Errorpage from "../Error_page/Errorpage";
 import "./Donatepage.css";
 import Login from "../Login/Login";
@@ -80,7 +80,7 @@ function Donatepage() {
     </>
   ) : (
     <>
-      <Navbar />
+      <LoginNavbar />
       <div className="sellTitle">
         <h1 className="text-6xl">
           Donate Your{" "}

@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Userinfo.css";
-import Navbar from "../Navbar/Navbar";
+import LoginNavbar from "../Components/LoginNavBar";
 import Login from "../Login/Login";
 import React, { useState, useEffect } from "react";
-import LoginNavbar from "../components/LoginNavBar";
+
 type Cats = {
   age: number;
   breed: string;

@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
-import '../Login/Login.css';
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
+import "../Login/Login.css";
 
 function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [emailError, setEmailError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function Register() {
 
     // Update the error message
     setEmailError(
-      isValid ? '' : 'Email must be in the format example@example.com.'
+      isValid ? "" : "Email must be in the format example@example.com."
     );
   };
 
@@ -39,20 +39,20 @@ function Register() {
     // Update the error message
     setPasswordError(
       isValid
-        ? ''
-        : 'Password must contain at least 8 characters, one number, and one uppercase letter.'
+        ? ""
+        : "Password must contain at least 8 characters, one number, and one uppercase letter."
     );
   };
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
-    if (emailError === '') {
-      console.log('Email:', email);
+    if (emailError === "") {
+      console.log("Email:", email);
     }
 
-    if (passwordError === '') {
-      console.log('Password:', password);
+    if (passwordError === "") {
+      console.log("Password:", password);
     }
 
     const data = {
@@ -63,10 +63,10 @@ function Register() {
     };
     //props.onSubmit(data);
     console.log(name, username, email, password);
-    return fetch('http://127.0.0.1:5000/sign_up', {
-      method: 'POST',
+    return fetch("http://127.0.0.1:5000/sign_up", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
@@ -78,43 +78,43 @@ function Register() {
       .then((data) => {
         console.log(data);
         if (data.code === 400) {
-          alert('user already exits');
+          alert("user already exits");
         } else {
-          navigate('/login');
+          navigate("/login");
         }
       })
       .catch((error) => {
-        console.log('error');
+        console.log("error");
       });
   };
 
   const isFormValid =
-    email !== '' && password !== '' && username !== '' && name !== '';
+    email !== "" && password !== "" && username !== "" && name !== "";
 
   return (
     <>
-      <Navbar email="" password=""/>
-      <div className='registerContainer'>
-        <div className='loginTitle'>
+      <Navbar />
+      <div className="registerContainer">
+        <div className="loginTitle">
           <h1>Sign In</h1>
         </div>
         <section>
-          <div className='imagecontainer'>
+          <div className="imagecontainer">
             <img
-              src='https://img.freepik.com/free-vector/cute-cat-playing-hand-phone-cartoon-vector-icon-illustration-animal-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-4231.jpg?w=2000'
-              alt='registerCat'
-              className='loginCat'
+              src="https://img.freepik.com/free-vector/cute-cat-playing-hand-phone-cartoon-vector-icon-illustration-animal-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-4231.jpg?w=2000"
+              alt="registerCat"
+              className="loginCat"
             />
           </div>
-          <div className='formLogin'>
+          <div className="formLogin">
             <form>
               <div>
-                <label htmlFor='name-input'>Name:</label>
+                <label htmlFor="name-input">Name:</label>
                 <input
-                  type='name'
-                  placeholder='Enter Your Name'
-                  className='email'
-                  id='name'
+                  type="name"
+                  placeholder="Enter Your Name"
+                  className="email"
+                  id="name"
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
@@ -122,53 +122,53 @@ function Register() {
                 ></input>
               </div>
               <div>
-                <label htmlFor='username-input'>Username:</label>
+                <label htmlFor="username-input">Username:</label>
                 <input
-                  type='username'
-                  placeholder='Create a new username'
-                  className='password'
-                  id='username'
+                  type="username"
+                  placeholder="Create a new username"
+                  className="password"
+                  id="username"
                   value={username}
                   onChange={(e) => {
                     setUsername(e.target.value);
                   }}
                 ></input>
               </div>
-              <div className='emailDiv'>
-                <label htmlFor='email-input'>Email:</label>
+              <div className="emailDiv">
+                <label htmlFor="email-input">Email:</label>
                 <input
-                  type='email'
-                  placeholder='Enter A New Email'
-                  className='email'
-                  id='email'
+                  type="email"
+                  placeholder="Enter A New Email"
+                  className="email"
+                  id="email"
                   value={email}
                   onChange={handleEmailChange}
-                  pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                   required
                 ></input>
-                {emailError && <p>{emailError}</p>}{' '}
+                {emailError && <p>{emailError}</p>}{" "}
               </div>
-              <div className='passwordDiv'>
-                <label htmlFor='password-input'>Password:</label>
+              <div className="passwordDiv">
+                <label htmlFor="password-input">Password:</label>
                 <input
-                  type='password'
-                  placeholder='Enter A New Password'
-                  className='password'
-                  id='password'
+                  type="password"
+                  placeholder="Enter A New Password"
+                  className="password"
+                  id="password"
                   value={password}
                   onChange={handlePasswordChange}
-                  pattern='^(?=.*\d)(?=.*[A-Z]).{8,}$'
+                  pattern="^(?=.*\d)(?=.*[A-Z]).{8,}$"
                   required
                 ></input>
                 {passwordError && <p>{passwordError}</p>}
               </div>
               <div>
-                <a href='/login'>Already have an account?</a>
+                <a href="/login">Already have an account?</a>
               </div>
             </form>
 
             <button
-              className='button-20'
+              className="button-20"
               onClick={handleSubmit}
               disabled={!isFormValid}
             >

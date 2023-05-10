@@ -3,8 +3,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import "./Login.css";
-import Sidebar from "../Navbar/Sidebar";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../Components/Navbar";
 
 function Login() {
   const [email, setEmail] = useState("");

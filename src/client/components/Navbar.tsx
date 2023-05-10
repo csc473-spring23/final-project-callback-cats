@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import "./navbarCus.css";
-function NavbarCustom() {
+import "./Navbar.css";
+function Navbar() {
   const [isToggle, setToggle] = useState(false);
 
   function handleLinkClick() {
@@ -89,4 +89,4 @@ function NavbarCustom() {
   );
 }
 
-export default NavbarCustom;
+export default Navbar;

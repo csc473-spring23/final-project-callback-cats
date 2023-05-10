@@ -5,10 +5,10 @@ import aboutbanner from "./aboutbanner.jpg";
 import catsell from "./catsell.png";
 import catbuy from "./catbuy.png";
 import petAdopt from "../../../public/pet-adoption.svg";
-import animatedCAt from "../../../public/animated-cat.png"
-import Navbar from "../Navbar/Navbar";
+import animatedCAt from "../../../public/animated-cat.png";
+import Navbar from "../Components/Navbar";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/footer";
+import Footer from "../Components/footer";
 const Home = () => {
   const nav = useNavigate();
 
@@ -74,7 +74,6 @@ const Home = () => {
 
         {/* displaying adopt container */}
         <div className="mt-[100px] grid lg:grid-cols-2 buy-cat-container  ">
-          
           <div className=" grid lg:grid-cols-2 pl-[100px]">
             <div></div>
             <img className="lg:w-[100%] w-[60%]" src={petAdopt} alt="" />
@@ -96,26 +95,29 @@ const Home = () => {
         {/* buying container  */}
         <div className=" h-[400px] w-full bg-red-400">
           <div className="grid lg:grid-cols-2">
-              <div className=" ">
-                <p className="p-10 md:text-xl text-white lg:my-0 my-10 font-[Montserrat]">
-                  <h1 className="medium-heading text-white mb-5">Donate Cat</h1>
-                  You will be able to explore different options of cats that are for
-                  adoption from other users. You can read the cat's description
-                  based on the user's listing which can include the cat's breed,
-                  age, and personality! You can submit an application to donate the
-                  cat. You can keep track of your own applications on your account
-                  profile to view the statuses of your applications.
-                </p>
-              </div>
-              <img className=" lg:w-[48%]  donate-cat-img " src={animatedCAt} alt="" />
-              
+            <div className=" ">
+              <p className="p-10 md:text-xl text-white lg:my-0 my-10 font-[Montserrat]">
+                <h1 className="medium-heading text-white mb-5">Donate Cat</h1>
+                You will be able to explore different options of cats that are
+                for adoption from other users. You can read the cat's
+                description based on the user's listing which can include the
+                cat's breed, age, and personality! You can submit an application
+                to donate the cat. You can keep track of your own applications
+                on your account profile to view the statuses of your
+                applications.
+              </p>
             </div>
-
+            <img
+              className=" lg:w-[48%]  donate-cat-img "
+              src={animatedCAt}
+              alt=""
+            />
+          </div>
         </div>
         {/* end buying container */}
 
-        <Footer/>
-        </div>
+        <Footer />
+      </div>
     </div>
   );
 };
