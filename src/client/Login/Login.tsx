@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import "./Login.css";
 import Navbar from "../Components/Navbar";
-
+import Footer from "../Components/footer";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -164,6 +164,8 @@ function Login() {
           </div>
         </section>
       </div>
+      {/* footer */}
+      <Footer />
     </>
   );
 }

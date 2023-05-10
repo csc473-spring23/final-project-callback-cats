@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect, useState } from "react";
 import "./Adoptpage.css";
 import Navbar from "../Components/Navbar";
 import CatInfoCard from "../components/CatInfoCard";
+import Footer from "../Components/footer";
 type Cats = {
   age: number;
   breed: string;
@@ -64,13 +65,16 @@ function Adoptpage() {
       <div className="my-[100px] text-center text-[#394867]">
         <h1 className="big-heading">Choose Your Favourite Cat</h1>
       </div>
-      <div className=" w-[90%] grid md:grid-cols-3 grid-cols-2 gap-4 mx-[5%] p-4">
+      <div className=" lg:w-[70%] lg:mx-auto w-[90%] grid md:grid-cols-3 grid-cols-2 gap-4 mx-[5%] p-4">
         {cats.map((cat) => (
           <div key={cat.id} className="shadow-md bg-white p-4 rounded-lg">
             <CatInfoCard cat={cat} />
           </div>
         ))}
       </div>
+
+      {/* footer  */}
+      <Footer />
     </>
   );
 }

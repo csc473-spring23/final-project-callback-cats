@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import "../Login/Login.css";
-
+import Footer from "../Components/footer";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -177,6 +177,8 @@ function Register() {
           </div>
         </section>
       </div>
+      {/* footer */}
+      <Footer />
     </>
   );
 }

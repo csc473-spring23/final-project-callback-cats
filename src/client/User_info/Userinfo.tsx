@@ -4,6 +4,7 @@ import LoginNavbar from "../Components/LoginNavBar";
 import Login from "../Login/Login";
 import React, { useState, useEffect } from "react";
 import CatInfoCard from "../components/CatInfoCard";
+import Footer from "../Components/footer";
 type Cats = {
   age: number;
   breed: string;
@@ -117,6 +118,8 @@ function UserInfo() {
           ))}
         </div>
       </div>
+      {/* footer */}
+      <Footer />
     </>
   );
 }
