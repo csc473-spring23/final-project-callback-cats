@@ -1,18 +1,15 @@
-import React from "react";
+import React from 'react';
 
 export default function CatInfoCard(props: any) {
   return (
     <>
-      <div key={props.cat.id} className="shadow-md bg-white p-4 rounded-lg">
-        <div className="delete-icon-container">
-          <i className="fa-solid fa-xmark text-gray-300 hover:text-red-500 cursor-pointer text-[30px] mb-3"></i>
-        </div>
+      <div>
         <img
-          className="rounded-sm "
+          className='rounded-sm '
           src={props.cat.img_url}
           alt={props.cat.img_url}
         />
-        <div className="cat-info">
+        <div className='cat-info'>
           <p>
             <article>
               <strong>Name : </strong>
@@ -38,7 +35,7 @@ export default function CatInfoCard(props: any) {
               <strong>Description : </strong>
               <>{props.cat.description}</>
             </article>
-            <div className=""></div>
+            <div className=''></div>
           </p>
         </div>
       </div>

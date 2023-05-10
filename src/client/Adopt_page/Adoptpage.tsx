@@ -1,6 +1,7 @@
-import React, { ReactNode, useEffect, useState } from "react";
-import "./Adoptpage.css";
-import Navbar from "../Components/Navbar";
+import React, { ReactNode, useEffect, useState } from 'react';
+import './Adoptpage.css';
+import Navbar from '../Components/Navbar';
+import CatInfoCard from '../components/CatInfoCard';
 type Cats = {
   age: number;
   breed: string;
@@ -19,10 +20,10 @@ function Adoptpage() {
   const [cats, setCats] = useState<Cats[]>([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/all_cats", {
-      method: "GET",
+    fetch('http://127.0.0.1:5000/all_cats', {
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     })
       .then((res) => {
@@ -33,7 +34,7 @@ function Adoptpage() {
       .then((data) => {
         console.log(data);
         if (data.code === 400) {
-          alert("Not cat found");
+          alert('Not cat found');
         } else {
           console.log(data.body);
           const catData = data.body.map((cat: any) => ({
@@ -53,49 +54,20 @@ function Adoptpage() {
         }
       })
       .catch((error) => {
-        console.log("error");
+        console.log('error');
       });
   }, []);
 
   return (
     <>
       <Navbar />
-      <div className="adoptTitle">
+      <div className='adoptTitle'>
         <h1>Choose Your Favourite Cat</h1>
       </div>
-      <div className="adoptBody">
+      <div className=' w-[90%] grid md:grid-cols-3 grid-cols-2 gap-4 mx-[5%] p-4'>
         {cats.map((cat) => (
-          <div key={cat.id} className="each-cat">
-            <img src={cat.img_url} alt={cat.img_url} />
-            <div className="cat-info">
-              <p>
-                <p>Donating by {cat.seller_name.toUpperCase()}</p>
-                <article>
-                  <strong>Name : </strong>
-                  {cat.name}
-                </article>
-                <article>
-                  <strong>Age : </strong>
-                  {cat.age}
-                </article>
-                <article>
-                  <strong>Breed : </strong>
-                  {cat.breed}
-                </article>
-                <article>
-                  <strong>Gender : </strong>
-                  {cat.gender}
-                </article>
-                <article>
-                  <strong>Is it available? : </strong>
-                  {cat.is_available ? <>Yes</> : <>No</>}
-                </article>
-                <article>
-                  <strong>Description : </strong>
-                  <>{cat.description}</>
-                </article>
-              </p>
-            </div>
+          <div key={cat.id} className='shadow-md bg-white p-4 rounded-lg'>
+            <CatInfoCard cat={cat} />
           </div>
         ))}
       </div>

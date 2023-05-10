@@ -1,9 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import "./Userinfo.css";
-import LoginNavbar from "../Components/LoginNavBar";
-import Login from "../Login/Login";
-import React, { useState, useEffect } from "react";
-import CatInfoCard from "../components/CatInfoCard";
+import { useLocation, useNavigate } from 'react-router-dom';
+import './Userinfo.css';
+import LoginNavbar from '../Components/LoginNavBar';
+import Login from '../Login/Login';
+import React, { useState, useEffect } from 'react';
+import CatInfoCard from '../components/CatInfoCard';
 type Cats = {
   age: number;
   breed: string;
@@ -39,10 +39,10 @@ function UserInfo() {
   }
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/all_cats", {
-      method: "GET",
+    fetch('http://127.0.0.1:5000/all_cats', {
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     })
       .then((res) => {
@@ -53,7 +53,7 @@ function UserInfo() {
       .then((data) => {
         console.log(data);
         if (data.code === 400) {
-          alert("Not cat found");
+          alert('Not cat found');
         } else {
           console.log(data.body);
           const catData = data.body.map((cat: any) => ({
@@ -73,60 +73,48 @@ function UserInfo() {
         }
       })
       .catch((error) => {
-        console.log("error");
+        console.log('error');
       });
   }, []);
 
   const filterCats = cats.filter((cat) => cat.seller_id === user_id);
 
   const handleSubmit = () => {
-    nav("/donate", { state: { email, password, user_id, name, username } });
-  };
-
-  const logout = (e: any) => {
-    e.preventDefault();
-
-    return fetch("http://127.0.0.1:5000/logout")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        nav("/login");
-      });
+    nav('/donate', { state: { email, password, user_id, name, username } });
   };
 
   const deleteCat = () => {};
   return state === null ? (
     <>
-      {alert("This page can not be accessed without sign in")}
+      {alert('This page can not be accessed without sign in')}
       <Login />
     </>
   ) : (
     <>
       <LoginNavbar />
-      <div className="mx-[5%] w-[90%]">
-        <div className="  mt-10 small-heading">Welcome, {state.name}</div>
-        <div className="  small-heading">Email: {state.email}</div>
+      <div className='mx-[5%] w-[90%]'>
+        <div className='  mt-10 small-heading'>Welcome, {state.name}</div>
+        <div className='  small-heading'>Email: {state.email}</div>
       </div>
-      <h6 className="mt-20  mx-[5%] small-title">My Cats</h6>
-      <div className="upload-btn-container mx-[5%] ">
+      <h6 className='mt-20  mx-[5%] small-title'>My Cats</h6>
+      <div className='upload-btn-container mx-[5%] '>
         <button
           onClick={handleSubmit}
-          className="px-20 py-3 border round-md mb-5 hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white"
+          className='px-20 py-3 border round-md mb-5 hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white'
         >
-          Upload <i className="fa-sharp fa-solid fa-plus"></i>
+          Upload <i className='fa-sharp fa-solid fa-plus'></i>
         </button>
       </div>
-      <div className=" w-[90%] grid md:grid-cols-3 grid-cols-2 gap-4 mx-[5%]">
+      <div className=' w-[90%] grid md:grid-cols-3 grid-cols-2 gap-4 mx-[5%] p-4'>
         {filterCats.map((cat) => (
-          <>
+          <div key={cat.id} className='shadow-md bg-white p-4 rounded-lg'>
+            <div className='delete-icon-container'>
+              <i className='fa-solid fa-xmark text-gray-300 hover:text-red-500 cursor-pointer text-[30px] mb-3'></i>
+            </div>
             <CatInfoCard cat={cat} />
-          </>
+          </div>
         ))}
       </div>
-
-      <button type="button" className="button-20" onClick={logout}>
-        Log Out
-      </button>
     </>
   );
 }
