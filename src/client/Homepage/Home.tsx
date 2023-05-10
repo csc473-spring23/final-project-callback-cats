@@ -4,7 +4,7 @@ import "./Home.css";
 import aboutbanner from "./aboutbanner.jpg";
 import catsell from "./catsell.png";
 import catbuy from "./catbuy.png";
-import petAdopt from "../../../public/pet-adoption.svg";
+import petAdopt from "../../../public/friend-cat.svg";
 import animatedCAt from "../../../public/animated-cat.png";
 import Navbar from "../Components/Navbar";
 import { useNavigate } from "react-router-dom";
@@ -75,7 +75,6 @@ const Home = () => {
         {/* displaying adopt container */}
         <div className="mt-[100px] grid lg:grid-cols-2 buy-cat-container  ">
           <div className=" grid lg:grid-cols-2 pl-[100px]">
-            <div></div>
             <img className="lg:w-[100%] w-[60%]" src={petAdopt} alt="" />
           </div>
           <div className="lg:rounded-md bg-white">
@@ -93,7 +92,7 @@ const Home = () => {
         {/* end adopt container */}
 
         {/* buying container  */}
-        <div className=" h-[400px] w-full bg-red-400">
+        <div className="lg:mt-[150px] lg:py-10 h-[500px] w-full bg-red-400">
           <div className="grid lg:grid-cols-2">
             <div className=" ">
               <p className="p-10 md:text-xl text-white lg:my-0 my-10 font-[Montserrat]">
@@ -107,11 +106,7 @@ const Home = () => {
                 applications.
               </p>
             </div>
-            <img
-              className=" lg:w-[48%]  donate-cat-img "
-              src={animatedCAt}
-              alt=""
-            />
+            <img className="  donate-cat-img " src={animatedCAt} alt="" />
           </div>
         </div>
         {/* end buying container */}
