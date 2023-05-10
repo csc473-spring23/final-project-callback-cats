@@ -1,7 +1,15 @@
 .sellTitle {
   text-align: center;
-  font-size: 36px;
-  margin-top: -50px;
+  align-items: center;
+  margin-left: 40%;
+  padding-bottom: 10px;
+}
+
+.sellTitle h1 {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
 }
 
 .sellTitle img {
@@ -13,8 +21,7 @@
 .sellBody {
   height: 550px;
   background-color: white;
-  width: 220vh;
-  margin: auto;
+  margin: 50px;
   border-radius: 3rem;
   padding-left: 60px;
 }
@@ -23,7 +30,7 @@
   padding-top: 20px;
   text-align: center;
   font-size: 30px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .midBody {

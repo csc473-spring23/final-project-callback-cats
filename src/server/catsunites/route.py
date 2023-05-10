@@ -71,7 +71,9 @@ def login():
                         "code": 200,
                         "message": "Logged In",
                         "user_id": current_user.id,
-                        "email": current_user.email
+                        "email": current_user.email,
+                        "name": current_user.name,
+                        "username": current_user.username
                     }
                 )
             else:

@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import './Login.css';
-import Navbar from '../Navbar/Navbar';
-import Sidebar from '../Navbar/Sidebar';
-import NavbarCustom from '../components/NavbarCustom';
+import "./Login.css";
+import Sidebar from "../Navbar/Sidebar";
+import Navbar from "../Navbar/Navbar";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [emailError, setEmailError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
   let user_id: number;
-
+  let name: string;
+  let username: string;
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ function Login() {
 
     // Update the error message
     setEmailError(
-      isValid ? '' : 'Email must be in the format example@example.com.'
+      isValid ? "" : "Email must be in the format example@example.com."
     );
   };
 
@@ -42,8 +42,8 @@ function Login() {
     // Update the error message
     setPasswordError(
       isValid
-        ? ''
-        : 'Password must contain at least 8 characters, one number, and one uppercase letter.'
+        ? ""
+        : "Password must contain at least 8 characters, one number, and one uppercase letter."
     );
   };
 
@@ -51,15 +51,15 @@ function Login() {
     event.preventDefault();
 
     // Submit the form if the email is valid
-    if (emailError === '') {
+    if (emailError === "") {
       // Do something with the email
-      console.log('Email:', email);
+      console.log("Email:", email);
     }
 
     // Submit the form if the password is valid
-    if (passwordError === '') {
+    if (passwordError === "") {
       // Do something with the password
-      console.log('Password:', password);
+      console.log("Password:", password);
     }
 
     const data = {
@@ -68,10 +68,10 @@ function Login() {
     };
 
     console.log(email, password);
-    return fetch('http://127.0.0.1:5000/login', {
-      method: 'POST',
+    return fetch("http://127.0.0.1:5000/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
@@ -83,76 +83,80 @@ function Login() {
       .then((data) => {
         console.log(data);
         if (data.code === 400) {
-          alert('password or email not found');
+          alert("password or email not found");
         } else {
           user_id = data.user_id;
-          navigate('/donate', { state: { email, password, user_id } });
+          name = data.name;
+          username = data.usermae;
+          navigate("/userinfo", {
+            state: { email, password, user_id, name, username },
+          });
         }
       })
       .catch((error) => {
-        console.log('error');
-        alert('This email does not exist');
+        console.log("error");
+        alert("This email does not exist");
       });
   };
 
-  const isFormValid = email !== '' && password !== '';
+  const isFormValid = email !== "" && password !== "";
 
   return (
     <>
-      <NavbarCustom/>
-      <div className='loginContainer'>
-        <div className='loginTitle'>
+      <Navbar />
+      <div className="loginContainer">
+        <div className="loginTitle">
           <h1>Login</h1>
         </div>
         <section>
-          <div className='imagecontainer'>
+          <div className="imagecontainer">
             <img
-              src='https://s3-alpha.figma.com/hub/file/1844050371/ebbfb0be-4adb-45be-baa1-354c4f691440-cover.png'
-              alt='loginCat'
-              className='loginCat'
+              src="https://s3-alpha.figma.com/hub/file/1844050371/ebbfb0be-4adb-45be-baa1-354c4f691440-cover.png"
+              alt="loginCat"
+              className="loginCat"
             />
           </div>
-          <div className='formLogin'>
+          <div className="formLogin">
             <form>
-              <div className='emailDiv'>
-                <label htmlFor='email-input'>Email:</label>
+              <div className="emailDiv">
+                <label htmlFor="email-input">Email:</label>
                 <input
-                  type='email'
-                  placeholder='Enter A New Email'
-                  className='email'
-                  id='email'
+                  type="email"
+                  placeholder="Enter A New Email"
+                  className="email"
+                  id="email"
                   value={email}
                   onChange={handleEmailChange}
-                  pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                   required
                 ></input>
-                {emailError && <p>{emailError}</p>}{' '}
+                {emailError && <p>{emailError}</p>}{" "}
               </div>
-              <div className='passwordDiv'>
-                <label htmlFor='password-input'>Password:</label>
+              <div className="passwordDiv">
+                <label htmlFor="password-input">Password:</label>
                 <input
-                  type='password'
-                  placeholder='Enter A New Password'
-                  className='password'
-                  id='password'
+                  type="password"
+                  placeholder="Enter A New Password"
+                  className="password"
+                  id="password"
                   value={password}
                   onChange={handlePasswordChange}
-                  pattern='^(?=.*\d)(?=.*[A-Z]).{8,}$'
+                  pattern="^(?=.*\d)(?=.*[A-Z]).{8,}$"
                   required
                 ></input>
                 {passwordError && <p>{passwordError}</p>}
               </div>
               <div>
-                <input type='checkbox' />
+                <input type="checkbox" />
                 Remember Me
               </div>
               <div>
-                <a href='/register'>Don't have an account?</a>
+                <a href="/register">Don't have an account?</a>
               </div>
             </form>
 
             <button
-              className='button-20'
+              className="button-20"
               onClick={handleSubmit}
               disabled={!isFormValid}
             >

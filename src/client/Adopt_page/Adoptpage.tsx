@@ -59,7 +59,7 @@ function Adoptpage() {
 
   return (
     <>
-      <Navbar email="" password="" />
+      <Navbar />
       <div className="adoptTitle">
         <h1>Choose Your Favourite Cat</h1>
       </div>

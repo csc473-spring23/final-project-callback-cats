@@ -1,9 +1,23 @@
-.adoptTitle h1 {
-  align-items: center;
+.userinfo-title {
   text-align: center;
-  color: brown;
-  font-family: fantasy;
   font-size: 48px;
+  color: brown;
+}
+
+.userinfo-body {
+  height: 200px;
+  padding: 30px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 36px;
+  margin: 20px;
+}
+
+.body-info {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .adoptBody {
