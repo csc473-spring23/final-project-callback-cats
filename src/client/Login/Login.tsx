@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Navbar/Sidebar';
-
+import NavbarCustom from '../components/NavbarCustom';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -99,7 +99,7 @@ function Login() {
 
   return (
     <>
-      <Navbar email={email} password={password}/>
+      <NavbarCustom/>
       <div className='loginContainer'>
         <div className='loginTitle'>
           <h1>Login</h1>

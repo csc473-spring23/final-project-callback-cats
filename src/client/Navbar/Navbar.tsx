@@ -9,7 +9,7 @@ interface Props {email: string,
 
 
 const Navbar = (props: Props) => {
-  const valid = props.email != null && props.password != null;
+  const valid = props.email == null || "" && props.password == null || "";
   return valid? (
     <nav className='navbar'>
       <div className='container'>

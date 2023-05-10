@@ -93,7 +93,7 @@ function Register() {
 
   return (
     <>
-      <Navbar email={email} password={password}/>
+      <Navbar email="" password=""/>
       <div className='registerContainer'>
         <div className='loginTitle'>
           <h1>Sign In</h1>

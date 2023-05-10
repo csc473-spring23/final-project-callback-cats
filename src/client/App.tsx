@@ -6,7 +6,7 @@ import Catfactspage from './Catfacts_page/Catfactspage';
 import Register from './Register/Register';
 import Login from './Login/Login';
 import Errorpage from './Error_page/Errorpage';
-
+import "../index.css"
 
 import { Routes, Route, RouteProps } from 'react-router-dom';
 
