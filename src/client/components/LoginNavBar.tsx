@@ -33,7 +33,7 @@ function LoginNavbar() {
         </span>
         <div
           id="menu-items"
-          className="md:static absolute  opacity-90 bg-white md:min-h-fit min-h-[60vh] left-0 top-[-580%] duration-300 ease-in-out md:w-auto w-full items-center px-5 "
+          className="md:static absolute  opacity-90  md:min-h-fit min-h-[60vh] left-0 top-[-580%] duration-300 ease-in-out md:w-auto w-full items-center px-5 "
         >
           <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-6">
             <Link to={"/"}>

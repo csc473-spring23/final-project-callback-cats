@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import Sidebar from "../Navbar/Sidebar";
 import "./Catfactspage.css";
-
+import Navbar from "../Components/Navbar";
 type Breed = {
   id: string;
   name: string;

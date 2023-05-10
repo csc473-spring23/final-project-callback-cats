@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import "./Adoptpage.css";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../Components/Navbar";
 type Cats = {
   age: number;
   breed: string;
