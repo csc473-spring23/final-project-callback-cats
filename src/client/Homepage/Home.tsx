@@ -1,6 +1,5 @@
 import React from "react";
 
-import Sidebar from "../Navbar/Sidebar";
 import "./Home.css";
 import aboutbanner from "./aboutbanner.jpg";
 import catsell from "./catsell.png";

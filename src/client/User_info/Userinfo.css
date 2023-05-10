@@ -49,7 +49,14 @@
   height: 230px;
   border-radius: 3rem;
 }
+.delete-icon-container {
+  text-align: end;
+}
 
+.upload-btn-container {
+  text-align: end;
+  
+}
 .cat-info {
   align-items: start;
   padding-top: 30px;

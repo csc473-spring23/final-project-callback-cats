@@ -3,7 +3,7 @@ import "./Userinfo.css";
 import Navbar from "../Navbar/Navbar";
 import Login from "../Login/Login";
 import React, { useState, useEffect } from "react";
-
+import LoginNavbar from "../components/LoginNavBar";
 type Cats = {
   age: number;
   breed: string;
@@ -102,23 +102,29 @@ function UserInfo() {
     </>
   ) : (
     <>
-      <Navbar />
-      <div className="userinfo-title">Welcome, {state.name.toUpperCase()}</div>
-      <div className="userinfo-body">
-        <div className="body-info">
-          <strong>Name : </strong> {state.name}
-        </div>
-        <div className="body-info">
-          <strong>Email : </strong> {state.email}
-        </div>
+      <LoginNavbar />
+      <div className="mx-[5%] w-[90%]">
+        <div className="  mt-10 small-heading">Welcome, {state.name}</div>
+        <div className="  small-heading">Email: {state.email}</div>
       </div>
-      <div className="adoptBody">
+      <h6 className="mt-20 mb-5 mx-[5%] small-title">My Cats</h6>
+      <div className="upload-btn-container mx-[5%] ">
+        <button
+          onClick={handleSubmit}
+          className="px-20 py-3 border round-md mb-5 hover:bg-red-400 hover:text-white"
+        >
+          Upload <i className="fa-sharp fa-solid fa-plus"></i>
+        </button>
+      </div>
+      <div className=" w-[90%] grid md:grid-cols-3 grid-cols-2 gap-4 mx-[5%]">
         {filterCats.map((cat) => (
-          <div key={cat.id} className="each-cat">
-            <img src={cat.img_url} alt={cat.img_url} />
+          <div key={cat.id} className="shadow-md bg-white p-4 rounded-lg">
+            <div className="delete-icon-container">
+              <i className="fa-solid fa-xmark text-gray-300 hover:text-red-500 cursor-pointer text-[30px] mb-3"></i>
+            </div>
+            <img className="rounded-sm" src={cat.img_url} alt={cat.img_url} />
             <div className="cat-info">
               <p>
-                <p>Donating by {cat.seller_name.toUpperCase()}</p>
                 <article>
                   <strong>Name : </strong>
                   {cat.name}
@@ -143,44 +149,13 @@ function UserInfo() {
                   <strong>Description : </strong>
                   <>{cat.description}</>
                 </article>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const deleteData = { cat_id: cat.id };
-                    return fetch("http://127.0.0.1:5000/delete_cat_info", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify(deleteData),
-                    })
-                      .then((res) => {
-                        if (res.status === 200) {
-                          return res.json();
-                        }
-                      })
-                      .then((data) => {
-                        console.log(data);
-                      })
-                      .catch((error) => {
-                        console.log("error");
-                      });
-                  }}
-                >
-                  delete
-                </button>
+                <div className=""></div>
               </p>
             </div>
           </div>
         ))}
       </div>
-      <button
-        type="button"
-        className="p-5 inline-block lg:align-top mt-4 lg:mt-8 text-black rounded-sm  shadow-md  shadow-red-400 hover:bg-red-400 hover:text-white"
-        onClick={handleSubmit}
-      >
-        Click me to donate more cat
-      </button>
+
       <button type="button" className="button-20" onClick={logout}>
         Log Out
       </button>
