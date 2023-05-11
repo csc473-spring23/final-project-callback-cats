@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import "../Login/Login.css";
 import Footer from "../Components/footer";
+import stepToSun from "../../../public/step-to-sun.svg"
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -94,6 +95,26 @@ function Register() {
   return (
     <>
       <Navbar />
+
+      {/* new registe page */}
+      <div className="grid md:grid-cols-2  grid-cols-1 mt-[50px]">
+        {/* left side of sign in */}
+        <div>
+          <div className="text-center my-10">
+              <h1 className="big-heading text-[#394867]">Sign In</h1>
+          </div>
+          <div className="mx-auto">
+              <img className="lg:w-[70%] md:w-[90%] w-[70%] mx-auto" src={stepToSun}></img>
+          </div>
+        </div>
+        {/* right side of sign in */}
+        <div className="bg-red-400">
+
+        </div>
+      </div>
+      {/* created extra space to work on new register page */}
+      <div className="h-[100vh] w-full"></div>
+      {/*  */}
       <div className="registerContainer">
         <div className="loginTitle">
           <h1>Sign In</h1>
