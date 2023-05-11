@@ -55,34 +55,34 @@ function Catfactspage() {
   return (
     <div>
       <Navbar />
-      <div className='catheader'>
-        <h1>Cat Facts</h1>
-        <h2>
+      <div className='text-center lg:w-[70%] w-[90%] mx-auto'>
+        <h1 className='big-heading text-[#394867]'>Cat Facts</h1>
+        <h2 className='text-3xl mt-5'>
           Read below about the different cat breeds and learn about which furry
           friend is right for you!
         </h2>
       </div>
 
-      <div className='cat-breeds-container'>
+      <div className='cat-breeds-container bg-transparent'>
         {breeds.map((breed) => (
-          <div key={breed.id} className='breed-container'>
-            <img src={breed.image} alt={breed.name} />
-            <div className='breed-info'>
-              <h2>{breed.name}</h2>
-              <p>
-                <strong>Origin:</strong> {breed.origin}
+          <div key={breed.id} className='breed-container border-b-4 border-black py-3'>
+            <img className='rounded-lg shadow-md w-[250px] h-[250px] object-cover object-center' src={breed.image} alt={breed.name} />
+            <div className='breed-info text-xl my-3'>
+              <h2 >{breed.name}</h2>
+              <p className='font-[Poppins]'>
+                <strong className='font-[Merriweather]'>Origin:</strong> {breed.origin}
               </p>
-              <p>
-                <strong>Life Span:</strong> {breed.life_span}
+              <p className='font-[Poppins]'>
+                <strong  className='font-[Merriweather]'>Life Span:</strong>  {breed.life_span}
               </p>
-              <p>
-                <strong>Energy Level:</strong> {breed.energy_level}
+              <p className='font-[Poppins]'>
+                <strong className='font-[Merriweather]'>Energy Level:</strong> {breed.energy_level}
               </p>
-              <p>
-                <strong>Affection Level:</strong> {breed.affection_level}
+              <p className='font-[Poppins]'>
+                <strong className='font-[Merriweather]'>Affection Level:</strong> {breed.affection_level}
               </p>
-              <p>
-                <strong>Fact:</strong> {breed.description}
+              <p className='font-[Poppins]'>
+                <strong className='font-[Merriweather]'>Fact:</strong> {breed.description}
               </p>
             </div>
           </div>

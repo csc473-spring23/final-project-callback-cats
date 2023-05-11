@@ -6,13 +6,7 @@ function LoginNavbar() {
   const nav = useNavigate();
   const [isToggle, setToggle] = useState(false);
 
-  function handleLinkClick() {
-    setToggle(!isToggle);
-    const menuItemsEl = document.getElementById('menu-items');
-    if (menuItemsEl) {
-      menuItemsEl.style.top = '-580%';
-    }
-  }
+  
   const logout = (e: any) => {
     e.preventDefault();
 
