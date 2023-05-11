@@ -124,7 +124,8 @@ function UserInfo() {
         <div className='upload-btn-container '>
           <button
             onClick={handleSubmit}
-            className='px-20 py-3 border round-md mb-5 hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white'>
+            className='px-20 py-3 border round-md mb-5 hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white'
+          >
             Upload <i className='fa-sharp fa-solid fa-plus'></i>
           </button>
         </div>
@@ -139,7 +140,8 @@ function UserInfo() {
                   onClick={() => {
                     console.log(cat.id);
                     deleteCat(cat.id);
-                  }}></i>
+                  }}
+                ></i>
               </div>
               <CatInfoCard cat={cat} />
             </div>
