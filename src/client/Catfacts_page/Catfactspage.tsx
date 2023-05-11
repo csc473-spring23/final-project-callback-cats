@@ -29,28 +29,28 @@ function Catfactspage() {
         const breedData = data.map((breed: any) => {
           let image;
           if (breed.name === 'European Burmese') {
-            image = '/src/client/Catfacts_page/european-burmese.png'; 
+            image = '/src/client/Catfacts_page/european-burmese.png';
           } else if (breed.name === 'Malayan') {
-            image = '/src/client/Catfacts_page/malayan.jpg'; 
+            image = '/src/client/Catfacts_page/malayan.jpg';
           } else {
             image = breed.image?.url;
           }
-        return {
-          id: breed.id,
-          name: breed.name,
-          origin: breed.origin,
-          life_span: breed.life_span,
-          energy_level: breed.energy_level,
-          affection_level: breed.affection_level,
-          description: breed.description,
-          image: image,
-        };
-      });
+          return {
+            id: breed.id,
+            name: breed.name,
+            origin: breed.origin,
+            life_span: breed.life_span,
+            energy_level: breed.energy_level,
+            affection_level: breed.affection_level,
+            description: breed.description,
+            image: image,
+          };
+        });
 
-      getBreeds(breedData);
-    })
-    .catch((error) => console.log(error));
-}, [apiKey]);
+        getBreeds(breedData);
+      })
+      .catch((error) => console.log(error));
+  }, [apiKey]);
 
   return (
     <div>
@@ -65,24 +65,38 @@ function Catfactspage() {
 
       <div className='cat-breeds-container bg-transparent'>
         {breeds.map((breed) => (
-          <div key={breed.id} className='breed-container border-b-4 border-black py-3'>
-            <img className='rounded-lg shadow-md w-[250px] h-[250px] object-cover object-center' src={breed.image} alt={breed.name} />
+          <div
+            key={breed.id}
+            className='breed-container border-b-4 border-black py-3'
+          >
+            <img
+              className='rounded-lg shadow-md w-[250px] h-[250px] object-cover object-center'
+              src={breed.image}
+              alt={breed.name}
+            />
             <div className='breed-info text-xl my-3'>
-              <h2 >{breed.name}</h2>
+              <h2>{breed.name}</h2>
               <p className='font-[Poppins]'>
-                <strong className='font-[Merriweather]'>Origin:</strong> {breed.origin}
+                <strong className='font-[Merriweather]'>Origin:</strong>{' '}
+                {breed.origin}
               </p>
               <p className='font-[Poppins]'>
-                <strong  className='font-[Merriweather]'>Life Span:</strong>  {breed.life_span}
+                <strong className='font-[Merriweather]'>Life Span:</strong>{' '}
+                {breed.life_span}
               </p>
               <p className='font-[Poppins]'>
-                <strong className='font-[Merriweather]'>Energy Level:</strong> {breed.energy_level}
+                <strong className='font-[Merriweather]'>Energy Level:</strong>{' '}
+                {breed.energy_level}
               </p>
               <p className='font-[Poppins]'>
-                <strong className='font-[Merriweather]'>Affection Level:</strong> {breed.affection_level}
+                <strong className='font-[Merriweather]'>
+                  Affection Level:
+                </strong>{' '}
+                {breed.affection_level}
               </p>
               <p className='font-[Poppins]'>
-                <strong className='font-[Merriweather]'>Fact:</strong> {breed.description}
+                <strong className='font-[Merriweather]'>Fact:</strong>{' '}
+                {breed.description}
               </p>
             </div>
           </div>
