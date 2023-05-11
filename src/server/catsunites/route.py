@@ -72,6 +72,7 @@ def login():
                         "message": "Logged In",
                         "user_id": current_user.id,
                         "email": current_user.email,
+                        "password": current_user.password,
                         "name": current_user.name,
                         "username": current_user.username
                     }

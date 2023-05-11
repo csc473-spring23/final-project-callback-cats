@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import userAuth from '../Custom_hook/UserAuth';
 
 import './Login.css';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/footer';
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,8 +15,12 @@ function Login() {
   let user_id: number;
   let name: string;
   let username: string;
+  let dataEmail: string;
+  let dataPassword: string;
 
   const navigate = useNavigate();
+
+  const { setAuth } = userAuth();
 
   const handleEmailChange = (event: any) => {
     const value = event.target.value;
@@ -86,9 +92,14 @@ function Login() {
         } else {
           user_id = data.user_id;
           name = data.name;
-          username = data.usermae;
+          username = data.username;
+          dataEmail = data.email;
+          dataPassword = data.password;
+          setAuth({ dataEmail, dataPassword, name, username, user_id });
+          setEmail('');
+          setPassword('');
           navigate('/userinfo', {
-            state: { email, password, user_id, name, username },
+            state: { dataEmail, dataPassword, user_id, name, username },
           });
         }
       })
