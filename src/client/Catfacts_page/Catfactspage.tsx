@@ -26,7 +26,16 @@ function Catfactspage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        const breedData = data.map((breed: any) => ({
+        const breedData = data.map((breed: any) => {
+          let image;
+          if (breed.name === 'European Burmese') {
+            image = '/src/client/Catfacts_page/european-burmese.png'; 
+          } else if (breed.name === 'Malayan') {
+            image = '/src/client/Catfacts_page/malayan.jpg'; 
+          } else {
+            image = breed.image?.url;
+          }
+        return {
           id: breed.id,
           name: breed.name,
           origin: breed.origin,
@@ -34,12 +43,14 @@ function Catfactspage() {
           energy_level: breed.energy_level,
           affection_level: breed.affection_level,
           description: breed.description,
-          image: breed.image?.url,
-        }));
-        getBreeds(breedData);
-      })
-      .catch((error) => console.log(error));
-  }, [apiKey]);
+          image: image,
+        };
+      });
+
+      getBreeds(breedData);
+    })
+    .catch((error) => console.log(error));
+}, [apiKey]);
 
   return (
     <div>
