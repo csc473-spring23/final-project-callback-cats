@@ -31,12 +31,13 @@ const Home = () => {
           <h1 className='home-title big-heading text-[#394867] py-4 align-middle  bg-gray-100 md:rounded-lg opacity-75 mt-[50px] lg:w-[650px] shadow-lg'>
             Welcome Back to Callback Cats!
           </h1>
-          <div className='mt-10 w-[50%] h-[300px] mini-container opacity-[.68] bg-gray-100 p-5 rounded-lg shadow-lg shadow-[#F99B7D]'>
+          <div className='mt-10 w-[50%] h-[350px] mini-container opacity-[.68] bg-gray-100 p-2 rounded-lg shadow-lg shadow-[#F99B7D]'>
             <div>
               <p className='w-[350px] lg:inline-block text-left mr-2 lg:text-2xl text-xl text-black font-[Montserrat]'>
                 There are numerous cat breeds, each with their unique
-                characteristics. You can either trade or adopt a cat of your
-                liking.
+                characteristics. You can either adopt a cat of your liking or
+                donate a cat by signing in. You can also learn various
+                fascinating cat facts from our website.
               </p>
               <button
                 className=' p-5 inline-block lg:align-top mt-4 lg:mt-8 text-black rounded-sm  shadow-md  shadow-red-400 hover:bg-red-400 hover:text-white'
