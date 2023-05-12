@@ -4,7 +4,7 @@ import "./Home.css";
 import aboutbanner from "./aboutbanner.jpg";
 import catsell from "./catsell.png";
 import catbuy from "./catbuy.png";
-import petAdopt from "../../../public/friendCat.svg";
+import petAdopt from "../../../public/friend-cat.svg";
 import animatedCAt from "../../../public/animated-cat.png";
 import Navbar from "../Components/Navbar";
 import { useNavigate } from "react-router-dom";
@@ -31,15 +31,15 @@ const Home = () => {
           <h1 className="home-title big-heading text-[#394867] py-4 align-middle  bg-gray-100 md:rounded-lg opacity-75 mt-[50px] lg:w-[650px] shadow-lg">
             Welcome Back to Callback Cats!
           </h1>
-          <div className=" lg:w-[40%] md:w-[600px] mt-[100px] p-10   mini-container opacity-[.68] bg-gray-100  rounded-lg shadow-lg shadow-[#F99B7D]">
-            <div className="">
-              <p className=" p-4  text-left mr-2 lg:text-2xl text-xl text-black font-[Montserrat]">
-                Find your perfect feline companion or make a difference by
-                donating a cat. Explore fascinating facts about cats on our
-                website.
+          <div className="mt-10 w-[50%] h-[300px] mini-container opacity-[.68] bg-gray-100 p-5 rounded-lg shadow-lg shadow-[#F99B7D]">
+            <div>
+              <p className="w-[350px] lg:inline-block text-left mr-2 lg:text-2xl text-xl text-black font-[Montserrat]">
+                There are numerous cat breeds, each with their unique
+                characteristics. You can either trade or adopt a cat of your
+                liking.
               </p>
               <button
-                className=" p-5 w-[60%] inline-block lg:align-top   text-black rounded-sm  shadow-md  shadow-red-400 hover:bg-red-400 hover:text-white"
+                className=" p-5 inline-block lg:align-top mt-4 lg:mt-8 text-black rounded-sm  shadow-md  shadow-red-400 hover:bg-red-400 hover:text-white"
                 onClick={handleSubmit}
               >
                 Get Started
