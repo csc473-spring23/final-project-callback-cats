@@ -122,6 +122,10 @@ function Register() {
                   className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                   id="name"
                   placeholder="Name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
                 />
                 <label
                   id="name-label"
@@ -137,6 +141,10 @@ function Register() {
                   className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                   id="username"
                   placeholder="Username"
+                  value={username}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
                 />
                 <label
                   id="username-label"
@@ -151,8 +159,12 @@ function Register() {
                 <input
                   type="text"
                   className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleFormControlInput3"
                   placeholder="Email address"
+                  id="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                  required
                 />
                 <label
                   id="exampleFormControlInput3"
@@ -160,14 +172,19 @@ function Register() {
                 >
                   Email address
                 </label>
+                {emailError && <p className="text-red-400">{emailError}</p>}{" "}
               </div>
               {/* password input */}
               <div className="relative " data-te-input-wrapper-init>
                 <input
-                  type="text"
+                  type="password"
                   className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                   id="password"
                   placeholder="Password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  pattern="^(?=.*\d)(?=.*[A-Z]).{8,}$"
+                  required
                 />
                 <label
                   id="password-label"
@@ -175,108 +192,27 @@ function Register() {
                 >
                   Password
                 </label>
+                {passwordError && (
+                  <p className="text-red-400">{passwordError}</p>
+                )}
               </div>
               <div className="flex flex-row-reverse text-gray-400 hover:text-black">
-                <Link to={"/login"}>Already have account</Link>
+                <Link to={"/login"}>Already have account?</Link>
               </div>
               {/* submit button */}
               <button
-                type="submit"
+                type="button"
                 className="inline-block w-full rounded bg-red-300 py-5 text-white hover:bg-red-400 shadow-md"
                 data-te-ripple-init
                 data-te-ripple-color="light"
+                onClick={handleSubmit}
+                disabled={!isFormValid}
               >
                 Sign Up
               </button>
             </form>
           </div>
         </div>
-      </div>
-      {/* created extra space to work on new register page */}
-      <div className="h-[100vh] w-full"></div>
-      {/*  */}
-      <div className="registerContainer">
-        <div className="loginTitle">
-          <h1>Sign In</h1>
-        </div>
-        <section>
-          <div className="imagecontainer">
-            <img
-              src="https://img.freepik.com/free-vector/cute-cat-playing-hand-phone-cartoon-vector-icon-illustration-animal-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-4231.jpg?w=2000"
-              alt="registerCat"
-              className="loginCat"
-            />
-          </div>
-          <div className="formLogin">
-            <form>
-              <div>
-                <label htmlFor="name-input">Name:</label>
-                <input
-                  type="name"
-                  placeholder="Enter Your Name"
-                  className="email"
-                  id="name"
-                  value={name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                ></input>
-              </div>
-              <div>
-                <label htmlFor="username-input">Username:</label>
-                <input
-                  type="username"
-                  placeholder="Create a new username"
-                  className="password"
-                  id="username"
-                  value={username}
-                  onChange={(e) => {
-                    setUsername(e.target.value);
-                  }}
-                ></input>
-              </div>
-              <div className="emailDiv">
-                <label htmlFor="email-input">Email:</label>
-                <input
-                  type="email"
-                  placeholder="Enter A New Email"
-                  className="email"
-                  id="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
-                  required
-                ></input>
-                {emailError && <p>{emailError}</p>}{" "}
-              </div>
-              <div className="passwordDiv">
-                <label htmlFor="password-input">Password:</label>
-                <input
-                  type="password"
-                  placeholder="Enter A New Password"
-                  className="password"
-                  id="password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                  pattern="^(?=.*\d)(?=.*[A-Z]).{8,}$"
-                  required
-                ></input>
-                {passwordError && <p>{passwordError}</p>}
-              </div>
-              <div>
-                <a href="/login">Already have an account?</a>
-              </div>
-            </form>
-
-            <button
-              className="button-20"
-              onClick={handleSubmit}
-              disabled={!isFormValid}
-            >
-              Register
-            </button>
-          </div>
-        </section>
       </div>
       {/* footer */}
       <Footer />

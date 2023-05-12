@@ -95,7 +95,7 @@ function Login() {
           username = data.username;
           dataEmail = data.email;
           dataPassword = data.password;
-          setAuth({ dataEmail, dataPassword, name, username, user_id });
+          //setAuth({ dataEmail, dataPassword, name, username, user_id });
           setEmail("");
           setPassword("");
           navigate("/userinfo", {
@@ -137,40 +137,54 @@ function Login() {
                 <input
                   type="text"
                   className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleFormControlInput3"
                   placeholder="Email address"
+                  id="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                  required
                 />
                 <label
-                  id="exampleFormControlInput3"
+                  id="email"
                   className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                 >
                   Email address
                 </label>
+                {emailError && <p className="text-red-400">{emailError}</p>}{" "}
               </div>
               {/* password input */}
               <div className="relative " data-te-input-wrapper-init>
                 <input
-                  type="text"
                   className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                  type="password"
+                  placeholder="Enter A New Password"
                   id="password"
-                  placeholder="Password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  pattern="^(?=.*\d)(?=.*[A-Z]).{8,}$"
+                  required
                 />
                 <label
-                  id="password-label"
+                  id="password"
                   className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                 >
                   Password
                 </label>
+                {passwordError && (
+                  <p className="text-red-400">{passwordError}</p>
+                )}
               </div>
               <div className="flex flex-row-reverse text-gray-400 hover:text-black">
                 <Link to={"/register"}>Don't have account! Sign up?</Link>
               </div>
               {/* submit button */}
               <button
-                type="submit"
+                type="button"
                 className="inline-block w-full rounded bg-red-300 py-5 text-white hover:bg-red-400 shadow-md"
                 data-te-ripple-init
                 data-te-ripple-color="light"
+                onClick={handleSubmit}
+                disabled={!isFormValid}
               >
                 Log In
               </button>
@@ -179,70 +193,6 @@ function Login() {
         </div>
       </div>
       {/* created extra space to work on new register page */}
-      <div className="h-[100vh] w-full"></div>
-      {/*  */}
-
-      <div className="loginContainer">
-        <div className="loginTitle">
-          <h1>Login</h1>
-        </div>
-        <section>
-          <div className="imagecontainer">
-            <img
-              src="https://s3-alpha.figma.com/hub/file/1844050371/ebbfb0be-4adb-45be-baa1-354c4f691440-cover.png"
-              alt="loginCat"
-              className="loginCat"
-            />
-          </div>
-          <div className="formLogin">
-            <form>
-              <div className="emailDiv">
-                <label htmlFor="email-input">Email:</label>
-                <input
-                  type="email"
-                  placeholder="Enter A New Email"
-                  className="email"
-                  id="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
-                  required
-                ></input>
-                {emailError && <p>{emailError}</p>}{" "}
-              </div>
-              <div className="passwordDiv">
-                <label htmlFor="password-input">Password:</label>
-                <input
-                  type="password"
-                  placeholder="Enter A New Password"
-                  className="password"
-                  id="password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                  pattern="^(?=.*\d)(?=.*[A-Z]).{8,}$"
-                  required
-                ></input>
-                {passwordError && <p>{passwordError}</p>}
-              </div>
-              <div>
-                <input type="checkbox" />
-                Remember Me
-              </div>
-              <div>
-                <a href="/register">Don't have an account?</a>
-              </div>
-            </form>
-
-            <button
-              className="button-20"
-              onClick={handleSubmit}
-              disabled={!isFormValid}
-            >
-              Log In
-            </button>
-          </div>
-        </section>
-      </div>
       {/* footer */}
       <Footer />
     </>
