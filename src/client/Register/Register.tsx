@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import "../Login/Login.css";
 import Footer from "../Components/footer";
@@ -102,9 +102,9 @@ function Register() {
         {/* left side of sign in */}
         <div className="">
           <div className="text-center my-10">
-            <h1 className="big-heading text-[#394867]">Sign Up</h1>
+            <h1 className="big-heading text-red-400">Sign Up</h1>
           </div>
-          <div className="mx-auto">
+          <div className="mx-auto px-10">
             <img
               className="lg:w-[70%] md:w-[90%] w-[70%] mx-auto md:inline-block hidden"
               src={stepToSun}
@@ -175,6 +175,9 @@ function Register() {
                 >
                   Password
                 </label>
+              </div>
+              <div className="flex flex-row-reverse text-gray-400 hover:text-black">
+                <Link to={"/login"}>Already have account</Link>
               </div>
               {/* submit button */}
               <button
