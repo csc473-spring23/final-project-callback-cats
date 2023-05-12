@@ -183,7 +183,7 @@ function Register() {
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
-                Sign in
+                Sign Up
               </button>
             </form>
           </div>
