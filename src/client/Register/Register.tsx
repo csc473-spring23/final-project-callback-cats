@@ -117,81 +117,62 @@ function Register() {
             <form>
               {/* name input */}
               <div className="relative " data-te-input-wrapper-init>
+                <label id="name">Name</label>
                 <input
                   type="text"
-                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear"
                   id="name"
-                  placeholder="Name"
+                  placeholder="Enter Your Name"
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
                 />
-                <label
-                  id="name-label"
-                  className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                >
-                  Name
-                </label>
               </div>
               {/* username input */}
               <div className="relative " data-te-input-wrapper-init>
+                <label id="username">Username</label>
                 <input
                   type="text"
-                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear"
                   id="username"
-                  placeholder="Username"
+                  placeholder="Enter A New Username"
                   value={username}
                   onChange={(e) => {
                     setUsername(e.target.value);
                   }}
                 />
-                <label
-                  id="username-label"
-                  className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                >
-                  Username
-                </label>
               </div>
 
               {/* email input */}
               <div className="relative " data-te-input-wrapper-init>
+                <label id="email">Email address</label>
                 <input
                   type="text"
-                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  placeholder="Email address"
+                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear"
+                  placeholder="Enter a New Email Address"
                   id="email"
                   value={email}
                   onChange={handleEmailChange}
                   pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                   required
                 />
-                <label
-                  id="exampleFormControlInput3"
-                  className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                >
-                  Email address
-                </label>
                 {emailError && <p className="text-red-400">{emailError}</p>}{" "}
               </div>
               {/* password input */}
               <div className="relative " data-te-input-wrapper-init>
+                <label id="password">Password</label>
                 <input
                   type="password"
-                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear"
                   id="password"
-                  placeholder="Password"
+                  placeholder="Enter a New Password"
                   value={password}
                   onChange={handlePasswordChange}
                   pattern="^(?=.*\d)(?=.*[A-Z]).{8,}$"
                   required
                 />
-                <label
-                  id="password-label"
-                  className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                >
-                  Password
-                </label>
+
                 {passwordError && (
                   <p className="text-red-400">{passwordError}</p>
                 )}
