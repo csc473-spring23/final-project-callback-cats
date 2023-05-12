@@ -178,7 +178,7 @@ function Register() {
                 )}
               </div>
               <div className="flex flex-row-reverse text-gray-400 hover:text-black">
-                <Link to={"/login"}>Already have account?</Link>
+                <Link to={"/login"}>Already have an account?</Link>
               </div>
               {/* submit button */}
               <button
