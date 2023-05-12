@@ -143,6 +143,7 @@ def upload_cat():
 def deleteCatInfo():
     if request.method == "POST":
         cat_id = request.json["cat_id"]
+        print(cat_id)
         cat = Cat.query.filter_by(id=cat_id).first()
         cat_message = Cat.query.filter_by(cat_id=cat.id)
 

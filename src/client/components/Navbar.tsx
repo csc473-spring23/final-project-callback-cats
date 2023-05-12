@@ -14,10 +14,14 @@ function Navbar() {
 
   return (
     <>
-      <nav className="flex justify-between items-center w-[92%] mx-auto ">
-        <span className="text-2xl  cursor-pointer nav-brand shadow-md rounded-lg p-2  hover:bg-black text-teal-600 hover:text-white">
-          <span className="text-red-500">Callback</span>
-          <span className="">Cats</span>
+      <nav className="flex justify-between items-center w-[92%] mx-auto">
+        <span className="text-2xl font-[Merriweather]  cursor-pointer nav-brand shadow-md rounded-lg p-2   text-red-400 ">
+          <Link to={"/"}>
+            <span className="text-[#394867] tracking-tighter">Callback</span>
+            <span className="">
+              <i className="fa-solid fa-cat"></i>
+            </span>
+          </Link>
         </span>
         <div
           id="menu-items"
