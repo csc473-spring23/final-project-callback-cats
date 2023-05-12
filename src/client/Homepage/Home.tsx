@@ -34,8 +34,9 @@ const Home = () => {
           <div className=" lg:w-[40%] md:w-[600px] mt-[100px] p-10   mini-container opacity-[.68] bg-gray-100  rounded-lg shadow-lg shadow-[#F99B7D]">
             <div className="">
               <p className=" p-4  text-left mr-2 lg:text-2xl text-xl text-black font-[Montserrat]">
-                Adopt a cat of your liking or donate a cat. learn various
-                fascinating facts about cat from our website.
+                Find your perfect feline companion or make a difference by
+                donating a cat. Explore fascinating facts about cats on our
+                website.
               </p>
               <button
                 className=" p-5 w-[60%] inline-block lg:align-top   text-black rounded-sm  shadow-md  shadow-red-400 hover:bg-red-400 hover:text-white"
