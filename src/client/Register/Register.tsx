@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import "../Login/Login.css";
 import Footer from "../Components/footer";
-import stepToSun from "../../../public/step-to-sun.svg";
+import stepToSun from "../../../public/stepToSun.svg";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

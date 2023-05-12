@@ -4,7 +4,7 @@ import "./Home.css";
 import aboutbanner from "./aboutbanner.jpg";
 import catsell from "./catsell.png";
 import catbuy from "./catbuy.png";
-import petAdopt from "../../../public/friend-cat.svg";
+import petAdopt from "../../../public/friendCat.svg";
 import animatedCAt from "../../../public/animated-cat.png";
 import Navbar from "../Components/Navbar";
 import { useNavigate } from "react-router-dom";
