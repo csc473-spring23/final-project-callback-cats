@@ -142,14 +142,15 @@ def upload_cat():
 @app.route("/delete_cat_info", methods=["POST"])
 def deleteCatInfo():
     if request.method == "POST":
-        cat_id = request.json["cat_id"]
-        print(cat_id)
-        cat = Cat.query.filter_by(id=cat_id).first()
-        cat_message = Cat.query.filter_by(cat_id=cat.id)
+        id = request.json["id"]
+        print(id)
+        cat = Cat.query.filter_by(id=id).first()
+        cat_message = Cat.query.filter_by(id=cat.id)
 
         for message in cat_message:
             db.session.delete(message)
         db.session.delete(cat)
+        db.session.commit()
 
         return jsonify(
             {

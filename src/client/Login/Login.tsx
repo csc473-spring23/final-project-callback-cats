@@ -17,10 +17,11 @@ function Login() {
   let username: string;
   let dataEmail: string;
   let dataPassword: string;
+  let setAuth: {};
 
   const navigate = useNavigate();
 
-  const { setAuth } = userAuth();
+  setAuth = userAuth();
 
   const handleEmailChange = (event: any) => {
     const value = event.target.value;
