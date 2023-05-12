@@ -120,7 +120,7 @@ function UserInfo() {
       <LoginNavbar />
       <div className="mt-[100px] lg:mx-auto lg:w-[70%] mx-[5%] w-[90%]">
         <div className=" mt-10 small-heading">Welcome, {state.name}</div>
-        <div className="  small-heading">Email: {state.email}</div>
+        <div className="  small-heading">Email: {state.dataEmail}</div>
         <h6 className="mt-20 small-title">My Cats</h6>
         <div className="upload-btn-container ">
           <button
