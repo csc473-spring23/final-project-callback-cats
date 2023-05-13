@@ -33,11 +33,11 @@ function Adoptpage() {
         }
       })
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         if (data.code === 400) {
           alert("Not cat found");
         } else {
-          console.log(data.body);
+          //console.log(data.body);
           const catData = data.body.map((cat: any) => ({
             age: cat.age,
             breed: cat.breed,
