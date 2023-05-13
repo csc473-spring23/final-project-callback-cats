@@ -30,7 +30,7 @@ function UserInfo() {
 
   const { loggedIn, dataEmail, dataPassword, name, username, user_id } = auth;
 
-  const [catId, setCatId] = useState(0);
+  const [dataCode, setDataCode] = useState(0);
 
   const nav = useNavigate();
 
@@ -49,7 +49,7 @@ function UserInfo() {
         }
       })
       .then((data) => {
-        console.log(data);
+        console.log("useEffect is working");
         if (data.code === 400) {
           alert("Not cat found");
         } else {
@@ -73,7 +73,7 @@ function UserInfo() {
       .catch((error) => {
         console.log("error");
       });
-  }, [catId]);
+  }, [dataCode]);
 
   const filterCats = cats.filter((cat) => cat.seller_id === user_id);
 
@@ -99,6 +99,7 @@ function UserInfo() {
       })
       .then((data) => {
         console.log(data);
+        setDataCode(data.code);
       })
       .catch((error) => {
         console.log("error");
@@ -143,9 +144,8 @@ function UserInfo() {
                 <i
                   className="fa-solid fa-xmark text-gray-300 hover:text-red-500 cursor-pointer text-[30px] mb-3"
                   onClick={() => {
-                    console.log(cat.id);
+                    //console.log(cat.id);
                     deleteCat(cat.id);
-                    setCatId(cat.id);
                   }}
                 ></i>
               </div>
