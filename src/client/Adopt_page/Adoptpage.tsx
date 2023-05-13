@@ -1,8 +1,11 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import "./Adoptpage.css";
 import Navbar from "../Components/Navbar";
+import LoginNavbar from "../Components/LoginNavBar";
 import CatInfoCard from "../Components/CatInfoCard";
+import userAuth from "../Custom_hook/UserAuth";
 import Footer from "../Components/footer";
+
 type Cats = {
   age: number;
   breed: string;
@@ -18,6 +21,11 @@ type Cats = {
 };
 
 function Adoptpage() {
+  let auth_: any;
+
+  auth_ = userAuth();
+  const { auth } = auth_;
+
   const [cats, setCats] = useState<Cats[]>([]);
 
   useEffect(() => {
@@ -61,7 +69,7 @@ function Adoptpage() {
 
   return (
     <>
-      <Navbar />
+      {auth?.dataEmail ? <LoginNavbar /> : <Navbar />}
       <div className="my-[100px] text-center text-[#394867]">
         <h1 className="big-heading">Choose Your Favourite Cat</h1>
       </div>

@@ -4,7 +4,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import userAuth from "../Custom_hook/UserAuth";
 import reminder from "../../../public/reminder.svg";
 import "./Login.css";
-import Navbar from "../Components/Navbar";
+import LoginPageNavBar from "../Components/LoginPageNavBar";
 import Footer from "../Components/footer";
 
 function Login() {
@@ -12,16 +12,21 @@ function Login() {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
   let user_id: number;
   let name: string;
   let username: string;
   let dataEmail: string;
   let dataPassword: string;
-  let setAuth: {};
+
+  let set_Auth: any;
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  setAuth = userAuth();
+  set_Auth = userAuth();
+
+  const { setAuth } = set_Auth;
 
   const handleEmailChange = (event: any) => {
     const value = event.target.value;
@@ -96,12 +101,18 @@ function Login() {
           username = data.username;
           dataEmail = data.email;
           dataPassword = data.password;
-          //setAuth({ dataEmail, dataPassword, name, username, user_id });
+          setLoggedIn(true);
+          setAuth({
+            loggedIn,
+            dataEmail,
+            dataPassword,
+            name,
+            username,
+            user_id,
+          });
           setEmail("");
           setPassword("");
-          navigate("/userinfo", {
-            state: { dataEmail, dataPassword, user_id, name, username },
-          });
+          navigate("/userinfo");
         }
       })
       .catch((error) => {
@@ -114,7 +125,7 @@ function Login() {
 
   return (
     <>
-      <Navbar />
+      <LoginPageNavBar />
       {/* new registe page */}
       <div className="grid md:grid-cols-2  grid-cols-1 md:mt-[150px] mt-[100px] ">
         {/* left side of sign in */}
@@ -184,7 +195,6 @@ function Login() {
           </div>
         </div>
       </div>
-      {/* created extra space to work on new register page */}
       {/* footer */}
       <Footer />
     </>

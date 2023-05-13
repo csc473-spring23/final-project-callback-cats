@@ -1,32 +1,20 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import userAuth from "../Custom_hook/UserAuth";
-
 import "./Navbar.css";
-function LoginNavbar() {
-  let set_Auth: any;
-
-  set_Auth = userAuth();
-  const { setAuth } = set_Auth;
-
-  const nav = useNavigate();
+function LoginPageNavBar() {
   const [isToggle, setToggle] = useState(false);
 
-  const logout = (e: any) => {
-    e.preventDefault();
-
-    return fetch("http://127.0.0.1:5000/logout")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setAuth({});
-        nav("/login");
-      });
-  };
+  function handleLinkClick() {
+    setToggle(!isToggle);
+    const menuItemsEl = document.getElementById("menu-items");
+    if (menuItemsEl) {
+      menuItemsEl.style.top = "-580%";
+    }
+  }
 
   return (
     <>
-      <nav className="flex justify-between items-center w-[92%] mx-auto ">
+      <nav className="flex justify-between items-center w-[92%] mx-auto">
         <span className="text-2xl font-[Merriweather]  cursor-pointer nav-brand shadow-md rounded-lg p-2   text-red-400 ">
           <Link to={"/"}>
             <span className="text-[#394867] tracking-tighter">Callback</span>
@@ -58,12 +46,6 @@ function LoginNavbar() {
                 Facts
               </span>{" "}
             </Link>
-            <Link to={"/userinfo"}>
-              {" "}
-              <span className="md:hover:text-red-400 hover:text-white nav-item">
-                User Info
-              </span>{" "}
-            </Link>
             <Link to={"/register"}>
               {" "}
               <span className="md:hover:text-red-400 hover:text-white nav-item">
@@ -74,14 +56,6 @@ function LoginNavbar() {
         </div>
 
         <div className="flex items-center gap-6">
-          <button
-            id="c-button"
-            className="border border-gray-400  text-black px-5 py-2  hover:bg-red-400 hover:border-red-400 hover:text-white rounded-full"
-          >
-            <a href={"/login"} onClick={logout}>
-              logout
-            </a>
-          </button>
           {!isToggle ? (
             <i
               id="close-icon"
@@ -113,4 +87,4 @@ function LoginNavbar() {
   );
 }
 
-export default LoginNavbar;
+export default LoginPageNavBar;

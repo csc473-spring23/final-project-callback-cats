@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import userAuth from "../Custom_hook/UserAuth";
 import Navbar from "../Components/Navbar";
+import LoginNavbar from "../Components/LoginNavBar";
 import "../Login/Login.css";
 import Footer from "../Components/footer";
 import stepToSun from "../../../public/stepToSun.svg";
+
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,6 +15,11 @@ function Register() {
   const [username, setUsername] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
+
+  let auth_: any;
+
+  auth_ = userAuth();
+  const { auth } = auth_;
 
   const navigate = useNavigate();
 
@@ -95,7 +103,7 @@ function Register() {
 
   return (
     <>
-      <Navbar />
+      {auth?.dataEmail ? <LoginNavbar /> : <Navbar />}
 
       {/* new registe page */}
       <div className="grid md:grid-cols-2  grid-cols-1 md:mt-[150px] mt-[100px] ">

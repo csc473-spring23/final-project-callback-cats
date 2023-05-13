@@ -1,15 +1,20 @@
 import React from "react";
 
 import "./Home.css";
-import aboutbanner from "./aboutbanner.jpg";
-import catsell from "./catsell.png";
-import catbuy from "./catbuy.png";
 import petAdopt from "../../../public/friendCat.svg";
 import animatedCAt from "../../../public/animated-cat.png";
+import userAuth from "../Custom_hook/UserAuth";
 import Navbar from "../Components/Navbar";
 import { useNavigate } from "react-router-dom";
+import LoginNavbar from "../Components/LoginNavBar";
 import Footer from "../Components/footer";
+
 const Home = () => {
+  let auth_: any;
+
+  auth_ = userAuth();
+  const { auth } = auth_;
+
   const nav = useNavigate();
 
   const handleSubmit = () => {
@@ -18,7 +23,7 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
+      {auth?.dataEmail ? <LoginNavbar /> : <Navbar />}
 
       <div
         className="about-container w-[100%] md:h-[95vh] h-[50vh] "

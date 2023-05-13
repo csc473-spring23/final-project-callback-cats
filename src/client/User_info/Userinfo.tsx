@@ -4,7 +4,10 @@ import LoginNavbar from "../Components/LoginNavBar";
 import Login from "../Login/Login";
 import React, { useState, useEffect } from "react";
 import CatInfoCard from "../Components/CatInfoCard";
+import userAuth from "../Custom_hook/UserAuth";
 import Footer from "../Components/footer";
+import { Navbar } from "react-bootstrap";
+
 type Cats = {
   age: number;
   breed: string;
@@ -20,26 +23,18 @@ type Cats = {
 };
 
 function UserInfo() {
-  let email: string;
-  let password: string;
-  let user_id: number;
-  let name: string;
-  let username: string;
+  let auth_: any;
+
+  auth_ = userAuth();
+  const { auth } = auth_;
+
+  const { loggedIn, dataEmail, dataPassword, name, username, user_id } = auth;
 
   const [catId, setCatId] = useState(0);
 
   const nav = useNavigate();
 
   const [cats, setCats] = useState<Cats[]>([]);
-
-  const { state } = useLocation();
-  if (state) {
-    email = state.email;
-    password = state.password;
-    user_id = state.user_id;
-    name = state.name;
-    username = state.username;
-  }
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/all_cats", {
@@ -83,7 +78,7 @@ function UserInfo() {
   const filterCats = cats.filter((cat) => cat.seller_id === user_id);
 
   const handleSubmit = () => {
-    nav("/donate", { state: { email, password, user_id, name, username } });
+    nav("/donate");
   };
 
   const deleteCat = (id: number) => {
@@ -110,17 +105,26 @@ function UserInfo() {
       });
   };
 
-  return state === null ? (
+  return (
     <>
-      {alert("This page can not be accessed without sign in")}
-      <Login />
-    </>
-  ) : (
-    <>
-      <LoginNavbar />
+      {auth?.dataEmail ? (
+        <LoginNavbar />
+      ) : (
+        <>
+          {alert("You can not access this page without logging in")} <Login />
+        </>
+      )}
+
       <div className="mt-[100px] lg:mx-auto lg:w-[70%] mx-[5%] w-[90%]">
-        <div className=" mt-10 small-heading">Welcome, {state.name}</div>
-        <div className="  small-heading">Email: {state.dataEmail}</div>
+        <div className=" mt-10 small-heading">
+          Welcome, <strong>{name}</strong>
+        </div>
+        <div className="  small-heading">
+          <strong>Username:</strong> {username}
+        </div>
+        <div className="  small-heading">
+          <strong>Email:</strong> {dataEmail}
+        </div>
         <h6 className="mt-20 small-title">My Cats</h6>
         <div className="upload-btn-container ">
           <button
