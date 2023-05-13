@@ -1,8 +1,8 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import './Adoptpage.css';
-import Navbar from '../Components/Navbar';
-import CatInfoCard from '../Components/CatInfoCard';
-import Footer from '../Components/footer';
+import React, { ReactNode, useEffect, useState } from "react";
+import "./Adoptpage.css";
+import Navbar from "../Components/Navbar";
+import CatInfoCard from "../Components/CatInfoCard";
+import Footer from "../Components/footer";
 type Cats = {
   age: number;
   breed: string;
@@ -21,10 +21,10 @@ function Adoptpage() {
   const [cats, setCats] = useState<Cats[]>([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/all_cats', {
-      method: 'GET',
+    fetch("http://127.0.0.1:5000/all_cats", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     })
       .then((res) => {
@@ -35,7 +35,7 @@ function Adoptpage() {
       .then((data) => {
         console.log(data);
         if (data.code === 400) {
-          alert('Not cat found');
+          alert("Not cat found");
         } else {
           console.log(data.body);
           const catData = data.body.map((cat: any) => ({
@@ -55,20 +55,23 @@ function Adoptpage() {
         }
       })
       .catch((error) => {
-        console.log('error');
+        console.log("error");
       });
   }, []);
 
   return (
     <>
       <Navbar />
-      <div className='my-[100px] text-center text-[#394867]'>
-        <h1 className='big-heading'>Choose Your Favourite Cat</h1>
+      <div className="my-[100px] text-center text-[#394867]">
+        <h1 className="big-heading">Choose Your Favourite Cat</h1>
       </div>
-      <div className=' lg:w-[70%] lg:mx-auto w-[90%] grid md:grid-cols-3 grid-cols-2 gap-4 mx-[5%] p-4'>
+      <div className=" lg:w-[70%] lg:mx-auto w-[90%] grid md:grid-cols-3 grid-cols-2 gap-4 mx-[5%] p-4">
         {cats.map((cat) => (
-          <div key={cat.id} className='shadow-md bg-white p-4 rounded-lg'>
+          <div key={cat.id} className="shadow-md bg-white p-4 rounded-lg">
             <CatInfoCard cat={cat} />
+            <div>
+              Donated by <strong>{cat.seller_name}</strong>
+            </div>
           </div>
         ))}
       </div>
