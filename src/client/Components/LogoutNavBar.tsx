@@ -64,12 +64,6 @@ function LoginNavbar() {
                 User Info
               </span>{" "}
             </Link>
-            <Link to={"/register"}>
-              {" "}
-              <span className="md:hover:text-red-400 hover:text-white nav-item">
-                Register
-              </span>{" "}
-            </Link>
           </ul>
         </div>
 

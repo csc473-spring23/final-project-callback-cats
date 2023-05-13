@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Catfactspage.css";
 import userAuth from "../Custom_hook/UserAuth";
-import LoginNavbar from "../Components/LoginNavBar";
+import LoginNavbar from "../Components/LogoutNavBar";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/footer";
 

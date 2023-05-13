@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Userinfo.css";
-import LoginNavbar from "../Components/LoginNavBar";
+import LoginNavbar from "../Components/LogoutNavBar";
 import Login from "../Login/Login";
 import React, { useState, useEffect } from "react";
 import CatInfoCard from "../Components/CatInfoCard";

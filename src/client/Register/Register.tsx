@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import userAuth from "../Custom_hook/UserAuth";
 import Navbar from "../Components/Navbar";
-import LoginNavbar from "../Components/LoginNavBar";
+import LoginNavbar from "../Components/LogoutNavBar";
 import "../Login/Login.css";
 import Footer from "../Components/footer";
 import stepToSun from "../../../public/stepToSun.svg";

@@ -1,7 +1,7 @@
 import { type } from "os";
 import React, { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import LoginNavbar from "../Components/LoginNavBar";
+import LoginNavbar from "../Components/LogoutNavBar";
 import userAuth from "../Custom_hook/UserAuth";
 import Errorpage from "../Error_page/Errorpage";
 import "./Donatepage.css";

@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import "./Adoptpage.css";
 import Navbar from "../Components/Navbar";
-import LoginNavbar from "../Components/LoginNavBar";
+import LoginNavbar from "../Components/LogoutNavBar";
 import CatInfoCard from "../Components/CatInfoCard";
 import userAuth from "../Custom_hook/UserAuth";
 import Footer from "../Components/footer";

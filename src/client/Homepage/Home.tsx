@@ -6,7 +6,7 @@ import animatedCAt from "../../../public/animated-cat.png";
 import userAuth from "../Custom_hook/UserAuth";
 import Navbar from "../Components/Navbar";
 import { useNavigate } from "react-router-dom";
-import LoginNavbar from "../Components/LoginNavBar";
+import LoginNavbar from "../Components/LogoutNavBar";
 import Footer from "../Components/footer";
 
 const Home = () => {
