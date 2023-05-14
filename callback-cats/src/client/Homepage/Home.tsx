@@ -36,15 +36,15 @@ const Home = () => {
           <h1 className="home-title big-heading text-[#394867] py-4 align-middle  bg-gray-100 md:rounded-lg opacity-75 mt-[50px] lg:w-[650px] shadow-lg">
             Welcome Back to Callback Cats!
           </h1>
-          <div className="mt-10 w-[50%] h-[300px] mini-container opacity-[.68] bg-gray-100 p-5 rounded-lg shadow-lg shadow-[#F99B7D]">
+          <div className="mt-10 w-[730px]  mini-container opacity-[.68] bg-gray-100 p-5 rounded-lg shadow-lg shadow-[#F99B7D]  relative md:top-[100px]">
             <div>
-              <p className="w-[350px] lg:inline-block text-left mr-2 lg:text-2xl text-xl text-black font-[Montserrat]">
+              <p className="py-4 px-6 text-left mr-2 lg:text-2xl text-xl text-black font-[Montserrat]">
                 There are numerous cat breeds, each with their unique
                 characteristics. You can either trade or adopt a cat of your
                 liking.
               </p>
               <button
-                className=" p-5 inline-block lg:align-top mt-4 lg:mt-8 text-black rounded-sm  shadow-md  shadow-red-400 hover:bg-red-400 hover:text-white"
+                className=" p-5 px-40 inline-block lg:align-top mt-4 lg:mt-8 text-black rounded-sm  shadow-md  shadow-red-400 hover:bg-red-400 hover:text-white"
                 onClick={handleSubmit}
               >
                 Get Started
@@ -59,7 +59,7 @@ const Home = () => {
       <h1 className="bottom-title big-heading text-[#394867] py-4 align-middle  bg-white md:rounded-lg opacity-70 mt-[50px] lg:w-[650px] shadow-lg">
         Welcome Back to Callback Cats!
       </h1>
-      <div className=" middle-container h-[400px] w-full ">
+      <div className=" middle-container h-[400px] w-full mt-[150px]">
         <div className="about-text font-[Montserrat] text-xl p-5 lg:w-[50%] w-[90%] mx-auto mt-[100px]">
           <h1 className="big-heading text-red-400  mb-[50px]">About Us</h1>
           <p className="my-5">
