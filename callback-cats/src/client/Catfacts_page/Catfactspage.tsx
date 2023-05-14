@@ -75,7 +75,7 @@ function Catfactspage() {
         {breeds.map((breed) => (
           <div
             key={breed.id}
-            className="breed-container border-b-4 border-black py-3"
+            className="breed-container border-b-4 border-gray-400 py-3"
           >
             <img
               className="rounded-lg shadow-md w-[250px] h-[250px] object-cover object-center"
