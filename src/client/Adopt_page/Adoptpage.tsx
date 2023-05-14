@@ -5,7 +5,7 @@ import LoginNavbar from "../Components/LogoutNavBar";
 import CatInfoCard from "../Components/CatInfoCard";
 import userAuth from "../Custom_hook/UserAuth";
 import Footer from "../Components/footer";
-import { Link } from "react-router-dom";
+
 type Cats = {
   age: number;
   breed: string;
@@ -77,15 +77,9 @@ function Adoptpage() {
         {cats.map((cat) => (
           <div key={cat.id} className="shadow-md bg-white p-4 rounded-lg">
             <CatInfoCard cat={cat} />
-            <div className="text-xl">
-              Donated by <p className=" inline-block">{cat.seller_name}</p>
+            <div>
+              Donated by <strong>{cat.seller_name}</strong>
             </div>
-
-            <Link to="">
-              <div className="mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white">
-                Request For Adoption
-              </div>
-            </Link>
           </div>
         ))}
       </div>

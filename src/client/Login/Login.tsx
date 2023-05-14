@@ -146,7 +146,7 @@ function Login() {
             <form>
               {/* email input */}
               <div className="relative " data-te-input-wrapper-init>
-                <label id="email" >Email</label>
+                <label id="email">Email</label>
                 <input
                   type="text"
                   className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear "

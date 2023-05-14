@@ -46,12 +46,6 @@ function LoginNavbar() {
                 Home
               </span>{" "}
             </Link>
-            <Link to={"/userinfo"}>
-              {" "}
-              <span className="md:hover:text-red-400 hover:text-white nav-item">
-                User
-              </span>{" "}
-            </Link>
             <Link to={"/adopt"}>
               {" "}
               <span className="md:hover:text-red-400 hover:text-white nav-item">
@@ -62,6 +56,12 @@ function LoginNavbar() {
               {" "}
               <span className="md:hover:text-red-400 hover:text-white nav-item">
                 Facts
+              </span>{" "}
+            </Link>
+            <Link to={"/userinfo"}>
+              {" "}
+              <span className="md:hover:text-red-400 hover:text-white nav-item">
+                User Info
               </span>{" "}
             </Link>
           </ul>
