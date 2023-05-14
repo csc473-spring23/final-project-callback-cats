@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import LoginNavbar from "../Components/LogoutNavBar";
 import Footer from "../Components/footer";
 
+
 const Home = () => {
   let auth_: any;
 
@@ -24,7 +25,6 @@ const Home = () => {
   return (
     <div>
       {auth?.dataEmail ? <LoginNavbar /> : <Navbar />}
-
       <div
         className="about-container w-[100%] md:h-[95vh] h-[50vh] "
         style={{
