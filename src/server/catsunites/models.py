@@ -25,19 +25,20 @@ class Cat(db.Model):
     seller = db.relationship('User', backref='cats')
 
 
-class Message(db.Model):
-    __tablename__ = 'messages'
+class Adoption(db.Model):
+    __tablename__ = "adoptions"
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.Text, nullable=False)
-    sender_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    sender = db.relationship('User', foreign_keys=[sender_id], backref='sent_messages')
-    recipient_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    recipient = db.relationship('User',  foreign_keys=[recipient_id], backref='received_messages')
-    cat_id = db.Column(db.Integer, db.ForeignKey('cats.id'))
-    cat = db.relationship('Cat', backref='messages')
-
-    # define the sender relationship
-    timestamp = db.Column(db.DateTime, nullable=False)
+    cat_id = db.Column(db.Integer, db.ForeignKey("cats.id"))
+    cat = db.relationship("Cat", backref="adoptions")
+    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    owner = db.relationship("User", backref="adoptions")
+    buyer_id = db.Column(db.Integer, nullable=False)
+    buyer_message = db.Column(db.String, nullable=True)
+    # buyer contact info
+    contact_info = db.Column(db.String, nullable=False)
+    request_accepted = db.Column(db.Boolean, default=False)
+    request_rejected = db.Column(db.Boolean, default=False)
+    owner_message = db.Column(db.String, nullable=True)
 
 
 app.app_context().push()

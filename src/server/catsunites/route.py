@@ -5,7 +5,7 @@ from flask import request, jsonify, render_template
 
 from flask_login import current_user, login_user, logout_user
 from catsunites import login_manager
-from catsunites.models import User, Cat, Message
+from catsunites.models import User, Cat, Adoption
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -161,33 +161,6 @@ def deleteCatInfo():
         )
 
 
-@app.route("/send_message", methods=["POST"])
-def sendMessage():
-    if request.method == "POST":
-        cat = Cat.query.filter_by(id=request.json["cat_id"]).first()
-        message = Message(
-            content=request.json["content"],
-            timestamp=datetime.datetime.now(),
-            sender=current_user,
-            recipient=cat.seller,
-            cat=cat
-        )
-
-        db.session.add(message)
-        db.session.commit()
-
-        return jsonify({
-            "status": "ok",
-            "code": 200,
-            "message": "message has been sent"
-        })
-    else:
-        return jsonify({
-            "status": "bad",
-            "code": 500,
-        })
-
-
 @app.route("/all_cats", methods=["GET"])
 def getAllCat():
     if request.method == "GET":
@@ -218,39 +191,121 @@ def getAllCat():
         )
 
 
-@app.route("/view_message", methods=["GET"])
-def viewMessage():
-    if request.method == "GET":
+
+@app.route("/adoption_request", methods=["POST"])
+def adoptionRequest():
+    if request.method == "POST":
         cat_id = request.json["cat_id"]
-        sender_id = request.json["sender_id"]
-        print(cat_id, sender_id, current_user.id)
-        current_user_id = current_user.id
-        messages = Message.query.filter_by(
-            cat_id=cat_id,
-            sender_id=sender_id
+        buyer_id = request.json["buyer_id"]
+        buyer_message = request.json["buyer_message"]
+        contact_info = request.json["contact_info"]
+        cat = Cat.query.filter_by(id=cat_id).first()
+        adoption = Adoption(
+            cat = cat,
+            owner = cat.seller,
+            buyer_id = buyer_id,
+            buyer_message = buyer_message,
+            contact_info = contact_info,
+        )
+        db.session.add(adoption)
+        db.session.commit()
 
-        ).all()
 
-        message_lists = []
-        for message in messages:
-            message_lists.append(
-                {
-                    "date": message.timestamp,
-                    "content": message.content,
-                    "sender": message.sender_id,
-                    "sender_name": message.sender.name,
-                    "recipient_id": message.recipient_id,
-                    "recipient_name": message.recipient.name,
-                    "cat_id": message.cat_id,
-                    "cat_name": message.cat.name,
 
-                }
-            )
+@app.route("/adoption_confirm", methods=["POST"])
+def adoptionConfirm():
+    if request.method == "POST":
+        adoption_id = request.json["adoption_id"]
+        adoption = Adoption.query.filter_by(id=adoption_id)
+        adoption.cat.is_available = False
+        owner_message = request.json["owner_message"]
+        adoption.owner_message = owner_message
+        adoption.request_accepted = True
+        cat = Cat.query.filter_by(id=adoption.cat_id).first()
+        db.session.delete(cat)
+        db.session.commit()
+        return jsonify ({
+            "status": "ok",
+            "code": 200,
+        })
+
+
+@app.route("/adoption_reject", methods=["POST"])
+def adoptionReject():
+    if request.method == "POST":
+        adoption_id = request.json["adoption_id"]
+        message = request.json["message"]
+        adoption = Adoption.query.filter_by(id=adoption_id).first()
+        adoption.cat.is_available = True
+        adoption.owner_message = message
+        adoption.request_rejected = True
+        return jsonify ({
+            "status": "ok",
+            "code": 200,
+        })
+
+@app.route("/owner_adoption_view", methods=["GET"])
+def adoptionView():
+    if request.method == "GET":
+        user_id = request.json["user_id"]
+        adoption = Adoption.query.filter_by(owner_id=user_id).first()
+        buyer = User.query.filter_by(id=adoption.buyer_id).first()
+        adoption_info = {
+            "buyer_name": buyer.name,
+            "buyer_email": buyer.email,
+            "buyer_contact": adoption.contact_info,
+            "buyer_message": adoption.buyer_message,
+        }
         return jsonify(
-            {
-                "status": "ok",
-                "code": 200,
-                "body": message_lists
-            }
+            {"status": "ok", 
+             "code": 200,
+             "body": adoption_info
+             }
         )
 
+@app.route("/buyer_adoption_confirm_view", methods=["GET"])
+def adoptionConfirmView():
+    if request.method == "GET":
+        user_id = request.json["user_id"]
+        adoption = Adoption.query.filter_by(buyer_id=user_id).first()
+        
+        confirm_info = {
+        "owner_name": adoption.owner.name,
+        "owner_email": adoption.owner.email,
+        "owner_message": adoption.owner_message, }
+        db.session.delete(adoption)
+        db.session.commit()
+        return jsonify({
+            "status": "ok",
+            "code": 200,
+            "body": confirm_info
+        })
+
+
+# @app.route("/buyer_adopttion_reject_view", methods=["GET"])
+# def adoptionRejectView():
+#     if request.method == "GET":
+#         user_id = request.json["user_id"]
+#         adoption = Adoption.query.filter_by(buyer_id=user_id).first()
+#         if adoption.request_rejected:
+#             reject_info = {
+#             "owner_name": adoption.owner.name,
+#             "owner_email": adoption.owner.email,
+#             "owner_message": adoption.owner_message,
+            
+#         }
+#             db.session.delete(adoption)
+#             db.session.commit()
+#             return jsonify({
+#                 "status": "ok",
+#                 "code": 200,
+#                 "body": reject_info
+#             })
+#         else:
+#             return jsonify(
+#                 {
+#                     "status": "ok",
+#                     "code": 200,
+                    
+#                 }
+#             )

@@ -5,7 +5,7 @@ import LoginNavbar from "../Components/LogoutNavBar";
 import CatInfoCard from "../Components/CatInfoCard";
 import userAuth from "../Custom_hook/UserAuth";
 import Footer from "../Components/footer";
-
+import { Link } from "react-router-dom";
 type Cats = {
   age: number;
   breed: string;
@@ -80,6 +80,11 @@ function Adoptpage() {
             <div>
               Donated by <strong>{cat.seller_name}</strong>
             </div>
+            <Link to="">
+              <div className="mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white">
+                Request For Adoption
+              </div>
+            </Link>
           </div>
         ))}
       </div>
