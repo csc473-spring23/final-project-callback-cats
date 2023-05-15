@@ -7,6 +7,7 @@ import CatInfoCard from "../Components/CatInfoCard";
 import userAuth from "../Custom_hook/UserAuth";
 import Footer from "../Components/footer";
 import { Navbar } from "react-bootstrap";
+import Donatepage from "../Donate_page/Donatepage";
 
 type Cats = {
   age: number;
@@ -23,6 +24,8 @@ type Cats = {
 };
 
 function UserInfo() {
+  //const [open, setOpen] = useState(false);
+
   let auth_: any;
 
   auth_ = userAuth();
@@ -79,6 +82,7 @@ function UserInfo() {
 
   const handleSubmit = () => {
     nav("/donate");
+    //setOpen(true);
   };
 
   const deleteCat = (id: number) => {
@@ -135,6 +139,7 @@ function UserInfo() {
             Upload <i className="fa-sharp fa-solid fa-plus"></i>
           </button>
         </div>
+
         {/* rending all user cats */}
 
         <div className="  grid md:grid-cols-3 grid-cols-2 gap-4  lg:mx-auto py-4">

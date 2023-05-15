@@ -9,7 +9,7 @@ export default function CatInfoCard(props: any) {
           src={props.cat.img_url}
           alt={props.cat.img_url}
         />
-        <div className="cat-info">
+        <div className="my-3 w-90%">
           <div>
             <article>
               <strong>Name : </strong>

@@ -81,105 +81,101 @@ function Donatepage() {
         </h1>
       </div>
       <div className="main">
-      
-      <div className="sellBody">
-        <div className="sellBodyTitle">Enter Your Cat Info</div>
-        <div className="midBody">
-          <form>
-            <div className="bodyContent">
-              <label htmlFor="name"> Name: </label>
-              <div className="textfield">
-                <input
-                  type="text"
-                  value={name}
-                  id="name"
-                  placeholder="Enter Your Cat's Name"
-                  className="catName"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                ></input>
-              </div>
-            </div>
-
-            <div className="bodyContent">
-              <label htmlFor="age"> Age: </label>
-              <div className="textfield">
-                <input
-                  type="number"
-                  value={age}
-                  id="age"
-                  placeholder="Enter Your Cat's Age"
-                  className="catAge"
-                  onChange={(e) => {
-                    setAge(e.target.valueAsNumber);
-                  }}
-                ></input>
-              </div>
-            </div>
-
-            <div className="bodyContent">
-              <label htmlFor="description"> Description: </label>
-              <div className="textfield">
-                <input
-                  type="text"
-                  value={description}
-                  id="description"
-                  className="catDescrip"
-                  placeholder="Write something about your cat..."
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                  }}
-                ></input>
-              </div>
-              
-            </div>
-            <div className="bodyContent">
-              <label htmlFor="breed"> Breed: </label>
-              <div className="textfield">
-                <input
-                  type="text"
-                  value={breed}
-                  id="breed"
-                  placeholder="Enter Your Cat's Breed"
-                  className="catBreed"
-                  onChange={(e) => {
-                    setBreed(e.target.value);
-                  }}
-                ></input>
-              </div>
-              
-            </div>
-
-            <div className="bodyContent">
-              <label htmlFor="gender"> Gender: </label>
-              <div className="textfield">
-              <input
-                type="text"
-                value={gender}
-                id="gender"
-                placeholder="Enter Your Cat's Gender"
-                className="catGender"
-                onChange={(e) => {
-                  setGender(e.target.value);
-                }}
-              ></input>
-              </div>
-            </div>
-            
-            
-            <div className="uploadImage">
-              <div className="uploadTitle">Upload Your Cat's Image</div>
-              <div className="catImage">
-                <img
-                  // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2h0Vk15Cz4w6aXzhSKxW3tcPJU6fiFHUaw&usqp=CAU"
-                  src="https://64.media.tumblr.com/93cc22ccda31679f83bb81dbe4a1bff8/0767393739a2484f-a9/s540x810/a1a2116a0479ecf9517de58e858ab33f5199d512.pnj"
-                  alt="caticons"
-                  className="caticons"
-                />
+        <div className="sellBody">
+          <div className="sellBodyTitle">Enter Your Cat Info</div>
+          <div className="midBody">
+            <form>
+              <div className="bodyContent">
+                <label htmlFor="name"> Name: </label>
+                <div className="textfield">
+                  <input
+                    type="text"
+                    value={name}
+                    id="name"
+                    placeholder="Enter Your Cat's Name"
+                    className="catName"
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  ></input>
+                </div>
               </div>
 
-              <div className="bodyContentUpload">
+              <div className="bodyContent">
+                <label htmlFor="age"> Age: </label>
+                <div className="textfield">
+                  <input
+                    type="number"
+                    value={age}
+                    id="age"
+                    placeholder="Enter Your Cat's Age"
+                    className="catAge"
+                    onChange={(e) => {
+                      setAge(e.target.valueAsNumber);
+                    }}
+                  ></input>
+                </div>
+              </div>
+
+              <div className="bodyContent">
+                <label htmlFor="description"> Description: </label>
+                <div className="textfield">
+                  <input
+                    type="text"
+                    value={description}
+                    id="description"
+                    className="catDescrip"
+                    placeholder="Write something about your cat..."
+                    onChange={(e) => {
+                      setDescription(e.target.value);
+                    }}
+                  ></input>
+                </div>
+              </div>
+              <div className="bodyContent">
+                <label htmlFor="breed"> Breed: </label>
+                <div className="textfield">
+                  <input
+                    type="text"
+                    value={breed}
+                    id="breed"
+                    placeholder="Enter Your Cat's Breed"
+                    className="catBreed"
+                    onChange={(e) => {
+                      setBreed(e.target.value);
+                    }}
+                  ></input>
+                </div>
+              </div>
+
+              <div className="bodyContent">
+                <label htmlFor="gender"> Gender: </label>
+                <div className="textfield">
+                  <input
+                    type="text"
+                    value={gender}
+                    id="gender"
+                    placeholder="Enter Your Cat's Gender"
+                    className="catGender"
+                    onChange={(e) => {
+                      setGender(e.target.value);
+                    }}
+                  ></input>
+                </div>
+              </div>
+
+              <div className="uploadImage">
+                <div className="uploadTitle">Upload Your Cat's Image</div>
+                <div className="catImage">
+                  <img
+                    // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2h0Vk15Cz4w6aXzhSKxW3tcPJU6fiFHUaw&usqp=CAU"
+                    src="https://64.media.tumblr.com/93cc22ccda31679f83bb81dbe4a1bff8/0767393739a2484f-a9/s540x810/a1a2116a0479ecf9517de58e858ab33f5199d512.pnj"
+                    alt="caticons"
+                    className="caticons"
+                  />
+                </div>
+
+                <div className="bodyContentUpload">
                   <label htmlFor="img_url">Image Url:</label>
                   <div className="textfield">
                     <input
@@ -194,19 +190,20 @@ function Donatepage() {
                   </div>
                 </div>
 
-              <div className="sellBtn">
-                <button type="button" className="button-20" onClick={handleSubmit}>
-                  Submit
-                </button>
-              </div>        
-            </div>
-            
-          </form>
+                <div className="sellBtn">
+                  <button
+                    type="button"
+                    className="button-20"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-       
       </div>
-      </div>
-     
     </>
   );
 }

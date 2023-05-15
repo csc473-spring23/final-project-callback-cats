@@ -6,6 +6,8 @@ import CatInfoCard from "../Components/CatInfoCard";
 import userAuth from "../Custom_hook/UserAuth";
 import Footer from "../Components/footer";
 import { Link } from "react-router-dom";
+import DialogBox from "../Components/DialogBox";
+
 type Cats = {
   age: number;
   breed: string;
@@ -21,6 +23,8 @@ type Cats = {
 };
 
 function Adoptpage() {
+  const [open, setOpen] = useState(false);
+
   let auth_: any;
 
   auth_ = userAuth();
@@ -67,6 +71,10 @@ function Adoptpage() {
       });
   }, []);
 
+  const openDialog = () => {
+    setOpen(true);
+  };
+
   return (
     <>
       {auth?.dataEmail ? <LoginNavbar /> : <Navbar />}
@@ -80,11 +88,15 @@ function Adoptpage() {
             <div>
               Donated by <strong>{cat.seller_name}</strong>
             </div>
-            <Link to="">
-              <div className="mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white">
-                Request For Adoption
+            {auth.name == cat.seller_name ? null : (
+              <div onClick={openDialog}>
+                <div className="cursor-pointer content-center mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white">
+                  Request For Adoption
+                </div>
               </div>
-            </Link>
+            )}
+
+            <DialogBox open={open} setOpen={setOpen} />
           </div>
         ))}
       </div>
