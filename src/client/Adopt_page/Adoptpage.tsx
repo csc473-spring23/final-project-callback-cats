@@ -5,8 +5,8 @@ import LoginNavbar from "../Components/LogoutNavBar";
 import CatInfoCard from "../Components/CatInfoCard";
 import userAuth from "../Custom_hook/UserAuth";
 import Footer from "../Components/footer";
-import { Link } from "react-router-dom";
-import DialogBox from "../Components/DialogBox";
+import { Link, useNavigate } from "react-router-dom";
+import CatMessageDialogbox from "../Components/CatMessageDialogbox";
 
 type Cats = {
   age: number;
@@ -23,7 +23,11 @@ type Cats = {
 };
 
 function Adoptpage() {
+  const [catId, setCatId] = useState(0);
+
   const [open, setOpen] = useState(false);
+
+  const nav = useNavigate();
 
   let auth_: any;
 
@@ -89,17 +93,29 @@ function Adoptpage() {
               Donated by <strong>{cat.seller_name}</strong>
             </div>
             {auth.name == cat.seller_name ? null : (
-              <div onClick={openDialog}>
-                <div className="cursor-pointer content-center mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white">
-                  Request For Adoption
-                </div>
+              <div
+                onClick={() => {
+                  setOpen(true);
+                  setCatId(cat.id);
+                }}
+                className="cursor-pointer content-center mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white"
+              >
+                Request For Adoption
               </div>
             )}
-
-            <DialogBox open={open} setOpen={setOpen} />
           </div>
         ))}
       </div>
+      {open ? (
+        auth?.dataEmail ? (
+          <CatMessageDialogbox cat_id={catId} open={open} setOpen={setOpen} />
+        ) : (
+          <>
+            {alert("You need to login to request for Adoption")}
+            {nav("/login")}
+          </>
+        )
+      ) : null}
 
       {/* footer  */}
       <Footer />

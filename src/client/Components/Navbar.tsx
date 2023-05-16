@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./Navbar.css";
 function Navbar() {
   const [isToggle, setToggle] = useState(false);
+
+  const nav = useNavigate();
 
   function handleLinkClick() {
     setToggle(!isToggle);
@@ -58,9 +60,12 @@ function Navbar() {
         <div className="flex items-center gap-6">
           <button
             id="c-button"
-            className="bg-red-400 text-white px-5 py-2 rounded-full hover:bg-red-500"
+            onClick={() => {
+              nav("/login");
+            }}
+            className="border border-gray-400  text-black px-5 py-2  hover:bg-red-400 hover:border-red-400 hover:text-white rounded-full"
           >
-            <Link to={"/login"}>Sign In</Link>
+            Login
           </button>
           {!isToggle ? (
             <i

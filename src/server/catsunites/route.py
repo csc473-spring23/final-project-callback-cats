@@ -7,6 +7,7 @@ from flask_login import current_user, login_user, logout_user
 from catsunites import login_manager
 from catsunites.models import User, Cat, Adoption
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -14,15 +15,15 @@ def load_user(user_id):
 
 @app.route("/", methods=['GET'])
 def home():
-  return "<h1>Cats Unites</h1>"
+    return "<h1>Cats Unites</h1>"
 
 
 @app.route("/sign_up", methods=["POST"])
 def sign_up():
     if request.method == "POST":
         data = request.json
-        name = data["name"] 
-        username =  data["username"] 
+        name = data["name"]
+        username = data["username"]
         email = data["email"].lower()
         password = data["password"]
         hash_password = bcrypt.generate_password_hash(
@@ -110,7 +111,7 @@ def logout():
 
 @app.route("/upload_cat", methods=["POST"])
 def upload_cat():
-    
+
     if request.method == "POST":
         name = request.json["name"]
         img_url = request.json["img_url"]
@@ -120,13 +121,13 @@ def upload_cat():
         gender = request.json['gender']
         seller_id = request.json["seller_id"]
         new_cat = Cat(
-          name=name,
-          img_url=img_url,
-          age=age,
-          breed=breed,
-          gender=gender,
-          description=description,
-          seller_id=seller_id
+            name=name,
+            img_url=img_url,
+            age=age,
+            breed=breed,
+            gender=gender,
+            description=description,
+            seller_id=seller_id
         )
 
         db.session.add(new_cat)
@@ -191,7 +192,6 @@ def getAllCat():
         )
 
 
-
 @app.route("/adoption_request", methods=["POST"])
 def adoptionRequest():
     if request.method == "POST":
@@ -199,17 +199,22 @@ def adoptionRequest():
         buyer_id = request.json["buyer_id"]
         buyer_message = request.json["buyer_message"]
         contact_info = request.json["contact_info"]
+
         cat = Cat.query.filter_by(id=cat_id).first()
         adoption = Adoption(
-            cat = cat,
-            owner = cat.seller,
-            buyer_id = buyer_id,
-            buyer_message = buyer_message,
-            contact_info = contact_info,
+            cat_id=cat_id,
+            owner=cat.seller,
+            buyer_id=buyer_id,
+            buyer_message=buyer_message,
+            contact_info=contact_info,
         )
         db.session.add(adoption)
         db.session.commit()
-
+        return jsonify(
+            {"status": "ok",
+             "code": 200,
+             }
+        )
 
 
 @app.route("/adoption_confirm", methods=["POST"])
@@ -224,7 +229,7 @@ def adoptionConfirm():
         cat = Cat.query.filter_by(id=adoption.cat_id).first()
         db.session.delete(cat)
         db.session.commit()
-        return jsonify ({
+        return jsonify({
             "status": "ok",
             "code": 200,
         })
@@ -239,10 +244,11 @@ def adoptionReject():
         adoption.cat.is_available = True
         adoption.owner_message = message
         adoption.request_rejected = True
-        return jsonify ({
+        return jsonify({
             "status": "ok",
             "code": 200,
         })
+
 
 @app.route("/owner_adoption_view", methods=["GET"])
 def adoptionView():
@@ -257,22 +263,23 @@ def adoptionView():
             "buyer_message": adoption.buyer_message,
         }
         return jsonify(
-            {"status": "ok", 
+            {"status": "ok",
              "code": 200,
              "body": adoption_info
              }
         )
+
 
 @app.route("/buyer_adoption_confirm_view", methods=["GET"])
 def adoptionConfirmView():
     if request.method == "GET":
         user_id = request.json["user_id"]
         adoption = Adoption.query.filter_by(buyer_id=user_id).first()
-        
+
         confirm_info = {
-        "owner_name": adoption.owner.name,
-        "owner_email": adoption.owner.email,
-        "owner_message": adoption.owner_message, }
+            "owner_name": adoption.owner.name,
+            "owner_email": adoption.owner.email,
+            "owner_message": adoption.owner_message, }
         db.session.delete(adoption)
         db.session.commit()
         return jsonify({
@@ -292,7 +299,7 @@ def adoptionConfirmView():
 #             "owner_name": adoption.owner.name,
 #             "owner_email": adoption.owner.email,
 #             "owner_message": adoption.owner_message,
-            
+
 #         }
 #             db.session.delete(adoption)
 #             db.session.commit()
@@ -306,6 +313,6 @@ def adoptionConfirmView():
 #                 {
 #                     "status": "ok",
 #                     "code": 200,
-                    
+
 #                 }
 #             )
