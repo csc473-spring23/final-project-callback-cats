@@ -313,3 +313,43 @@ def adoptionConfirmView():
             )
 
 
+@app.route("/cancel_adopt_request", methods=["POST"])
+def cancelAdoptRequest():
+    if request.method == "POST":
+        adoption_id = request.json["adoption_id"]
+        adoption = Adoption.query.filter_by(id=adoption_id).first()
+        if adoption:
+            cat = Cat.query.filter_by(id=adoption.cat_id).first()
+            cat.is_available = True
+            db.session.delete(adoption)
+            db.session.commit()
+            return jsonify({
+                "status": "ok",
+                "code": 200,                
+            })
+        else:
+            return jsonify({
+                "status": "bad",
+                "code": 400,
+            })
+
+
+@app.route("/confirm_adopt_request", methods=["POST"])
+def confirmAdoptRequest():
+    if request.method == "POST":
+        adoption_id = request.json["adoption_id"]
+        adoption = Adoption.query.filter_by(id=adoption_id).first()
+        if adoption:
+            cat= Cat.query.filter_by(id=adoption.cat_id).fisrt()
+            db.session.delete(cat)
+            db.session.delete(adoption)
+            db.session.commit()
+            return jsonify({
+                "status": "ok",
+                "code": 200
+            })
+        else:
+            return jsonify({
+                "status": "bad",
+                "code": 400,
+            })
