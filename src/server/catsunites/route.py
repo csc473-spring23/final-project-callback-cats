@@ -292,6 +292,7 @@ def adoptionConfirmView():
             adoptions = Adoption.query.filter_by(buyer_id=user_id).all()
             for adoption in adoptions:
                 confirm_info = {
+                    "adoption_id": adoption.id,
                     "owner_name": adoption.owner.name,
                     "owner_email": adoption.owner.email,
                     "owner_message": adoption.owner_message, 
@@ -338,9 +339,12 @@ def cancelAdoptRequest():
 def confirmAdoptRequest():
     if request.method == "POST":
         adoption_id = request.json["adoption_id"]
+        print(adoption_id)
         adoption = Adoption.query.filter_by(id=adoption_id).first()
         if adoption:
-            cat= Cat.query.filter_by(id=adoption.cat_id).fisrt()
+            cat= Cat.query.filter_by(id=adoption.cat_id).first()
+            print(cat.name)
+            print(adoption.owner_message)
             db.session.delete(cat)
             db.session.delete(adoption)
             db.session.commit()
