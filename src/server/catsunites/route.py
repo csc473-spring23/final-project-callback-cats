@@ -255,16 +255,19 @@ def adoptionView():
     if request.method == "POST":
         user_id = request.json["user_id"]
         try:
-            adoption = Adoption.query.filter_by(owner_id=user_id).first()
-            print(adoption.buyer_id)
-            buyer = User.query.filter_by(id=adoption.buyer_id).first()
             adoption_info = []
-            adoption_info.append ({
-                "buyer_name": buyer.name,
-                "buyer_email": buyer.email,
-                "buyer_contact": adoption.contact_info,
-                "buyer_message": adoption.buyer_message,
-            })
+            adoptions = Adoption.query.filter_by(owner_id=user_id).all()
+            for adoption in adoptions:
+                buyer = User.query.filter_by(id=adoption.buyer_id).first()
+                buyer_info = {
+                    "adoption_id": adoption.id,
+                    "buyer_name": buyer.name,
+                    "buyer_email": buyer.email,
+                    "buyer_contact": adoption.contact_info,
+                    "buyer_message": adoption.buyer_message,
+                }
+                adoption_info.append(buyer_info)
+
             return jsonify(
                 {"status": "ok",
                 "code": 200,
