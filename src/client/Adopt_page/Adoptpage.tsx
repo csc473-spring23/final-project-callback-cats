@@ -23,6 +23,8 @@ type Cats = {
 };
 
 function Adoptpage() {
+  const [disableBtn, setDisableBtn] = useState(false);
+
   const [catId, setCatId] = useState(0);
 
   const [open, setOpen] = useState(false);
@@ -89,15 +91,21 @@ function Adoptpage() {
               Donated by <strong>{cat.seller_name}</strong>
             </div>
             {auth.name == cat.seller_name ? null : (
-              <div
+              <button
+                disabled={disableBtn}
                 onClick={() => {
                   setOpen(true);
                   setCatId(cat.id);
+                  setDisableBtn(true);
                 }}
-                className='cursor-pointer content-center mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white'
+                className={
+                  disableBtn
+                    ? 'cursor-pointer content-center mt-4 px-10 py-3 border-2 hover:border-grey-300 hover:bg-grey-300 rounded-md text-center hover:text-black'
+                    : 'cursor-pointer content-center mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white'
+                }
               >
                 Request For Adoption
-              </div>
+              </button>
             )}
           </div>
         ))}
