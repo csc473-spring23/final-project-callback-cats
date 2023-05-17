@@ -65,7 +65,7 @@ function Catfactspage() {
       {auth?.dataEmail ? <LoginNavbar /> : <Navbar />}
       <div className="text-center lg:w-[70%] w-[90%] mx-auto">
         <h1 className="big-heading text-[#394867]">Cat Facts</h1>
-        <h2 className="text-3xl mt-5">
+        <h2 className="small-heading mt-5 ">
           Read below about the different cat breeds and learn about which furry
           friend is right for you!
         </h2>

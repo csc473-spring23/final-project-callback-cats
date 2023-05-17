@@ -192,8 +192,8 @@ function MessagePage() {
                 key={buyer.adoption_id}
                 className={
                   buyer.buyer_message
-                    ? "p-4 flex-col border bg-white shadow-sm rounded-md"
-                    : "p-4 flex-col bg-transparent"
+                    ? "p-8 flex-col border py-12 bg-white shadow-sm rounded-md"
+                    : "p-5 flex-col bg-transparent"
                 }
               >
                 {buyer.buyer_message ? (
@@ -237,7 +237,7 @@ function MessagePage() {
                 key={index}
                 className={
                   owner.owner_message
-                    ? "p-4 flex-co bg-white shadow-sm rounded-md"
+                    ? "p-8 flex-co bg-white shadow-sm rounded-md py-12"
                     : "p-4 flex-col bg-transparent"
                 }
               >
