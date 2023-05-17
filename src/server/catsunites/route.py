@@ -23,6 +23,7 @@ def sign_up():
     if request.method == "POST":
         data = request.json
         name = data["name"]
+        name = name[0].upper()+name[1:]
         username = data["username"]
         email = data["email"].lower()
         password = data["password"]
@@ -114,6 +115,7 @@ def upload_cat():
 
     if request.method == "POST":
         name = request.json["name"]
+        name = name[0].upper() + name[1:]
         img_url = request.json["img_url"]
         age = request.json["age"]
         description = request.json['description']
