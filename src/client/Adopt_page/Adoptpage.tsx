@@ -23,8 +23,6 @@ type Cats = {
 };
 
 function Adoptpage() {
-  const [disableBtn, setDisableBtn] = useState(false);
-
   const [catId, setCatId] = useState(0);
 
   const [open, setOpen] = useState(false);
@@ -77,6 +75,37 @@ function Adoptpage() {
       });
   }, []);
 
+  const checkSendRequest = (cat_id: number) => {
+    const body = {
+      cat_id: cat_id,
+      buyer_id: auth.user_id,
+    };
+    return fetch('http://127.0.0.1:5000//check_send_request', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        if (data.code === 400) {
+          console.log(data);
+          setOpen(true);
+          console.log(open);
+        } else {
+          setOpen(false);
+          alert(data.body);
+        }
+      })
+      .catch((error) => {
+        console.log('error');
+      });
+  };
   return (
     <>
       {auth?.dataEmail ? <LoginNavbar /> : <Navbar />}
@@ -84,25 +113,19 @@ function Adoptpage() {
         <h1 className='big-heading'>Choose Your Favourite Cat</h1>
       </div>
       <div className=' lg:w-[70%] lg:mx-auto w-[90%] grid md:grid-cols-3 grid-cols-2 gap-4 mx-[5%] p-4'>
-        {cats.map((cat) => (
-          <div key={cat.id} className='shadow-md bg-white p-4 rounded-lg'>
+        {cats.map((cat, index) => (
+          <div key={index} className='shadow-md bg-white p-4 rounded-lg'>
             <CatInfoCard cat={cat} />
             <div>
               Donated by <strong>{cat.seller_name}</strong>
             </div>
             {auth.name == cat.seller_name ? null : (
               <button
-                disabled={disableBtn}
                 onClick={() => {
-                  setOpen(true);
                   setCatId(cat.id);
-                  setDisableBtn(true);
+                  checkSendRequest(cat.id);
                 }}
-                className={
-                  disableBtn
-                    ? 'cursor-pointer content-center mt-4 px-10 py-3 border-2 hover:border-grey-300 hover:bg-grey-300 rounded-md text-center hover:text-black'
-                    : 'cursor-pointer content-center mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white'
-                }
+                className='cursor-pointer content-center mt-4 px-10 py-3 border-2 hover:border-red-400 hover:bg-red-400 rounded-md text-center hover:text-white'
               >
                 Request For Adoption
               </button>

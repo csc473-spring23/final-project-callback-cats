@@ -357,3 +357,23 @@ def confirmAdoptRequest():
                 "status": "bad",
                 "code": 400,
             })
+        
+
+@app.route('/check_send_request', methods= ['POST'])
+
+def checkSendRequest ():
+    if request.method == 'POST':
+        cat_id = request.json['cat_id']
+        buyer_id = request.json['buyer_id']
+        adoption = Adoption.query.filter_by(cat_id = cat_id, buyer_id = buyer_id).first()
+        if adoption:
+            return jsonify({
+                "status": "ok",
+                "body": "You already sent request for adoption",
+                "code": 200
+            })
+        else:
+            return jsonify({
+                "status": "bad",
+                "code": 400
+            })
