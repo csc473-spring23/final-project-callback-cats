@@ -182,7 +182,7 @@ function MessagePage() {
       {" "}
       <LoginNavbar />
       <>
-        <div className="h-[600px]  p-4 mt-20">
+        <div className=" min-h-[600px]  p-4 mt-20">
           <div className="medium-heading text-center">
             Message Request for Adoptions
           </div>

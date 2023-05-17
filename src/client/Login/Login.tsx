@@ -6,7 +6,7 @@ import reminder from "../../../public/reminder.svg";
 import "./Login.css";
 import LoginPageNavBar from "../Components/LoginPageNavBar";
 import Footer from "../Components/footer";
-
+ 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
