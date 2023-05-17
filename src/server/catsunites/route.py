@@ -221,13 +221,13 @@ def adoptionRequest():
 def adoptionConfirm():
     if request.method == "POST":
         adoption_id = request.json["adoption_id"]
-        adoption = Adoption.query.filter_by(id=adoption_id)
-        adoption.cat.is_available = False
+        adoption = Adoption.query.filter_by(id=adoption_id).first()
+        cat = Cat.query.filter_by(id=adoption.cat_id).first()
+        cat.is_available = False
         owner_message = request.json["owner_message"]
         adoption.owner_message = owner_message
         adoption.request_accepted = True
-        cat = Cat.query.filter_by(id=adoption.cat_id).first()
-        db.session.delete(cat)
+        ##db.session.delete(cat)
         db.session.commit()
         return jsonify({
             "status": "ok",
@@ -239,10 +239,10 @@ def adoptionConfirm():
 def adoptionReject():
     if request.method == "POST":
         adoption_id = request.json["adoption_id"]
-        message = request.json["message"]
+        owner_message = request.json["owner_message"]
         adoption = Adoption.query.filter_by(id=adoption_id).first()
-        adoption.cat.is_available = True
-        adoption.owner_message = message
+        cat = Cat.query.filter_by(id=adoption.cat_id).first()
+        adoption.owner_message = owner_message
         adoption.request_rejected = True
         return jsonify({
             "status": "ok",
@@ -287,45 +287,29 @@ def adoptionView():
 def adoptionConfirmView():
     if request.method == "POST":
         user_id = request.json["user_id"]
-        adoption = Adoption.query.filter_by(buyer_id=user_id).first()
+        try:
+            message_list=[]
+            adoptions = Adoption.query.filter_by(buyer_id=user_id).all()
+            for adoption in adoptions:
+                confirm_info = {
+                    "owner_name": adoption.owner.name,
+                    "owner_email": adoption.owner.email,
+                    "owner_message": adoption.owner_message, 
+                }
+                message_list.append(confirm_info)
+                #db.session.delete(adoption)
+                #db.session.commit()
+            return jsonify({
+                "status": "ok",
+                "code": 200,
+                "body": message_list
+            })
+        except Exception as e:
+            return jsonify(
+                {"status": "ok",
+                "code": 400,
+                "body": "There are no messages"
+                }
+            )
 
-        confirm_info = {
-            "owner_name": adoption.owner.name,
-            "owner_email": adoption.owner.email,
-            "owner_message": adoption.owner_message, }
-        db.session.delete(adoption)
-        db.session.commit()
-        return jsonify({
-            "status": "ok",
-            "code": 200,
-            "body": confirm_info
-        })
 
-
-# @app.route("/buyer_adopttion_reject_view", methods=["GET"])
-# def adoptionRejectView():
-#     if request.method == "GET":
-#         user_id = request.json["user_id"]
-#         adoption = Adoption.query.filter_by(buyer_id=user_id).first()
-#         if adoption.request_rejected:
-#             reject_info = {
-#             "owner_name": adoption.owner.name,
-#             "owner_email": adoption.owner.email,
-#             "owner_message": adoption.owner_message,
-
-#         }
-#             db.session.delete(adoption)
-#             db.session.commit()
-#             return jsonify({
-#                 "status": "ok",
-#                 "code": 200,
-#                 "body": reject_info
-#             })
-#         else:
-#             return jsonify(
-#                 {
-#                     "status": "ok",
-#                     "code": 200,
-
-#                 }
-#             )
