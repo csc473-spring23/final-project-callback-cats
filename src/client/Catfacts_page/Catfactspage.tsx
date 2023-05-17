@@ -75,37 +75,45 @@ function Catfactspage() {
         {breeds.map((breed) => (
           <div
             key={breed.id}
-            className="breed-container border-b-4 border-black py-3"
+            className="breed-container border-b-4 lg:w-[70%] mx-auto border-black py-3"
           >
-            <img
-              className="rounded-lg shadow-md w-[250px] h-[250px] object-cover object-center"
-              src={breed.image}
-              alt={breed.name}
-            />
-            <div className="breed-info text-xl my-3">
-              <h2>{breed.name}</h2>
-              <p className="font-[Poppins]">
-                <strong className="font-[Merriweather]">Origin:</strong>{" "}
-                {breed.origin}
-              </p>
-              <p className="font-[Poppins]">
-                <strong className="font-[Merriweather]">Life Span:</strong>{" "}
-                {breed.life_span}
-              </p>
-              <p className="font-[Poppins]">
-                <strong className="font-[Merriweather]">Energy Level:</strong>{" "}
-                {breed.energy_level}
-              </p>
-              <p className="font-[Poppins]">
-                <strong className="font-[Merriweather]">
-                  Affection Level:
-                </strong>{" "}
-                {breed.affection_level}
-              </p>
-              <p className="font-[Poppins]">
-                <strong className="font-[Merriweather]">Fact:</strong>{" "}
-                {breed.description}
-              </p>
+            <div className="grid grid-cols-1  ">
+              <div className="">
+                <img
+                  className="rounded-lg shadow-md w-[250px] h-[250px] object-cover object-center"
+                  src={breed.image}
+                  alt={breed.name}
+                />
+              </div>
+              <div>
+                <div className="breed-info text-xl my-3">
+                  <h2>{breed.name}</h2>
+                  <p className="font-[Poppins]">
+                    <strong className="font-[Merriweather]">Origin:</strong>{" "}
+                    {breed.origin}
+                  </p>
+                  <p className="font-[Poppins]">
+                    <strong className="font-[Merriweather]">Life Span:</strong>{" "}
+                    {breed.life_span}
+                  </p>
+                  <p className="font-[Poppins]">
+                    <strong className="font-[Merriweather]">
+                      Energy Level:
+                    </strong>{" "}
+                    {breed.energy_level}
+                  </p>
+                  <p className="font-[Poppins]">
+                    <strong className="font-[Merriweather]">
+                      Affection Level:
+                    </strong>{" "}
+                    {breed.affection_level}
+                  </p>
+                  <p className="font-[Poppins]">
+                    <strong className="font-[Merriweather]">Fact:</strong>{" "}
+                    {breed.description}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         ))}
