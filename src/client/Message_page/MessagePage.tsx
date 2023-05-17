@@ -183,7 +183,7 @@ function MessagePage() {
       <LoginNavbar />
       <>
         <div className=" min-h-[600px]  p-4 mt-20">
-          <div className="medium-heading text-center">
+          <div className="medium-heading text-center text-gray-400 ">
             Message Request for Adoptions
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4  lg:mx-auto py-4">
@@ -228,7 +228,7 @@ function MessagePage() {
           </div>
         </div>
         <div className="h-full p-4 m-[20px]">
-          <div className="text-center medium-heading">
+          <div className="text-center medium-heading text-gray-400 ">
             Message Response from Owners
           </div>
           <div className="grid md:grid-cols-3 grid-cols-2 gap-4  lg:mx-auto py-4">
