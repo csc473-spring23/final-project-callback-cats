@@ -6,7 +6,8 @@ import userAuth from "../Custom_hook/UserAuth";
 import Errorpage from "../Error_page/Errorpage";
 import "./Donatepage.css";
 import Login from "../Login/Login";
-
+import donateImg from "../../../public/undraw_gifts.svg";
+import Footer from "../Components/footer";
 function Donatepage() {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
@@ -70,140 +71,145 @@ function Donatepage() {
           {alert("You can not access this page without logging in")} <Login />
         </>
       )}
-      <div className="sellTitle">
-        <h1 className="text-6xl">
-          Donate Your{" "}
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT32OiDDnK2CFHGPu1L3G00Y_ErAXeSwBbajQ&usqp=CAU"
-            alt="cat"
-          />{" "}
-          Here!
-        </h1>
+      <div className="lg:mt-[100px] mt-8 text-center">
+        <h1 className="big-heading text-[#394867]">Donate Your Cat Here!</h1>
       </div>
-      <div className="main">
-        <div className="sellBody">
-          <div className="sellBodyTitle">Enter Your Cat Info</div>
-          <div className="midBody">
-            <form>
-              <div className="bodyContent">
-                <label htmlFor="name"> Name: </label>
-                <div className="textfield">
-                  <input
-                    type="text"
-                    value={name}
-                    id="name"
-                    placeholder="Enter Your Cat's Name"
-                    className="catName"
-                    onChange={(e) => {
-                      setName(e.target.value);
-                    }}
-                  ></input>
-                </div>
-              </div>
+      <div className="grid lg:grid-cols-2 grid-cols-1 md:my-[100px] mx-4 lg:w-[95%] ">
+        {/* left container */}
+        <div className="mx-auto flex flex-col justify-around ">
+          <img className="mx-auto" src={donateImg} alt="cat" />
+        </div>
+        {/* right container */}
+        <div className=" shadow-md p-10 lg:mt-0 mt-5 bg-white rounded-md   mx-auto">
+          <div>
+            <div>
+              <form>
+                <div className="grid lg:grid-cols-2 grid-cols-1 gap-2">
+                  {/* left cols */}
+                  <div>
+                    <div>
+                      <label htmlFor="name"> Name: </label>
+                      <div className="">
+                        <input
+                          type="text"
+                          value={name}
+                          id="name"
+                          placeholder="Enter Your Cat's Name"
+                          className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear "
+                          onChange={(e) => {
+                            setName(e.target.value);
+                          }}
+                        ></input>
+                      </div>
+                    </div>
 
-              <div className="bodyContent">
-                <label htmlFor="age"> Age: </label>
-                <div className="textfield">
-                  <input
-                    type="number"
-                    value={age}
-                    id="age"
-                    placeholder="Enter Your Cat's Age"
-                    className="catAge"
-                    onChange={(e) => {
-                      setAge(e.target.valueAsNumber);
-                    }}
-                  ></input>
-                </div>
-              </div>
+                    <div>
+                      <label htmlFor="age"> Age: </label>
+                      <div className="">
+                        <input
+                          type="number"
+                          value={age}
+                          id="age"
+                          placeholder="Enter Your Cat's Age"
+                          className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear "
+                          onChange={(e) => {
+                            setAge(e.target.valueAsNumber);
+                          }}
+                        ></input>
+                      </div>
+                    </div>
 
-              <div className="bodyContent">
-                <label htmlFor="description"> Description: </label>
-                <div className="textfield">
-                  <input
-                    type="text"
-                    value={description}
-                    id="description"
-                    className="catDescrip"
-                    placeholder="Write something about your cat..."
-                    onChange={(e) => {
-                      setDescription(e.target.value);
-                    }}
-                  ></input>
-                </div>
-              </div>
-              <div className="bodyContent">
-                <label htmlFor="breed"> Breed: </label>
-                <div className="textfield">
-                  <input
-                    type="text"
-                    value={breed}
-                    id="breed"
-                    placeholder="Enter Your Cat's Breed"
-                    className="catBreed"
-                    onChange={(e) => {
-                      setBreed(e.target.value);
-                    }}
-                  ></input>
-                </div>
-              </div>
+                    <div>
+                      <label htmlFor="description"> Description: </label>
+                      <div className="">
+                        <input
+                          type="text"
+                          value={description}
+                          id="description"
+                          className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear "
+                          placeholder="Write something about your cat..."
+                          onChange={(e) => {
+                            setDescription(e.target.value);
+                          }}
+                        ></input>
+                      </div>
+                    </div>
+                    <div>
+                      <label htmlFor="breed"> Breed: </label>
+                      <div className="">
+                        <input
+                          type="text"
+                          value={breed}
+                          id="breed"
+                          placeholder="Enter Your Cat's Breed"
+                          className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear "
+                          onChange={(e) => {
+                            setBreed(e.target.value);
+                          }}
+                        ></input>
+                      </div>
+                    </div>
 
-              <div className="bodyContent">
-                <label htmlFor="gender"> Gender: </label>
-                <div className="textfield">
-                  <input
-                    type="text"
-                    value={gender}
-                    id="gender"
-                    placeholder="Enter Your Cat's Gender"
-                    className="catGender"
-                    onChange={(e) => {
-                      setGender(e.target.value);
-                    }}
-                  ></input>
-                </div>
-              </div>
-
-              <div className="uploadImage">
-                <div className="uploadTitle">Upload Your Cat's Image</div>
-                <div className="catImage">
-                  <img
-                    // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2h0Vk15Cz4w6aXzhSKxW3tcPJU6fiFHUaw&usqp=CAU"
-                    src="https://64.media.tumblr.com/93cc22ccda31679f83bb81dbe4a1bff8/0767393739a2484f-a9/s540x810/a1a2116a0479ecf9517de58e858ab33f5199d512.pnj"
-                    alt="caticons"
-                    className="caticons"
-                  />
-                </div>
-
-                <div className="bodyContentUpload">
-                  <label htmlFor="img_url">Image Url:</label>
-                  <div className="textfield">
-                    <input
-                      type="url"
-                      value={img_url}
-                      id="img_url"
-                      className="catImg"
-                      onChange={(e) => {
-                        setImg_url(e.target.value);
-                      }}
-                    ></input>
+                    <div>
+                      <label htmlFor="gender"> Gender: </label>
+                      <div className="">
+                        <input
+                          type="text"
+                          value={gender}
+                          id="gender"
+                          placeholder="Enter Your Cat's Gender"
+                          className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear "
+                          onChange={(e) => {
+                            setGender(e.target.value);
+                          }}
+                        ></input>
+                      </div>
+                    </div>
+                  </div>
+                  {/* right cols */}
+                  <div className="flex flex-col justify-between">
+                    <div className="text-center small-heading">
+                      Upload Your Cat's Image
+                    </div>
+                    <div className="">
+                      <img
+                        // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2h0Vk15Cz4w6aXzhSKxW3tcPJU6fiFHUaw&usqp=CAU"
+                        src="https://64.media.tumblr.com/93cc22ccda31679f83bb81dbe4a1bff8/0767393739a2484f-a9/s540x810/a1a2116a0479ecf9517de58e858ab33f5199d512.pnj"
+                        alt="caticons"
+                        className="w-[200px] rounded-full m-4 mx-auto"
+                      />
+                    </div>
+                    <div className="">
+                      <label htmlFor="img_url">Image Url:</label>
+                      <div className="">
+                        <input
+                          type="url"
+                          value={img_url}
+                          id="img_url"
+                          className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear "
+                          onChange={(e) => {
+                            setImg_url(e.target.value);
+                          }}
+                        ></input>
+                      </div>
+                    </div>
+                    <div className="mt-4">
+                      <button
+                        type="button"
+                        className="block w-[60%] mx-auto rounded bg-red-300 py-5 text-white hover:bg-red-400 shadow-md"
+                        onClick={handleSubmit}
+                      >
+                        Submit
+                      </button>
+                    </div>
                   </div>
                 </div>
-
-                <div className="sellBtn">
-                  <button
-                    type="button"
-                    className="button-20"
-                    onClick={handleSubmit}
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
