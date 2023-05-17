@@ -1,13 +1,13 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import "./Userinfo.css";
-import LoginNavbar from "../Components/LogoutNavBar";
-import Login from "../Login/Login";
-import React, { useState, useEffect } from "react";
-import CatInfoCard from "../Components/CatInfoCard";
-import userAuth from "../Custom_hook/UserAuth";
-import Footer from "../Components/footer";
-import { Navbar } from "react-bootstrap";
-import Donatepage from "../Donate_page/Donatepage";
+import { useLocation, useNavigate } from 'react-router-dom';
+import './Userinfo.css';
+import LoginNavbar from '../Components/LogoutNavBar';
+import Login from '../Login/Login';
+import React, { useState, useEffect } from 'react';
+import CatInfoCard from '../Components/CatInfoCard';
+import userAuth from '../Custom_hook/UserAuth';
+import Footer from '../Components/footer';
+import { Navbar } from 'react-bootstrap';
+import Donatepage from '../Donate_page/Donatepage';
 
 type Cats = {
   age: number;
@@ -40,10 +40,10 @@ function UserInfo() {
   const [cats, setCats] = useState<Cats[]>([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/all_cats", {
-      method: "GET",
+    fetch('http://127.0.0.1:5000/all_cats', {
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     })
       .then((res) => {
@@ -52,9 +52,8 @@ function UserInfo() {
         }
       })
       .then((data) => {
-        console.log("useEffect is working");
         if (data.code === 400) {
-          alert("Not cat found");
+          alert('Not cat found');
         } else {
           console.log(data.body);
           const catData = data.body.map((cat: any) => ({
@@ -74,14 +73,14 @@ function UserInfo() {
         }
       })
       .catch((error) => {
-        console.log("error");
+        console.log('error');
       });
   }, [dataCode]);
 
   const filterCats = cats.filter((cat) => cat.seller_id === user_id);
 
   const handleSubmit = () => {
-    nav("/donate");
+    nav('/donate');
     //setOpen(true);
   };
 
@@ -89,10 +88,10 @@ function UserInfo() {
     const catData = {
       id: id,
     };
-    return fetch("http://127.0.0.1:5000/delete_cat_info", {
-      method: "POST",
+    return fetch('http://127.0.0.1:5000/delete_cat_info', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(catData),
     })
@@ -106,48 +105,41 @@ function UserInfo() {
         setDataCode(data.code);
       })
       .catch((error) => {
-        console.log("error");
+        console.log('error');
       });
   };
 
-  return (
+  return auth?.dataEmail ? (
     <>
-      {auth?.dataEmail ? (
-        <LoginNavbar />
-      ) : (
-        <>
-          {alert("You can not access this page without logging in")} <Login />
-        </>
-      )}
-
-      <div className="mt-[100px] lg:mx-auto lg:w-[70%] mx-[5%] w-[90%]">
-        <div className=" mt-10 small-heading">
+      <LoginNavbar />
+      <div className='mt-[100px] lg:mx-auto lg:w-[70%] mx-[5%] w-[90%]'>
+        <div className=' mt-10 small-heading'>
           Welcome, <strong>{name}</strong>
         </div>
-        <div className="  small-heading">
+        <div className='  small-heading'>
           <strong>Username:</strong> {username}
         </div>
-        <div className="  small-heading">
+        <div className='  small-heading'>
           <strong>Email:</strong> {dataEmail}
         </div>
-        <h6 className="mt-20 small-title">My Cats</h6>
-        <div className="upload-btn-container ">
+        <h6 className='mt-20 small-title'>My Cats</h6>
+        <div className='upload-btn-container '>
           <button
             onClick={handleSubmit}
-            className="px-20 py-3 border round-md mb-5 hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white"
+            className='px-20 py-3 border round-md mb-5 hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white'
           >
-            Upload <i className="fa-sharp fa-solid fa-plus"></i>
+            Upload <i className='fa-sharp fa-solid fa-plus'></i>
           </button>
         </div>
 
         {/* rending all user cats */}
 
-        <div className="  grid md:grid-cols-3 grid-cols-2 gap-4  lg:mx-auto py-4">
+        <div className='  grid md:grid-cols-3 grid-cols-2 gap-4  lg:mx-auto py-4'>
           {filterCats.map((cat) => (
-            <div key={cat.id} className="shadow-md bg-white p-4 rounded-lg">
-              <div className="delete-icon-container">
+            <div key={cat.id} className='shadow-md bg-white p-4 rounded-lg'>
+              <div className='delete-icon-container'>
                 <i
-                  className="fa-solid fa-xmark text-gray-300 hover:text-red-500 cursor-pointer text-[30px] mb-3"
+                  className='fa-solid fa-xmark text-gray-300 hover:text-red-500 cursor-pointer text-[30px] mb-3'
                   onClick={() => {
                     //console.log(cat.id);
                     deleteCat(cat.id);
@@ -161,6 +153,11 @@ function UserInfo() {
       </div>
       {/* footer */}
       <Footer />
+    </>
+  ) : (
+    <>
+      {alert('You can not access this page without logging in')}
+      {nav('/login')}
     </>
   );
 }

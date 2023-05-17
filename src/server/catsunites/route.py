@@ -250,29 +250,39 @@ def adoptionReject():
         })
 
 
-@app.route("/owner_adoption_view", methods=["GET"])
+@app.route("/owner_adoption_view/", methods=["POST"])
 def adoptionView():
-    if request.method == "GET":
+    if request.method == "POST":
         user_id = request.json["user_id"]
-        adoption = Adoption.query.filter_by(owner_id=user_id).first()
-        buyer = User.query.filter_by(id=adoption.buyer_id).first()
-        adoption_info = {
-            "buyer_name": buyer.name,
-            "buyer_email": buyer.email,
-            "buyer_contact": adoption.contact_info,
-            "buyer_message": adoption.buyer_message,
-        }
-        return jsonify(
-            {"status": "ok",
-             "code": 200,
-             "body": adoption_info
-             }
-        )
+        try:
+            adoption = Adoption.query.filter_by(owner_id=user_id).first()
+            print(adoption.buyer_id)
+            buyer = User.query.filter_by(id=adoption.buyer_id).first()
+            adoption_info = []
+            adoption_info.append ({
+                "buyer_name": buyer.name,
+                "buyer_email": buyer.email,
+                "buyer_contact": adoption.contact_info,
+                "buyer_message": adoption.buyer_message,
+            })
+            return jsonify(
+                {"status": "ok",
+                "code": 200,
+                "body": adoption_info[::-1]
+                }
+            )
+        except Exception as e:
+            return jsonify(
+                {"status": "ok",
+                "code": 400,
+                "body": "There are no new request"
+                }
+            )
 
 
-@app.route("/buyer_adoption_confirm_view", methods=["GET"])
+@app.route("/buyer_adoption_confirm_view/", methods=["POST"])
 def adoptionConfirmView():
-    if request.method == "GET":
+    if request.method == "POST":
         user_id = request.json["user_id"]
         adoption = Adoption.query.filter_by(buyer_id=user_id).first()
 
