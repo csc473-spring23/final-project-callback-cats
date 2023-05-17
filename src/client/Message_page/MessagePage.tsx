@@ -89,7 +89,7 @@ function MessagePage() {
                     Request sent by <strong>{buyer.buyer_name}</strong>
                   </div>
                   <div>
-                    <strong>Adoption Id:</strong> {buyer.adoption_id}
+                    <strong>Adoption ID:</strong> {buyer.adoption_id}
                   </div>
                   <div>
                     <strong>Message:</strong> {buyer.buyer_message}
@@ -99,24 +99,23 @@ function MessagePage() {
                   </div>
                 </div>
                 <button
-                  className='px-20 py-3 border round-md mb-5 hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white'
+                  className='text-center px-20 py-3 border round-md hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white'
                   onClick={() => {
                     setOpen(true);
                     setAdoptionId(buyer.adoption_id);
                   }}
                 >
-                  Accept
-                </button>
-                <button className='px-20 py-3 border round-md mb-5 hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white'>
-                  Reject
+                  Accept / Reject
                 </button>
               </div>
             ))}
           </div>
         </div>
-        <div>
-          <div>Message Response from Owners</div>
-          <div></div>
+        <div className='h-full bg-pink-300 p-4 m-[20px]'>
+          <div className='text-center p-2 text-5xl'>
+            Message Response from Owners
+          </div>
+          <div className='grid md:grid-cols-3 grid-cols-2 gap-4  lg:mx-auto py-4 h-[500px]'></div>
         </div>
       </>
       {open ? (

@@ -19,7 +19,7 @@ function CatAcceptDialog(props: any) {
   const { adoptionId, open, setOpen } = props;
   const [message, setMessage] = useState('');
 
-  const requestAdoption = () => {
+  const confirmRequestAdoption = () => {
     setOpen(false);
 
     const body = {
@@ -56,13 +56,15 @@ function CatAcceptDialog(props: any) {
   return (
     <div>
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Write A Reasoning for Accepting the Request</DialogTitle>
+        <DialogTitle>
+          Write a Reasoning for Accepting/Rejecting the Request
+        </DialogTitle>
         <DialogContent>
           <input
             type='text'
             id='message'
             className='w-[550px] h-[100px] p-4 text-justify'
-            placeholder='Explain your reasoning to accept the request.....'
+            placeholder='Explain your reasoning to accept or reject the request.....'
             value={message}
             onChange={(e) => {
               setMessage(e.target.value);
@@ -70,7 +72,8 @@ function CatAcceptDialog(props: any) {
           ></input>
         </DialogContent>
         <DialogActions>
-          <Button onClick={requestAdoption}>Send</Button>
+          <Button onClick={confirmRequestAdoption}>Accept</Button>
+          <Button onClick={confirmRequestAdoption}>Reject</Button>
           <Button onClick={() => setOpen(false)}>Cancel</Button>
         </DialogActions>
       </Dialog>
