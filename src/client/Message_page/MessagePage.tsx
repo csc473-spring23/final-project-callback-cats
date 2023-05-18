@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import userAuth from "../Custom_hook/UserAuth";
-import CatAcceptDialog from "../Components/CatAcceptDialog";
-import LoginNavbar from "../Components/LogoutNavBar";
-import Footer from "../Components/footer";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import userAuth from '../Custom_hook/UserAuth';
+import CatAcceptDialog from '../Components/CatAcceptDialog';
+import LoginNavbar from '../Components/LogoutNavBar';
+import Footer from '../Components/footer';
 
 type BuyerInfo = {
   adoption_id: number;
@@ -18,6 +18,8 @@ type Messages = {
   owner_name: string;
   owner_email: string;
   owner_message: string;
+  owner_accept: any;
+  owner_reject: any;
 };
 
 function MessagePage() {
@@ -41,10 +43,10 @@ function MessagePage() {
       const body = {
         user_id: auth.user_id,
       };
-      fetch("http://127.0.0.1:5000/owner_adoption_view/", {
-        method: "POST",
+      fetch('http://127.0.0.1:5000/owner_adoption_view/', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
       })
@@ -72,8 +74,8 @@ function MessagePage() {
           console.log(err);
         });
     } else {
-      alert("You need to Login to access this page");
-      nav("/login");
+      alert('You need to Login to access this page');
+      nav('/login');
     }
   }, []);
 
@@ -82,10 +84,10 @@ function MessagePage() {
       const body = {
         user_id: auth.user_id,
       };
-      fetch("http://127.0.0.1:5000/buyer_adoption_confirm_view/", {
-        method: "POST",
+      fetch('http://127.0.0.1:5000/buyer_adoption_confirm_view/', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
       })
@@ -104,16 +106,19 @@ function MessagePage() {
               owner_name: message.owner_name,
               owner_email: message.owner_email,
               owner_message: message.owner_message,
+              owner_accept: message.owner_accept,
+              owner_reject: message.owner_reject,
             }));
             setOwnerMessage(bodyData);
+            console.log(bodyData);
           }
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      alert("You need to Login to access this page");
-      nav("/login");
+      alert('You need to Login to access this page');
+      nav('/login');
     }
   }, []);
 
@@ -121,10 +126,10 @@ function MessagePage() {
     const body = {
       adoption_id: adoption_id,
     };
-    return fetch("http://127.0.0.1:5000/confirm_adopt_request", {
-      method: "POST",
+    return fetch('http://127.0.0.1:5000/confirm_adopt_request', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
     })
@@ -138,8 +143,8 @@ function MessagePage() {
           console.log(data);
         } else {
           console.log(data);
-          alert("Congrats on getting the cat");
-          nav("/adopt");
+          alert('Congrats on getting the cat');
+          nav('/adopt');
         }
       })
       .catch((err) => {
@@ -151,10 +156,10 @@ function MessagePage() {
     const body = {
       adoption_id: adoption_id,
     };
-    return fetch("http://127.0.0.1:5000/cancel_adopt_request", {
-      method: "POST",
+    return fetch('http://127.0.0.1:5000/cancel_adopt_request', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
     })
@@ -168,8 +173,8 @@ function MessagePage() {
           console.log(data);
         } else {
           console.log(data);
-          alert("We have cancelled your Request");
-          nav("/adopt");
+          alert('We have cancelled your Request');
+          nav('/adopt');
         }
       })
       .catch((err) => {
@@ -179,25 +184,25 @@ function MessagePage() {
 
   return auth?.dataEmail ? (
     <>
-      {" "}
+      {' '}
       <LoginNavbar />
       <>
-        <div className=" min-h-[600px]  p-4 mt-20">
-          <div className="medium-heading text-center text-gray-400 ">
+        <div className=' min-h-[600px]  p-4 mt-20'>
+          <div className='medium-heading text-center'>
             Message Request for Adoptions
           </div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4  lg:mx-auto py-4">
+          <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4  lg:mx-auto py-4'>
             {buyers.map((buyer) => (
               <div
                 key={buyer.adoption_id}
                 className={
                   buyer.buyer_message
-                    ? "p-8 flex-col border py-12 bg-white shadow-sm rounded-md"
-                    : "p-5 flex-col bg-transparent"
+                    ? 'p-8 flex-col border py-12 bg-white shadow-sm rounded-md'
+                    : 'p-5 flex-col bg-transparent'
                 }
               >
                 {buyer.buyer_message ? (
-                  <div className="my-4">
+                  <div className='my-4'>
                     <div>
                       Request sent by <strong>{buyer.buyer_name}</strong>
                     </div>
@@ -215,7 +220,7 @@ function MessagePage() {
                   <div></div>
                 )}
                 <button
-                  className="text-center  w-full py-3 border round-md hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white"
+                  className='text-center  w-full py-3 border round-md hover:bg-red-400 shadow-md border-gray-400 hover:border-red-400 hover:text-white'
                   onClick={() => {
                     setOpen(true);
                     setAdoptionId(buyer.adoption_id);
@@ -227,22 +232,22 @@ function MessagePage() {
             ))}
           </div>
         </div>
-        <div className="h-full p-4 m-[20px]">
-          <div className="text-center medium-heading text-gray-400 ">
+        <div className='h-full p-4 m-[20px]'>
+          <div className='text-center medium-heading'>
             Message Response from Owners
           </div>
-          <div className="grid md:grid-cols-3 grid-cols-2 gap-4  lg:mx-auto py-4">
+          <div className='grid md:grid-cols-3 grid-cols-2 gap-4  lg:mx-auto py-4'>
             {ownerMessage.map((owner, index) => (
               <div
                 key={index}
                 className={
                   owner.owner_message
-                    ? "p-8 flex-co bg-white shadow-sm rounded-md py-12"
-                    : "p-4 flex-col bg-transparent"
+                    ? 'p-8 flex-co bg-white shadow-sm rounded-md py-12'
+                    : 'p-4 flex-col bg-transparent'
                 }
               >
                 {owner.owner_message ? (
-                  <div className="my-4">
+                  <div className='my-4'>
                     <div>
                       Message sent by <strong>{owner.owner_name}</strong>
                     </div>
@@ -252,28 +257,42 @@ function MessagePage() {
                     <div>
                       <strong>Email:</strong> {owner.owner_email}
                     </div>
-                    <div className="grid grid-cols-2 gap-3 pt-2">
-                      <button
-                        className="py-2 bg-red-300"
-                        onClick={() => {
-                          cancel(owner.adoption_id);
-                        }}
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        className="py-2 bg-green-300"
-                        onClick={() => {
-                          console.log(owner.adoption_id);
-                          confirm(owner.adoption_id);
-                        }}
-                      >
-                        Confirm
-                      </button>
-                    </div>
+                    {owner.owner_reject ? (
+                      <>
+                        {console.log(owner.owner_reject)}
+                        <button
+                          className='py-2 bg-red-300 hover:bg-red-400 w-full text-center mt-3 py-3'
+                          onClick={() => {
+                            cancel(owner.adoption_id);
+                          }}
+                        >
+                          Remove
+                        </button>
+                      </>
+                    ) : (
+                      <div className='grid grid-cols-2 gap-3 pt-2'>
+                        <button
+                          className='py-2 bg-red-300 hover:bg-red-400'
+                          onClick={() => {
+                            cancel(owner.adoption_id);
+                          }}
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          className='py-2 bg-green-300 hover:bg-green-400'
+                          onClick={() => {
+                            console.log(owner.adoption_id);
+                            confirm(owner.adoption_id);
+                          }}
+                        >
+                          Confirm
+                        </button>
+                      </div>
+                    )}
                   </div>
                 ) : (
-                  <div className="bg-transparent"></div>
+                  <div className='bg-transparent'></div>
                 )}
               </div>
             ))}
@@ -292,8 +311,8 @@ function MessagePage() {
     </>
   ) : (
     <>
-      {alert("You can not access this page without logging in")}
-      {nav("/login")}
+      {alert('You can not access this page without logging in')}
+      {nav('/login')}
     </>
   );
 }

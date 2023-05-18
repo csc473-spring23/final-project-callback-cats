@@ -246,6 +246,7 @@ def adoptionReject():
         cat = Cat.query.filter_by(id=adoption.cat_id).first()
         adoption.owner_message = owner_message
         adoption.request_rejected = True
+        db.session.commit()
         return jsonify({
             "status": "ok",
             "code": 200,
@@ -266,7 +267,7 @@ def adoptionView():
                     "buyer_name": buyer.name,
                     "buyer_email": buyer.email,
                     "buyer_contact": adoption.contact_info,
-                    "buyer_message": adoption.buyer_message,
+                    "buyer_message": adoption.buyer_message
                 }
                 adoption_info.append(buyer_info)
 
@@ -297,7 +298,9 @@ def adoptionConfirmView():
                     "adoption_id": adoption.id,
                     "owner_name": adoption.owner.name,
                     "owner_email": adoption.owner.email,
-                    "owner_message": adoption.owner_message, 
+                    "owner_message": adoption.owner_message,
+                    "owner_accept": adoption.request_accepted,
+                    "owner_reject": adoption.request_rejected 
                 }
                 message_list.append(confirm_info)
                 #db.session.delete(adoption)
