@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import userAuth from "../Custom_hook/UserAuth";
-import reminder from "../../../public/reminder.svg";
-import "./Login.css";
-import LoginPageNavBar from "../Components/LoginPageNavBar";
-import Footer from "../Components/footer";
- 
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import userAuth from '../Custom_hook/UserAuth';
+import reminder from '../../../public/reminder.svg';
+import './Login.css';
+import LoginPageNavBar from '../Components/LoginPageNavBar';
+import Footer from '../Components/footer';
+
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   let user_id: number;
   let name: string;
@@ -38,7 +38,7 @@ function Login() {
 
     // Update the error message
     setEmailError(
-      isValid ? "" : "Email must be in the format example@example.com."
+      isValid ? '' : 'Email must be in the format example@example.com.'
     );
   };
 
@@ -53,8 +53,8 @@ function Login() {
     // Update the error message
     setPasswordError(
       isValid
-        ? ""
-        : "Password must contain at least 8 characters, one number, and one uppercase letter."
+        ? ''
+        : 'Password must contain at least 8 characters, one number, and one uppercase letter.'
     );
   };
 
@@ -62,15 +62,15 @@ function Login() {
     event.preventDefault();
 
     // Submit the form if the email is valid
-    if (emailError === "") {
+    if (emailError === '') {
       // Do something with the email
-      console.log("Email:", email);
+      console.log('Email:', email);
     }
 
     // Submit the form if the password is valid
-    if (passwordError === "") {
+    if (passwordError === '') {
       // Do something with the password
-      console.log("Password:", password);
+      console.log('Password:', password);
     }
 
     const data = {
@@ -79,10 +79,10 @@ function Login() {
     };
 
     console.log(email, password);
-    return fetch("http://127.0.0.1:5000/login", {
-      method: "POST",
+    return fetch('http://127.0.0.1:5000/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
@@ -94,7 +94,7 @@ function Login() {
       .then((data) => {
         console.log(data);
         if (data.code === 400) {
-          alert("password or email not found");
+          alert('password or email not found');
         } else {
           user_id = data.user_id;
           name = data.name;
@@ -110,82 +110,77 @@ function Login() {
             username,
             user_id,
           });
-          setEmail("");
-          setPassword("");
-          navigate("/userinfo");
+          setEmail('');
+          setPassword('');
+          navigate('/userinfo');
         }
       })
       .catch((error) => {
-        console.log("error");
-        alert("This email does not exist");
+        console.log('error');
+        alert('This email does not exist');
       });
   };
 
-  const isFormValid = email !== "" && password !== "";
+  const isFormValid = email !== '' && password !== '';
 
   return (
     <>
       <LoginPageNavBar />
       {/* new registe page */}
-      <div className="grid md:grid-cols-2  grid-cols-1 md:mt-[150px] mt-[100px] ">
+      <div className='grid md:grid-cols-2  grid-cols-1 md:mt-[150px] mt-[100px] '>
         {/* left side of sign in */}
-        <div className="">
-          <div className="text-center my-10">
-            <h1 className="big-heading text-[#394867]">Log In</h1>
+        <div className=''>
+          <div className='text-center my-10'>
+            <h1 className='big-heading text-[#394867]'>Log In</h1>
           </div>
-          <div className="mx-auto px-10">
+          <div className='mx-auto px-10'>
             <img
-              className="lg:w-[70%] md:w-[90%] w-[70%] h-[450px] mx-auto md:inline-block hidden"
+              className='lg:w-[70%] md:w-[90%] w-[70%] h-[450px] mx-auto md:inline-block hidden'
               src={reminder}
             ></img>
           </div>
         </div>
         {/* right side of sign in */}
-        <div className="bg-white rounded-lg mx-5 py-[10%] px-[15%] shadow-md">
+        <div className='bg-white rounded-lg mx-5 py-[10%] px-[15%] shadow-md'>
           <div>
             <form>
               {/* email input */}
-              <div className="relative " data-te-input-wrapper-init>
-                <label id="email">Email</label>
+              <div className='relative ' data-te-input-wrapper-init>
+                <label id='email'>Email</label>
                 <input
-                  type="text"
-                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear "
-                  placeholder="Enter Your Email Address"
-                  id="email"
+                  type='text'
+                  className='peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear '
+                  placeholder='Enter Your Email Address'
+                  id='email'
                   value={email}
                   onChange={handleEmailChange}
-                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                  pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
                   required
                 />
-                {emailError && <p className="text-red-400">{emailError}</p>}{" "}
               </div>
               {/* password input */}
-              <div className="relative " data-te-input-wrapper-init>
-                <label id="password">Password</label>
+              <div className='relative ' data-te-input-wrapper-init>
+                <label id='password'>Password</label>
                 <input
-                  className="peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear "
-                  type="password"
-                  placeholder="Enter Your Password"
-                  id="password"
+                  className='peer block min-h-[auto] w-full rounded border-2  bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear '
+                  type='password'
+                  placeholder='Enter Your Password'
+                  id='password'
                   value={password}
                   onChange={handlePasswordChange}
-                  pattern="^(?=.*\d)(?=.*[A-Z]).{8,}$"
+                  pattern='^(?=.*\d)(?=.*[A-Z]).{8,}$'
                   required
                 />
-
-                {passwordError && (
-                  <p className="text-red-400">{passwordError}</p>
-                )}
               </div>
-              <div className="flex flex-row-reverse text-gray-400 hover:text-black">
-                <Link to={"/register"}>Don't have account! Sign up?</Link>
+              <div className='flex flex-row-reverse text-gray-400 hover:text-black'>
+                <Link to={'/register'}>Don't have account! Sign up?</Link>
               </div>
               {/* submit button */}
               <button
-                type="button"
-                className="inline-block w-full rounded bg-red-300 py-5 text-white hover:bg-red-400 shadow-md"
+                type='button'
+                className='inline-block w-full rounded bg-red-300 py-5 text-white hover:bg-red-400 shadow-md'
                 data-te-ripple-init
-                data-te-ripple-color="light"
+                data-te-ripple-color='light'
                 onClick={handleSubmit}
                 disabled={!isFormValid}
               >

@@ -117,7 +117,7 @@ function Adoptpage() {
     <>
       {auth?.dataEmail ? <LoginNavbar /> : <Navbar />}
       <div className='my-[100px] text-center text-[#394867]'>
-        <h1 className='big-heading'>Choose Your Favourite Cat</h1>
+        <h1 className='big-heading'>Choose Your Favorite Cat</h1>
       </div>
       <div className='  lg:mx-auto w-[90%] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mx-[5%] p-4'>
         {cats.map((cat, index) => (
