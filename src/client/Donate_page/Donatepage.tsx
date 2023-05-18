@@ -72,7 +72,9 @@ function Donatepage() {
         </>
       )}
       <div className='lg:mt-[100px] mt-8 text-center'>
-        <h1 className='big-heading text-[#394867]'>Donate Your Cat Here!</h1>
+        <h1 className='big-heading text-[#394867]'>
+          Put Your Cat for Adoption
+        </h1>
       </div>
       <div className='grid lg:grid-cols-2 grid-cols-1 md:my-[100px] mx-4 lg:w-[95%] '>
         {/* left container */}
