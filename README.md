@@ -1,7 +1,7 @@
 # Callback Cats
 We are Callback Cats, a cat-themed e-commerce platform. Our mission is to provide cat lovers around the world with the best experience with exploring cat breeds. At Callback Cats, we understand that cats are more than just pets - they are family members. That's why we only offer the most friendly user experience to meet the needs of both cats and their owners. There are numerous cat breeds, each with their unique characteristics in this website. You can either trade or adopt a cat of your liking.
 #
-<img src="./public/homePage.jpg" alt="home" width="500" height="300"> <img src="./public/adoptPage.jpg" alt="adopt" width="500" height="300">
+<img src="./public/homePage.jpg" alt="home" width="400" height="250"> <img src="./public/adoptPage.jpg" alt="adopt" width="400" height="250">
 #
 
 # How To Run The Website
